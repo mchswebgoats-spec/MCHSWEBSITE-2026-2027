@@ -135,6 +135,69 @@
     .ticker-track { animation: ticker 30s linear infinite; }
     .accordion-content { display: none; }
     .accordion-content.open { display: block; }
+
+    /* ===== Enhanced UX / UI ===== */
+    .dropdown-menu {
+      padding: .5rem;
+      border: 1px solid rgba(24,24,27,.08);
+      border-top: 4px solid #8B1A2B;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+    }
+    .dropdown-menu a.menu-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-height: 48px;
+      padding: .7rem .75rem;
+      border-radius: .6rem;
+      border-bottom: 0;
+      color: #3f3f46;
+      font-weight: 600;
+      transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .dropdown-menu a.menu-link:hover,
+    .dropdown-menu a.menu-link:focus-visible {
+      padding-left: .75rem;
+      transform: translateX(3px);
+      background: #faf7f8;
+      color: #8B1A2B;
+      box-shadow: inset 3px 0 0 #C49A2A;
+      outline: none;
+    }
+    .menu-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: .55rem;
+      background: #8B1A2B12;
+      color: #8B1A2B;
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .menu-link:hover .menu-icon,
+    .menu-link:focus-visible .menu-icon {
+      background: #8B1A2B;
+      color: white;
+    }
+    .menu-copy { display: flex; flex-direction: column; min-width: 0; }
+    .menu-title { font-size: .875rem; line-height: 1.15; }
+    .menu-desc { font-size: .68rem; line-height: 1.2; color: #71717a; margin-top: .18rem; font-weight: 500; }
+    .menu-arrow { margin-left: auto; color: #a1a1aa; }
+    .dropdown-heading {
+      padding: .45rem .7rem .55rem;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #8B1A2B;
+    }
+    .nav-item > button { transition: background-color .2s ease, color .2s ease; }
+    .nav-item > button:focus-visible { box-shadow: inset 0 0 0 2px #C49A2A; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
@@ -227,15 +290,36 @@
         <!-- STUDENTS -->
         <li class="nav-item relative">
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">STUDENTS</button>
-          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
-            <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Infinite Campus – Login (SSO)</a>
-            <a href="https://www.khanacademy.org/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Khan Academy</a>
-            <a href="https://mail.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Student Email Login</a>
-            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Digital Driver's License</a>
-            <a href="https://accounts.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Google Classroom</a>
-            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Teen Guide to Social Media Safety</a>
-            <a href="https://www.smartpass.app/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">SmartPass</a>
-            <a href="https://clever.com/in/mccreary" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Clever Login</a>
+          <div class="dropdown-menu absolute top-full left-0 w-[22rem] max-w-[calc(100vw-2rem)] bg-white shadow-xl z-50" role="menu" aria-label="Student resources">
+            <div class="dropdown-heading">Student Quick Links</div>
+            <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem" aria-label="Infinite Campus login - opens in a new tab">
+              <span class="menu-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+              </span>
+              <span class="menu-copy"><span class="menu-title">Infinite Campus</span><span class="menu-desc">Student information &amp; grades</span></span>
+              <span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">📚</span><span class="menu-copy"><span class="menu-title">Khan Academy</span><span class="menu-desc">Learning and practice</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">✉</span><span class="menu-copy"><span class="menu-title">Student Email Login</span><span class="menu-desc">Access your school email</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="#" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">🪪</span><span class="menu-copy"><span class="menu-title">Digital Driver's License</span><span class="menu-desc">Student digital ID resources</span></span>
+            </a>
+            <a href="https://accounts.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">G</span><span class="menu-copy"><span class="menu-title">Google Classroom</span><span class="menu-desc">Classes and assignments</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="#" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">🛡</span><span class="menu-copy"><span class="menu-title">Teen Guide to Social Media Safety</span><span class="menu-desc">Online safety resources</span></span>
+            </a>
+            <a href="https://www.smartpass.app/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">✓</span><span class="menu-copy"><span class="menu-title">SmartPass</span><span class="menu-desc">Digital hall pass</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://clever.com/in/mccreary" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">C</span><span class="menu-copy"><span class="menu-title">Clever Login</span><span class="menu-desc">School app portal</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
           </div>
         </li>
 
@@ -379,7 +463,7 @@
           STUDENTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <div id="acc-students" class="accordion-content bg-zinc-50 px-8">
-          <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus – Login (SSO)</a>
+          <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus – Login</a>
           <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Clever Login</a>
           <a href="https://accounts.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Google Classroom</a>
           <a href="https://www.smartpass.app/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartPass</a>
@@ -845,6 +929,28 @@
       el.classList.toggle('open', opening);
       if (button) button.setAttribute('aria-expanded', String(opening));
     }
+
+    // Enhanced keyboard and outside-click behavior for desktop navigation.
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('#desktop-nav')) closeAllDropdowns();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDropdowns();
+        document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false'));
+      }
+    });
+
+    document.querySelectorAll('#desktop-nav .dropdown-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth >= 768) {
+          closeAllDropdowns();
+          document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false'));
+        }
+      });
+    });
+
   </script>
 </body>
 </html>
