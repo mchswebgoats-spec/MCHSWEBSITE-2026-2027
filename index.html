@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>McCreary Central High School</title>
+  <meta name="theme-color" content="#8B1A2B" />
+  <meta name="description" content="McCreary Central High School - Raider Nation resources, news, events, academics, students, and community information." />
+  <title>McCreary Central High School | Raider Nation</title>
   <script src="https://cdn.tailwindcss.com"></script>
+
   <script>
     tailwind.config = {
       theme: {
@@ -195,12 +198,135 @@
     }
     .nav-item > button { transition: background-color .2s ease, color .2s ease; }
     .nav-item > button:focus-visible { box-shadow: inset 0 0 0 2px #C49A2A; }
+
+    .max-w-6xl > div > a { position:relative; min-height:112px; background:#fff; }
+    .max-w-6xl > div > a::after { content:'→'; position:absolute; right:.7rem; top:.55rem; opacity:0; color:var(--school-red); font-weight:900; transition:opacity .2s ease, transform .2s ease; transform:translateX(-4px); }
+    .max-w-6xl > div > a:hover::after { opacity:1; transform:translateX(0); }
+    .max-w-6xl > div > a:hover { background:#fffaf5; }
+    /* Accessible menu state */
+    .nav-item > button[aria-expanded="true"] { color:#fff; }
+    .hamburger-label { letter-spacing:.14em; }
+    /* Video frame */
+    iframe { border:0; }
+    /* Improve selection and reading rhythm */
+    ::selection { background:rgba(196,154,42,.28); }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
     }
+  
+    /* ===== Complete UX/UI enhancement ===== */
+    :root {
+      --school-red: #8B1A2B;
+      --school-gold: #C49A2A;
+      --ink: #18181b;
+      --muted: #71717a;
+      --surface: #ffffff;
+      --soft: #f8fafc;
+      --ring: rgba(196,154,42,.45);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #f8fafc; color: var(--ink); }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--school-gold) !important; outline-offset: 3px; }
+    .skip-link { position: fixed; left: 1rem; top: .75rem; transform: translateY(-150%); z-index: 9999; background: #fff; color: var(--school-red); padding: .75rem 1rem; border-radius: .75rem; font-weight: 800; box-shadow: 0 12px 30px rgba(0,0,0,.2); transition: transform .2s ease; }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* Header */
+    body > header { position: relative; overflow: hidden; }
+    body > header::after { content:''; position:absolute; inset:auto -10% -35px 35%; height:90px; background: radial-gradient(circle, rgba(139,26,43,.08), transparent 65%); pointer-events:none; }
+    header h1 { letter-spacing: -.025em; }
+    header .w-16.h-16 { box-shadow: 0 8px 24px rgba(139,26,43,.12); }
+
+    /* Main navigation */
+    nav { backdrop-filter: blur(12px); background: rgba(139,26,43,.97) !important; }
+    #desktop-nav { gap: .25rem; }
+    .nav-item > button { position: relative; border-radius: .65rem; margin: .35rem 0; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .nav-item > button:hover { transform: translateY(-1px); box-shadow: inset 0 -3px 0 var(--school-gold); }
+    .nav-item.open > button { box-shadow: inset 0 -3px 0 var(--school-gold), 0 5px 15px rgba(0,0,0,.12); }
+    .dropdown-menu { border: 1px solid #e4e4e7; border-top: 4px solid var(--school-gold); border-radius: 0 0 1rem 1rem; padding: .45rem; box-shadow: 0 24px 60px rgba(24,24,27,.20); background: rgba(255,255,255,.98); }
+    .dropdown-menu a { border: 0 !important; border-radius: .65rem; margin: .1rem 0; min-height: 44px; display:flex; align-items:center; }
+    .dropdown-menu a:hover, .dropdown-menu a:focus-visible { padding-left: 1rem; background: #fff7ed; color: var(--school-red); box-shadow: inset 3px 0 0 var(--school-gold); }
+    .dropdown-heading { padding: .7rem .85rem .5rem; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--school-red); }
+    .menu-link { gap: .75rem; padding: .7rem .75rem !important; }
+    .menu-icon { width: 2.2rem; height: 2.2rem; flex: 0 0 2.2rem; display:grid; place-items:center; border-radius:.65rem; background:#f4f4f5; color:var(--school-red); font-weight:900; }
+    .menu-copy { min-width:0; flex:1; display:flex; flex-direction:column; gap:.1rem; }
+    .menu-title { font-weight:800; color:#27272a; }
+    .menu-desc { font-size:.72rem; color:#71717a; line-height:1.2; }
+    .menu-arrow { color: var(--school-red); font-weight:900; }
+
+    /* Mobile */
+    #mobile-drawer { background: #fff; border-top: 1px solid rgba(255,255,255,.15); }
+    .mobile-section-btn { border-radius:.7rem; margin:.2rem 0; transition: background .2s ease; }
+    .mobile-section-btn:hover, .mobile-section-btn[aria-expanded="true"] { background:#fff7ed; color:var(--school-red); }
+    .accordion-content { padding-left:.5rem; padding-right:.5rem; }
+    .accordion-content.open { padding-top:.25rem; padding-bottom:.5rem; }
+    .accordion-content a { border-radius:.6rem; transition: background .15s ease, padding-left .15s ease; }
+    .accordion-content a:hover, .accordion-content a:focus-visible { background:#fff7ed; padding-left:1rem; }
+
+    /* Hero */
+    .slide { position: relative; min-height: clamp(360px, 52vw, 610px); }
+    .slide img { transition: transform 8s ease; }
+    .slide.active img { transform: scale(1.04); }
+    .slide > div.absolute.inset-0 { background: linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.24) 55%, rgba(0,0,0,.12)); }
+    .slide .max-w-7xl { position:relative; z-index:2; }
+    .slide h2 { text-shadow: 0 3px 18px rgba(0,0,0,.35); letter-spacing:-.035em; }
+    .slide a { box-shadow: 0 10px 25px rgba(0,0,0,.2); }
+    .slide-dot { transition: width .25s ease, background-color .25s ease, transform .2s ease; }
+    .slide-dot:hover { transform: scale(1.15); }
+
+    /* Quick links */
+    section { scroll-margin-top: 5rem; }
+    .quick-link-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .quick-link-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(24,24,27,.10); border-color: rgba(139,26,43,.25); }
+    .quick-link-card .icon-wrap { transition: transform .2s ease; }
+    .quick-link-card:hover .icon-wrap { transform: scale(1.08) rotate(-2deg); }
+
+    /* Content cards */
+    main { background: linear-gradient(180deg,#fff 0,#f8fafc 55%,#fff 100%); }
+    main .border, main .rounded-xl { border-color:#e4e4e7; }
+    main .group { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    main .group:hover { transform: translateY(-3px); box-shadow:0 18px 40px rgba(24,24,27,.09); border-color:rgba(139,26,43,.2); }
+    main .group h3 { transition: color .2s ease; }
+    main .group:hover h3 { color:var(--school-red); }
+    main .bg-zinc-200 { background: linear-gradient(135deg,#e4e4e7,#d4d4d8); }
+    main .cursor-pointer { cursor:pointer; }
+
+    /* Section headings */
+    main h2 { letter-spacing:-.02em; }
+    main h2 + a { padding:.5rem .75rem; border-radius:.6rem; }
+    main h2 + a:hover { background:#fff7ed; }
+
+    /* Footer */
+    footer { box-shadow: inset 0 12px 35px rgba(0,0,0,.08); }
+    footer a { border-radius:.45rem; }
+    footer .flex.gap-3 a:hover { transform: translateY(-2px); }
+    footer .flex.gap-3 a { transition: transform .2s ease, background .2s ease; }
+
+    /* Floating back-to-top */
+    #back-to-top { position:fixed; right:1.25rem; bottom:1.25rem; z-index:60; width:3rem; height:3rem; border-radius:999px; display:grid; place-items:center; background:var(--school-red); color:#fff; border:2px solid rgba(255,255,255,.9); box-shadow:0 12px 30px rgba(0,0,0,.2); opacity:0; visibility:hidden; transform:translateY(12px); transition:.25s ease; }
+    #back-to-top.show { opacity:1; visibility:visible; transform:translateY(0); }
+    #back-to-top:hover { background:#6f1422; transform:translateY(-2px); }
+
+    /* Better touch targets */
+    @media (max-width: 767px) {
+      .nav-item > button { min-height:52px; }
+      header { padding-top:1rem !important; padding-bottom:1rem !important; }
+      header .flex.items-center.gap-3 { width:100%; justify-content:center; flex-wrap:wrap; }
+      .slide { min-height:460px; }
+      .slide h2 { font-size:2.2rem; line-height:1.05; }
+      #back-to-top { right:.85rem; bottom:.85rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+      .slide.active img { transform:none; }
+    }
+
   </style>
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <!-- Top Announcement Bar -->
   <div class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium">
@@ -573,7 +699,7 @@
   </nav>
 
   <!-- Hero Slideshow -->
-  <div class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(220px, 45vw, 520px);">
+  <div id="main-content" class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(220px, 45vw, 520px);">
     <div id="slide-0" class="slide active absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1563186627-0d185db94083?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming underwater" class="w-full h-full object-cover"/></div>
     <div id="slide-1" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1674786272877-98e180235c48?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming in the ocean" class="w-full h-full object-cover"/></div>
     <div id="slide-2" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1637380781238-9b703b0d2db0?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark in deep blue water" class="w-full h-full object-cover"/></div>
@@ -823,6 +949,10 @@
     </div>
   </footer>
 
+  <button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -860,6 +990,46 @@
       document.getElementById('pause-icon').style.display = paused ? 'none' : 'block';
       document.getElementById('play-icon').style.display = paused ? 'block' : 'none';
     }
+
+
+    // ===== UX behavior enhancements =====
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    }, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Close menus with Escape and restore focus.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDropdowns();
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        if (mobileDrawer && mobileDrawer.classList.contains('mobile-open')) {
+          const toggle = document.getElementById('hamburger-btn');
+          mobileDrawer.classList.remove('mobile-open');
+          if (toggle) { toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+        }
+      }
+    });
+
+    // External links get a consistent visual cue without changing their destinations.
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+
+    // Give placeholder links a gentle no-op message instead of jumping to the top.
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const label = link.textContent.trim();
+        if (label && label.toLowerCase() !== 'job opportunities') {
+          link.animate([
+            { transform:'scale(1)' }, { transform:'scale(.98)' }, { transform:'scale(1)' }
+          ], { duration:180 });
+        }
+      });
+    });
 
     startTimer();
 
