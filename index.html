@@ -1,1 +1,1126 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8" /> <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <title>McCreary Central High School</title> <script src="https://cdn.tailwindcss.com"></script> <script> tailwind.config = { theme: { extend: { colors: { primary: '#8B1A2B', secondary: '#C49A2A', } } } } </script> <style> body { font-family: 'Inter', sans-serif; } .no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; } /* ===== Improved navigation ===== */ .nav-item { position: relative; } .nav-item > button { display: flex; align-items: center; gap: .45rem; min-height: 58px; border-bottom: 3px solid transparent; } .nav-item > button::after { content: ''; width: 7px; height: 7px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform .2s ease; opacity: .8; } .nav-item.open > button, .nav-item > button:hover, .nav-item > button:focus-visible { background: rgba(255,255,255,.10); border-bottom-color: #C49A2A; outline: none; } .nav-item.open > button::after { transform: rotate(225deg) translateY(-1px); } .dropdown-menu { display: none; flex-direction: column; min-width: 18rem; max-width: min(24rem, calc(100vw - 2rem)); max-height: min(32rem, calc(100vh - 9rem)); overflow-y: auto; border-radius: 0 0 .75rem .75rem; box-shadow: 0 20px 45px rgba(24,24,27,.18); animation: dropdownIn .16s ease-out; } .nav-item.open > .dropdown-menu { display: flex; } .dropdown-menu a { position: relative; transition: background-color .15s ease, color .15s ease, padding-left .15s ease; } .dropdown-menu a:hover, .dropdown-menu a:focus-visible { padding-left: 1.25rem; background: #f4f4f5; outline: none; } .submenu { display: none; position: absolute; border-radius: .75rem; overflow: hidden; box-shadow: 0 20px 45px rgba(24,24,27,.18); } .has-submenu.open > .submenu { display: flex; flex-direction: column; } @keyframes dropdownIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } } /* Mobile drawer */ #mobile-drawer { max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s ease, opacity .2s ease; } #mobile-drawer.mobile-open { display: block !important; max-height: 80vh; overflow-y: auto; opacity: 1; box-shadow: 0 14px 28px rgba(24,24,27,.18); } .accordion-content { display: block; max-height: 0; overflow: hidden; transition: max-height .28s ease, padding .28s ease; } .accordion-content.open { max-height: 1200px; } .mobile-section-btn[aria-expanded="true"] svg { transform: rotate(180deg); } .mobile-section-btn svg { transition: transform .2s ease; } @media (min-width: 768px) { #desktop-nav { justify-content: space-between; } .nav-item > button { padding-left: .8rem; padding-right: .8rem; } } @media (min-width: 1280px) { .nav-item > button { padding-left: 1rem; padding-right: 1rem; } } .slide { display: none; } .slide.active { display: block; } @keyframes ticker { 0%   { transform: translateX(0); } 100% { transform: translateX(-50%); } } .ticker-track { animation: ticker 30s linear infinite; } .accordion-content { display: none; } .accordion-content.open { display: block; } /* ===== Enhanced UX / UI ===== */ .dropdown-menu { padding: .5rem; border: 1px solid rgba(24,24,27,.08); border-top: 4px solid #8B1A2B; background: rgba(255,255,255,.98); backdrop-filter: blur(10px); } .dropdown-menu a.menu-link { display: flex; align-items: center; gap: .75rem; min-height: 48px; padding: .7rem .75rem; border-radius: .6rem; border-bottom: 0; color: #3f3f46; font-weight: 600; transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease; } .dropdown-menu a.menu-link:hover, .dropdown-menu a.menu-link:focus-visible { padding-left: .75rem; transform: translateX(3px); background: #faf7f8; color: #8B1A2B; box-shadow: inset 3px 0 0 #C49A2A; outline: none; } .menu-icon { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; border-radius: .55rem; background: #8B1A2B12; color: #8B1A2B; transition: background-color .15s ease, color .15s ease; } .menu-link:hover .menu-icon, .menu-link:focus-visible .menu-icon { background: #8B1A2B; color: white; } .menu-copy { display: flex; flex-direction: column; min-width: 0; } .menu-title { font-size: .875rem; line-height: 1.15; } .menu-desc { font-size: .68rem; line-height: 1.2; color: #71717a; margin-top: .18rem; font-weight: 500; } .menu-arrow { margin-left: auto; color: #a1a1aa; } .dropdown-heading { padding: .45rem .7rem .55rem; font-size: .65rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: #8B1A2B; } .nav-item > button { transition: background-color .2s ease, color .2s ease; } .nav-item > button:focus-visible { box-shadow: inset 0 0 0 2px #C49A2A; } @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } } </style> </head> <body class="bg-white text-zinc-900 min-h-screen flex flex-col"> <!-- Top Announcement Bar --> <div class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium"> <p class="truncate"> 2024-2025 KY Summative Assessment Results&nbsp;|&nbsp;Proficient Reading: 41%&nbsp;|&nbsp;Distinguished Reading: 28%&nbsp;|&nbsp;Proficient Math: 34%&nbsp;|&nbsp;Distinguished Math: 22% </p> <a href="https://kyschoolreportcard.com" target="_blank" class="shrink-0 bg-white text-[#8B1A2B] font-bold text-[10px] uppercase tracking-wider px-3 py-1 hover:bg-[#C49A2A] hover:text-white transition-colors"> See All Results </a> </div> <!-- Main Header --> <header class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-b border-zinc-100"> <div class="flex items-center gap-5"> <div class="w-16 h-16 bg-[#8B1A2B]/10 rounded-full border-2 border-[#8B1A2B] flex items-center justify-center shrink-0"> <span class="text-[#8B1A2B] font-bold text-lg tracking-tighter">MC</span> </div> <div> <h1 class="text-xl md:text-2xl font-bold text-zinc-900">McCreary Central High School</h1> <p class="text-[#8B1A2B] text-sm italic font-medium">A Great Place to Learn</p> </div> </div> <div class="flex items-center gap-3"> <!-- Clickable S.T.O.P. School Safety logo --> <a href="https://homelandsecurity.ky.gov/SafeSchools/Pages/default.aspx" target="_blank" rel="noopener noreferrer" aria-label="Kentucky Safe Schools S.T.O.P. - opens in a new tab" title="Kentucky Safe Schools S.T.O.P." class="shrink-0 flex items-center justify-center hover:scale-105 transition-transform"> <img src="data:image/png;base64,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" alt="S.T.O.P. School Safety logo" class="w-16 h-16 md:w-20 md:h-20 object-contain" /> </a> <a href="#" class="bg-[#8B1A2B] text-white font-bold text-xs uppercase tracking-wider px-4 py-2 hover:opacity-90 transition-opacity"> Job Opportunities </a> <a href="#" class="w-9 h-9 border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-[#8B1A2B] hover:border-[#8B1A2B] transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg> </a> <a href="#" class="w-9 h-9 border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-[#8B1A2B] hover:border-[#8B1A2B] transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg> </a> </div> </header> <!-- Primary Navigation --> <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-b border-black/10"> <!-- Desktop Nav --> <div class="max-w-7xl mx-auto px-4 md:px-8"> <ul class="hidden md:flex items-center justify-center no-scrollbar" id="desktop-nav"> <!-- ACADEMICS --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">ACADEMICS</button> <!-- No max-h or overflow — no scrollbar --> <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50"> <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a> <!-- Departments with flyout submenu — pops out to the right --> <div class="has-submenu relative"> <a href="/page.html?p=departments" target="_blank" class="flex items-center justify-between px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium"> Departments <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg> </a> <div class="submenu absolute top-0 left-full w-56 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50"> <a href="/page.html?p=dept-math" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Math</a> <a href="/page.html?p=dept-english" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">English</a> <a href="/page.html?p=dept-science" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Science</a> <a href="/page.html?p=dept-social-studies" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Social Studies</a> <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Arts and Humanities</a> <a href="/page.html?p=dept-cte" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">CTE</a> </div> </div> <a href="/page.html?p=raider-immigration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Raider Nation Immigration Guide</a> <a href="/page.html?p=class-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Class Registration Guide</a> <a href="/page.html?p=how-to" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">How-To &amp; Tech Support</a> <a href="/page.html?p=library-resources" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Library Resources</a> <a href="https://www.parchment.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Request Transcript (Parchment)</a> <a href="https://www.ixl.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">IXL Learning</a> </div> </li> <!-- STUDENTS --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">STUDENTS</button> <div class="dropdown-menu absolute top-full left-0 w-[22rem] max-w-[calc(100vw-2rem)] bg-white shadow-xl z-50" role="menu" aria-label="Student resources"> <div class="dropdown-heading">Student Quick Links</div> <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem" aria-label="Infinite Campus login - opens in a new tab"> <span class="menu-icon" aria-hidden="true"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg> </span> <span class="menu-copy"><span class="menu-title">Infinite Campus</span><span class="menu-desc">Student information &amp; grades</span></span> <span class="menu-arrow" aria-hidden="true">↗</span> </a> <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">📚</span><span class="menu-copy"><span class="menu-title">Khan Academy</span><span class="menu-desc">Learning and practice</span></span><span class="menu-arrow" aria-hidden="true">↗</span> </a> <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">✉</span><span class="menu-copy"><span class="menu-title">Student Email Login</span><span class="menu-desc">Access your school email</span></span><span class="menu-arrow" aria-hidden="true">↗</span> </a> <a href="#" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">🪪</span><span class="menu-copy"><span class="menu-title">Digital Driver's License</span><span class="menu-desc">Student digital ID resources</span></span> </a> <a href="https://accounts.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">G</span><span class="menu-copy"><span class="menu-title">Google Classroom</span><span class="menu-desc">Classes and assignments</span></span><span class="menu-arrow" aria-hidden="true">↗</span> </a> <a href="#" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">🛡</span><span class="menu-copy"><span class="menu-title">Teen Guide to Social Media Safety</span><span class="menu-desc">Online safety resources</span></span> </a> <a href="https://www.smartpass.app/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">✓</span><span class="menu-copy"><span class="menu-title">SmartPass</span><span class="menu-desc">Digital hall pass</span></span><span class="menu-arrow" aria-hidden="true">↗</span> </a> <a href="https://clever.com/in/mccreary" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem"> <span class="menu-icon" aria-hidden="true">C</span><span class="menu-copy"><span class="menu-title">Clever Login</span><span class="menu-desc">School app portal</span></span><span class="menu-arrow" aria-hidden="true">↗</span> </a> </div> </li> <!-- CLUBS & ACTIVITIES --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">CLUBS &amp; ACTIVITIES</button> <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50"> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Drama Club</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Band</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">FFA</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Beta Club</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">HOSA</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">TSA</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">FCA</a> </div> </li> <!-- DIRECTORY --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DIRECTORY</button> <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50"> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Directory</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselors</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Administration</a> </div> </li> <!-- DISTRICT --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DISTRICT</button> <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-[32rem] overflow-y-auto z-50"> <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Homepage</a> <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">About Us</a> <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Board of Education</a> <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Calendar</a> <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District News</a> <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Our Schools</a> <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a> <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Curriculum &amp; Instruction</a> <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Transportation</a> <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Food Services</a> <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">School Menu</a> <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Online Student Registration</a> <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Resources</a> <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Resources</a> <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Quick Links</a> <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">YouTube — News Channel</a> </div> </li> <!-- PARENTS & COMMUNITY --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">PARENTS &amp; COMMUNITY</button> <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50"> <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Infinite Campus Portal</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent's Guide to Protecting Teens on Social Media</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Cyberbullying: A Word for Parents</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Teen Guide to Social Media Safety</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Right to Request Teacher Qualifications</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Testing Transparency Letter</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Title I Parent &amp; Family Policy</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Volunteer</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Community Resources</a> </div> </li> <!-- MCHS STAFF --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">MCHS STAFF</button> <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50"> <a href="https://www.parentsquare.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">ParentSquare</a> <a href="https://mail.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Email (McCreary Co Schools)</a> <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Infinite Campus (New Link – Dec 26+)</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">MFA – Sign-In Settings</a> <a href="https://education.ky.gov/curriculum/standards/kyacadstand/Pages/default.aspx" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Kentucky Academic Standards</a> <a href="https://clever.com/in/mccreary" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Clever Login</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">SmartFind Express</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Technology / Maintenance Help Portal</a> <a href="https://www.goguardian.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Go Guardian</a> <a href="https://education.ky.gov/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Kentucky Department of Education</a> <a href="https://www.careercruising.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Career Cruising</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">McCreary Public Library</a> <a href="https://www.khanacademy.org/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Khan Academy</a> <a href="https://accounts.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Google for Education</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Handbook for Coaches</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Handbook for Substitutes</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">District Handbook for Employees</a> </div> </li> <!-- SPORTS --> <li class="nav-item relative"> <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">SPORTS</button> <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50"> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Fall Sports</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Winter Sports</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Spring Sports</a> <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Athletic Director</a> </div> </li> </ul> <!-- Mobile hamburger --> <div class="flex md:hidden items-center justify-between py-3"> <span class="text-white font-bold text-xs tracking-widest uppercase">Menu</span> <button id="hamburger-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false"> <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg> <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> </button> </div> </div> <!-- Mobile Drawer --> <div id="mobile-drawer" class="md:hidden bg-white" style="display:none"> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-academics')"> ACADEMICS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-academics" class="accordion-content bg-zinc-50 px-8"> <a href="/page.html?p=counselors-corner" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselor's Corner</a> <a href="/page.html?p=departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a> <div class="pl-4 border-b border-zinc-100"> <a href="/page.html?p=dept-math" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Math</a> <a href="/page.html?p=dept-english" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• English</a> <a href="/page.html?p=dept-science" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Science</a> <a href="/page.html?p=dept-social-studies" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Social Studies</a> <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Arts and Humanities</a> <a href="/page.html?p=dept-cte" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• CTE</a> </div> <a href="/page.html?p=raider-immigration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Raider Nation Immigration Guide</a> <a href="/page.html?p=class-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Class Registration Guide</a> <a href="/page.html?p=how-to" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">How-To &amp; Tech Support</a> <a href="/page.html?p=library-resources" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Library Resources</a> <a href="https://www.parchment.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Request Transcript (Parchment)</a> <a href="https://www.ixl.com/" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">IXL Learning</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-students')"> STUDENTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-students" class="accordion-content bg-zinc-50 px-8"> <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus – Login</a> <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Clever Login</a> <a href="https://accounts.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Google Classroom</a> <a href="https://www.smartpass.app/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartPass</a> <a href="https://mail.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Email Login</a> <a href="https://www.khanacademy.org/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Khan Academy</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Digital Driver's License</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-clubs')"> CLUBS &amp; ACTIVITIES <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-clubs" class="accordion-content bg-zinc-50 px-8"> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Drama Club</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Band</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">FFA</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Beta Club</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">HOSA</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">TSA</a> <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">FCA</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-directory')"> DIRECTORY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-directory" class="accordion-content bg-zinc-50 px-8"> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Directory</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselors</a> <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Administration</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-district')"> DISTRICT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-district" class="accordion-content bg-zinc-50 px-8"> <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Homepage</a> <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">About Us</a> <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Board of Education</a> <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Calendar</a> <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District News</a> <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Our Schools</a> <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a> <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Curriculum &amp; Instruction</a> <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Transportation</a> <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Food Services</a> <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">School Menu</a> <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Online Student Registration</a> <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent Resources</a> <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Resources</a> <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Quick Links</a> <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">YouTube — News Channel</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-parents')"> PARENTS &amp; COMMUNITY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-parents" class="accordion-content bg-zinc-50 px-8"> <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent Infinite Campus Portal</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Student Insurance Enrollment</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent's Guide to Protecting Teens on Social Media</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Cyberbullying: A Word for Parents</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Teen Guide to Social Media Safety</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Right to Request Teacher Qualifications</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Testing Transparency Letter</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Title I Parent &amp; Family Policy</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Volunteer</a> <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Community Resources</a> </div> </div> <div class="border-b border-zinc-100"> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-staff')"> MCHS STAFF <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-staff" class="accordion-content bg-zinc-50 px-8"> <a href="https://www.parentsquare.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">ParentSquare</a> <a href="https://mail.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Email (McCreary Co Schools)</a> <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus (New Link – Dec 26+)</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">MFA – Sign-In Settings</a> <a href="https://education.ky.gov/curriculum/standards/kyacadstand/Pages/default.aspx" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Kentucky Academic Standards</a> <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Clever Login</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartFind Express</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Technology / Maintenance Help Portal</a> <a href="https://www.goguardian.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Go Guardian</a> <a href="https://education.ky.gov/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Kentucky Department of Education</a> <a href="https://www.careercruising.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Career Cruising</a> <a href="https://www.khanacademy.org/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Khan Academy</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Handbook for Coaches</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Handbook for Substitutes</a> <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">District Handbook for Employees</a> </div> </div> <div> <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-sports')"> SPORTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg> </button> <div id="acc-sports" class="accordion-content bg-zinc-50 px-8"> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Fall Sports</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Winter Sports</a> <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Spring Sports</a> <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Athletic Director</a> </div> </div> </div> </nav> <!-- Hero Slideshow --> <div class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(220px, 45vw, 520px);"> <div id="slide-0" class="slide active absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1563186627-0d185db94083?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming underwater" class="w-full h-full object-cover"/></div> <div id="slide-1" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1674786272877-98e180235c48?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming in the ocean" class="w-full h-full object-cover"/></div> <div id="slide-2" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1637380781238-9b703b0d2db0?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark in deep blue water" class="w-full h-full object-cover"/></div> <button id="pause-btn" onclick="togglePause()" class="absolute top-3 left-3 z-10 w-7 h-7 bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors"> <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg> <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg> </button> <button onclick="changeSlide(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-16 bg-black/30 text-white flex items-center justify-center hover:bg-black/50"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg> </button> <button onclick="changeSlide(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-16 bg-black/30 text-white flex items-center justify-center hover:bg-black/50"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg> </button> <div class="absolute bottom-4 right-4 flex gap-2 z-10" id="slide-dots"> <button onclick="goToSlide(0)" class="slide-dot h-2 w-6 rounded-full bg-white transition-all"></button> <button onclick="goToSlide(1)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button> <button onclick="goToSlide(2)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button> </div> </div> <!-- Quick Links Row --> <div class="bg-white border-b border-zinc-200 shadow-sm"> <div class="max-w-6xl mx-auto"> <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 divide-x divide-zinc-100"> <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Chromebook Form</span> </a> <a href="https://gofan.co" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Go Fan</span> </a> <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Athletics</span> </a> <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Parent Portal</span> </a> <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">College &amp; Career</span> </a> <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Employment</span> </a> <a href="https://classroom.google.com" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg> <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Google Classroom</span> </a> </div> </div> </div> <!-- Latest Video from YouTube --> <div class="max-w-7xl mx-auto px-4 md:px-8 pt-12 w-full"> <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4"> <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3"> <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span> Latest Video </h2> <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ/videos" target="_blank" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1"> Visit Channel <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg> </a> </div> <div class="relative w-full overflow-hidden rounded-xl shadow-md bg-black" style="padding-top:56.25%"> <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUNPz7IrsfYUeE6dGvWCnerQ" title="Latest video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div> </div> <!-- Main Content: News & Events --> <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-10 w-full"> <!-- Latest News --> <div class="w-full lg:w-2/3"> <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4"> <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3"> <span class="w-1.5 h-7 bg-[#C49A2A] inline-block rounded-sm"></span> Latest News </h2> <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1"> View All <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg> </a> </div> <div class="grid grid-cols-1 md:grid-cols-3 gap-5"> <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group"> <div class="h-36 bg-zinc-200 flex items-center justify-center"> <span class="text-3xl font-bold text-white/40">MCHS</span> </div> <div class="p-5 flex flex-col flex-grow"> <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 15, 2024</p> <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">Raider Band Wins Regional Championship</h3> <p class="text-sm text-zinc-600 mb-4 flex-grow">The McCreary Central High School marching band took home first place honors at the regional competition...</p> <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a> </div> </div> <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group"> <div class="h-36 bg-zinc-200 flex items-center justify-center"> <span class="text-3xl font-bold text-white/40">MCHS</span> </div> <div class="p-5 flex flex-col flex-grow"> <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 10, 2024</p> <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">Fall Parent-Teacher Conferences</h3> <p class="text-sm text-zinc-600 mb-4 flex-grow">Join us next Tuesday evening to discuss your student's progress with their teachers...</p> <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a> </div> </div> <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group"> <div class="h-36 bg-zinc-200 flex items-center justify-center"> <span class="text-3xl font-bold text-white/40">MCHS</span> </div> <div class="p-5 flex flex-col flex-grow"> <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 05, 2024</p> <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">New STEM Lab Equipment Arrives</h3> <p class="text-sm text-zinc-600 mb-4 flex-grow">Thanks to a generous district grant, our science department has received brand-new lab equipment...</p> <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a> </div> </div> </div> </div> <!-- Events --> <div class="w-full lg:w-1/3"> <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4"> <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3"> <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span> Events </h2> <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1"> Calendar <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> </a> </div> <div class="flex flex-col gap-3"> <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer"> <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors"> <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div> <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">18</div> </div> <div> <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Varsity Football vs. Somerset</h3> <p class="text-xs text-zinc-500 mt-1">7:30 PM · Raider Stadium</p> </div> </div> <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer"> <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors"> <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div> <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">20</div> </div> <div> <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Financial Aid Workshop</h3> <p class="text-xs text-zinc-500 mt-1">6:00 PM · Cafeteria</p> </div> </div> <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer"> <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors"> <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div> <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">24</div> </div> <div> <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">School Board Meeting</h3> <p class="text-xs text-zinc-500 mt-1">6:30 PM · District Office</p> </div> </div> <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer"> <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors"> <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div> <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">27</div> </div> <div> <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Fall Choral Concert</h3> <p class="text-xs text-zinc-500 mt-1">7:00 PM · Auditorium</p> </div> </div> </div> </div> </div> <!-- Footer --> <footer class="mt-auto bg-[#8B1A2B] text-white pt-14 pb-8 border-t-8 border-[#C49A2A]"> <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-10"> <div class="md:col-span-2"> <div class="flex items-center gap-4 mb-5"> <div class="w-12 h-12 bg-white/10 rounded-full border-2 border-[#C49A2A] flex items-center justify-center shrink-0"> <span class="text-[#C49A2A] font-bold text-lg tracking-tighter">MC</span> </div> <div> <h3 class="text-xl font-extrabold tracking-tight uppercase">McCreary Central</h3> <p class="text-[#C49A2A] italic text-sm">High School</p> </div> </div> <p class="text-white/80 text-sm leading-relaxed max-w-sm mb-5"> Empowering students to achieve their highest potential in a safe, supportive, and engaging environment. Home of the Raiders! </p> <div class="flex gap-3"> <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg> </a> <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg> </a> <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> </a> </div> </div> <div> <h4 class="text-base font-bold mb-5 tracking-wide border-b border-white/20 pb-2">Contact Us</h4> <ul class="space-y-3 text-sm text-white/80"> <li class="flex items-start gap-3"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24" class="shrink-0 mt-0.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg> <span>400 Raider Way<br/>Stearns, KY 42647</span> </li> <li class="flex items-center gap-3"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 9 19.79 19.79 0 0 1 1.9 .37 2 2 0 0 1 3.89 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span>(606) 376-5051</span> </li> <li class="flex items-center gap-3"> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg> <span>info@mccreary.kyschools.us</span> </li> </ul> </div> <div> <h4 class="text-base font-bold mb-5 tracking-wide border-b border-white/20 pb-2">Quick Links</h4> <ul class="space-y-1.5 text-sm text-white/80"> <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">District Homepage</a></li> <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">Board of Education</a></li> <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">Employment</a></li> <li><a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="hover:text-[#C49A2A] transition-colors block py-0.5">Infinite Campus</a></li> <li><a href="https://mail.google.com/" target="_blank" class="hover:text-[#C49A2A] transition-colors block py-0.5">Staff Webmail</a></li> </ul> </div> </div> <div class="max-w-7xl mx-auto px-4 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60"> <p>&copy; <span id="year"></span> McCreary Central High School. All rights reserved.</p> <div class="flex gap-4"> <a href="#" class="hover:text-white transition-colors">Privacy Policy</a> <a href="#" class="hover:text-white transition-colors">Accessibility</a> <a href="#" class="hover:text-white transition-colors">Sitemap</a> </div> </div> </footer> <script> document.getElementById('year').textContent = new Date().getFullYear(); let currentSlide = 0; let paused = false; let slideTimer; const totalSlides = 3; function showSlide(n) { document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === n)); document.querySelectorAll('.slide-dot').forEach((d, i) => { d.style.width = i === n ? '24px' : '8px'; d.style.backgroundColor = i === n ? '#fff' : 'rgba(255,255,255,0.5)'; }); } function changeSlide(dir) { currentSlide = (currentSlide + dir + totalSlides) % totalSlides; showSlide(currentSlide); } function goToSlide(n) { currentSlide = n; showSlide(n); } function startTimer() { slideTimer = setInterval(() => { if (!paused) changeSlide(1); }, 5000); } function togglePause() { paused = !paused; document.getElementById('pause-icon').style.display = paused ? 'none' : 'block'; document.getElementById('play-icon').style.display = paused ? 'block' : 'none'; } startTimer(); function closeAllDropdowns(except = null) { document.querySelectorAll('.nav-item.open').forEach(item => { if (item !== except) item.classList.remove('open'); }); document.querySelectorAll('.has-submenu.open').forEach(item => { item.classList.remove('open'); }); } document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => { button.setAttribute('aria-expanded', 'false'); button.addEventListener('click', (event) => { event.stopPropagation(); const item = button.closest('.nav-item'); const opening = !item.classList.contains('open'); closeAllDropdowns(item); item.classList.toggle('open', opening); button.setAttribute('aria-expanded', String(opening)); }); }); document.querySelectorAll('.has-submenu > a').forEach(link => { link.addEventListener('click', (event) => { if (window.innerWidth >= 768) { event.preventDefault(); event.stopPropagation(); const item = link.closest('.has-submenu'); const opening = !item.classList.contains('open'); document.querySelectorAll('.has-submenu.open').forEach(other => { if (other !== item) other.classList.remove('open'); }); item.classList.toggle('open', opening); } }); }); document.addEventListener('click', () => closeAllDropdowns()); document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeAllDropdowns(); }); function toggleMobileMenu() { const drawer = document.getElementById('mobile-drawer'); const isOpen = drawer.classList.contains('mobile-open'); drawer.classList.toggle('mobile-open', !isOpen); drawer.style.display = !isOpen ? 'block' : 'none'; document.getElementById('icon-menu').style.display = isOpen ? 'block' : 'none'; document.getElementById('icon-close').style.display = isOpen ? 'none' : 'block'; document.getElementById('hamburger-btn').setAttribute('aria-expanded', String(!isOpen)); } function toggleAccordion(id) { const el = document.getElementById(id); const button = document.querySelector(`[onclick="toggleAccordion('${id}')"]`); const opening = !el.classList.contains('open'); document.querySelectorAll('.accordion-content.open').forEach(panel => { if (panel !== el) panel.classList.remove('open'); }); document.querySelectorAll('.mobile-section-btn[aria-expanded="true"]').forEach(btn => { if (btn !== button) btn.setAttribute('aria-expanded', 'false'); }); el.classList.toggle('open', opening); if (button) button.setAttribute('aria-expanded', String(opening)); } // Enhanced keyboard and outside-click behavior for desktop navigation. document.addEventListener('click', (event) => { if (!event.target.closest('#desktop-nav')) closeAllDropdowns(); }); document.addEventListener('keydown', (event) => { if (event.key === 'Escape') { closeAllDropdowns(); document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false')); } }); document.querySelectorAll('#desktop-nav .dropdown-menu a').forEach(link => { link.addEventListener('click', () => { if (window.innerWidth >= 768) { closeAllDropdowns(); document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false')); } }); }); </script> </body> </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8B1A2B" />
+  <meta name="description" content="McCreary Central High School - Raider Nation resources, news, events, academics, students, and community information." />
+  <title>McCreary Central High School | Raider Nation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B1A2B',
+            secondary: '#C49A2A',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    /* ===== Improved navigation ===== */
+    .nav-item { position: relative; }
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      min-height: 58px;
+      border-bottom: 3px solid transparent;
+    }
+    .nav-item > button::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform .2s ease;
+      opacity: .8;
+    }
+    .nav-item.open > button,
+    .nav-item > button:hover,
+    .nav-item > button:focus-visible {
+      background: rgba(255,255,255,.10);
+      border-bottom-color: #C49A2A;
+      outline: none;
+    }
+    .nav-item.open > button::after {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      min-width: 18rem;
+      max-width: min(24rem, calc(100vw - 2rem));
+      max-height: min(32rem, calc(100vh - 9rem));
+      overflow-y: auto;
+      border-radius: 0 0 .75rem .75rem;
+      box-shadow: 0 20px 45px rgba(24,24,27,.18);
+      animation: dropdownIn .16s ease-out;
+    }
+    .nav-item.open > .dropdown-menu { display: flex; }
+
+    .dropdown-menu a {
+      position: relative;
+      transition: background-color .15s ease, color .15s ease, padding-left .15s ease;
+    }
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      padding-left: 1.25rem;
+      background: #f4f4f5;
+      outline: none;
+    }
+
+    .submenu {
+      display: none;
+      position: absolute;
+      border-radius: .75rem;
+      overflow: hidden;
+      box-shadow: 0 20px 45px rgba(24,24,27,.18);
+    }
+    .has-submenu.open > .submenu { display: flex; flex-direction: column; }
+
+    @keyframes dropdownIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Mobile drawer */
+    #mobile-drawer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height .3s ease, opacity .2s ease;
+    }
+    #mobile-drawer.mobile-open {
+      display: block !important;
+      max-height: 80vh;
+      overflow-y: auto;
+      opacity: 1;
+      box-shadow: 0 14px 28px rgba(24,24,27,.18);
+    }
+    .accordion-content {
+      display: block;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .28s ease, padding .28s ease;
+    }
+    .accordion-content.open {
+      max-height: 1200px;
+    }
+    .mobile-section-btn[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+    .mobile-section-btn svg { transition: transform .2s ease; }
+
+    @media (min-width: 768px) {
+      #desktop-nav { justify-content: space-between; }
+      .nav-item > button { padding-left: .8rem; padding-right: .8rem; }
+    }
+    @media (min-width: 1280px) {
+      .nav-item > button { padding-left: 1rem; padding-right: 1rem; }
+    }
+
+    .slide { display: none; }
+    .slide.active { display: block; }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track { animation: ticker 30s linear infinite; }
+    .accordion-content { display: none; }
+    .accordion-content.open { display: block; }
+
+    /* ===== Enhanced UX / UI ===== */
+    .dropdown-menu {
+      padding: .5rem;
+      border: 1px solid rgba(24,24,27,.08);
+      border-top: 4px solid #8B1A2B;
+      background: rgba(255,255,255,.98);
+      backdrop-filter: blur(10px);
+    }
+    .dropdown-menu a.menu-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      min-height: 48px;
+      padding: .7rem .75rem;
+      border-radius: .6rem;
+      border-bottom: 0;
+      color: #3f3f46;
+      font-weight: 600;
+      transition: transform .15s ease, background-color .15s ease, color .15s ease, box-shadow .15s ease;
+    }
+    .dropdown-menu a.menu-link:hover,
+    .dropdown-menu a.menu-link:focus-visible {
+      padding-left: .75rem;
+      transform: translateX(3px);
+      background: #faf7f8;
+      color: #8B1A2B;
+      box-shadow: inset 3px 0 0 #C49A2A;
+      outline: none;
+    }
+    .menu-icon {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: .55rem;
+      background: #8B1A2B12;
+      color: #8B1A2B;
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .menu-link:hover .menu-icon,
+    .menu-link:focus-visible .menu-icon {
+      background: #8B1A2B;
+      color: white;
+    }
+    .menu-copy { display: flex; flex-direction: column; min-width: 0; }
+    .menu-title { font-size: .875rem; line-height: 1.15; }
+    .menu-desc { font-size: .68rem; line-height: 1.2; color: #71717a; margin-top: .18rem; font-weight: 500; }
+    .menu-arrow { margin-left: auto; color: #a1a1aa; }
+    .dropdown-heading {
+      padding: .45rem .7rem .55rem;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #8B1A2B;
+    }
+    .nav-item > button { transition: background-color .2s ease, color .2s ease; }
+    .nav-item > button:focus-visible { box-shadow: inset 0 0 0 2px #C49A2A; }
+
+    .max-w-6xl > div > a { position:relative; min-height:112px; background:#fff; }
+    .max-w-6xl > div > a::after { content:'→'; position:absolute; right:.7rem; top:.55rem; opacity:0; color:var(--school-red); font-weight:900; transition:opacity .2s ease, transform .2s ease; transform:translateX(-4px); }
+    .max-w-6xl > div > a:hover::after { opacity:1; transform:translateX(0); }
+    .max-w-6xl > div > a:hover { background:#fffaf5; }
+    /* Accessible menu state */
+    .nav-item > button[aria-expanded="true"] { color:#fff; }
+    .hamburger-label { letter-spacing:.14em; }
+    /* Video frame */
+    iframe { border:0; }
+    /* Improve selection and reading rhythm */
+    ::selection { background:rgba(196,154,42,.28); }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  
+    /* ===== Complete UX/UI enhancement ===== */
+    :root {
+      --school-red: #8B1A2B;
+      --school-gold: #C49A2A;
+      --ink: #18181b;
+      --muted: #71717a;
+      --surface: #ffffff;
+      --soft: #f8fafc;
+      --ring: rgba(196,154,42,.45);
+    }
+    html { scroll-behavior: smooth; }
+    body { background: #f8fafc; color: var(--ink); }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--school-gold) !important; outline-offset: 3px; }
+    .skip-link { position: fixed; left: 1rem; top: .75rem; transform: translateY(-150%); z-index: 9999; background: #fff; color: var(--school-red); padding: .75rem 1rem; border-radius: .75rem; font-weight: 800; box-shadow: 0 12px 30px rgba(0,0,0,.2); transition: transform .2s ease; }
+    .skip-link:focus { transform: translateY(0); }
+
+    /* Header */
+    body > header { position: relative; overflow: hidden; }
+    body > header::after { content:''; position:absolute; inset:auto -10% -35px 35%; height:90px; background: radial-gradient(circle, rgba(139,26,43,.08), transparent 65%); pointer-events:none; }
+    header h1 { letter-spacing: -.025em; }
+    header .w-16.h-16 { box-shadow: 0 8px 24px rgba(139,26,43,.12); }
+
+    /* Main navigation */
+    nav { backdrop-filter: blur(12px); background: rgba(139,26,43,.97) !important; }
+    #desktop-nav { gap: .25rem; }
+    .nav-item > button { position: relative; border-radius: .65rem; margin: .35rem 0; transition: background .2s ease, transform .2s ease, box-shadow .2s ease; }
+    .nav-item > button:hover { transform: translateY(-1px); box-shadow: inset 0 -3px 0 var(--school-gold); }
+    .nav-item.open > button { box-shadow: inset 0 -3px 0 var(--school-gold), 0 5px 15px rgba(0,0,0,.12); }
+    .dropdown-menu { border: 1px solid #e4e4e7; border-top: 4px solid var(--school-gold); border-radius: 0 0 1rem 1rem; padding: .45rem; box-shadow: 0 24px 60px rgba(24,24,27,.20); background: rgba(255,255,255,.98); }
+    .dropdown-menu a { border: 0 !important; border-radius: .65rem; margin: .1rem 0; min-height: 44px; display:flex; align-items:center; }
+    .dropdown-menu a:hover, .dropdown-menu a:focus-visible { padding-left: 1rem; background: #fff7ed; color: var(--school-red); box-shadow: inset 3px 0 0 var(--school-gold); }
+    .dropdown-heading { padding: .7rem .85rem .5rem; font-size: .68rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; color: var(--school-red); }
+    .menu-link { gap: .75rem; padding: .7rem .75rem !important; }
+    .menu-icon { width: 2.2rem; height: 2.2rem; flex: 0 0 2.2rem; display:grid; place-items:center; border-radius:.65rem; background:#f4f4f5; color:var(--school-red); font-weight:900; }
+    .menu-copy { min-width:0; flex:1; display:flex; flex-direction:column; gap:.1rem; }
+    .menu-title { font-weight:800; color:#27272a; }
+    .menu-desc { font-size:.72rem; color:#71717a; line-height:1.2; }
+    .menu-arrow { color: var(--school-red); font-weight:900; }
+
+    /* Mobile */
+    #mobile-drawer { background: #fff; border-top: 1px solid rgba(255,255,255,.15); }
+    .mobile-section-btn { border-radius:.7rem; margin:.2rem 0; transition: background .2s ease; }
+    .mobile-section-btn:hover, .mobile-section-btn[aria-expanded="true"] { background:#fff7ed; color:var(--school-red); }
+    .accordion-content { padding-left:.5rem; padding-right:.5rem; }
+    .accordion-content.open { padding-top:.25rem; padding-bottom:.5rem; }
+    .accordion-content a { border-radius:.6rem; transition: background .15s ease, padding-left .15s ease; }
+    .accordion-content a:hover, .accordion-content a:focus-visible { background:#fff7ed; padding-left:1rem; }
+
+    /* Hero */
+    .slide { position: relative; min-height: clamp(360px, 52vw, 610px); }
+    .slide img { transition: transform 8s ease; }
+    .slide.active img { transform: scale(1.04); }
+    .slide > div.absolute.inset-0 { background: linear-gradient(90deg, rgba(0,0,0,.72), rgba(0,0,0,.24) 55%, rgba(0,0,0,.12)); }
+    .slide .max-w-7xl { position:relative; z-index:2; }
+    .slide h2 { text-shadow: 0 3px 18px rgba(0,0,0,.35); letter-spacing:-.035em; }
+    .slide a { box-shadow: 0 10px 25px rgba(0,0,0,.2); }
+    .slide-dot { transition: width .25s ease, background-color .25s ease, transform .2s ease; }
+    .slide-dot:hover { transform: scale(1.15); }
+
+    /* Quick links */
+    section { scroll-margin-top: 5rem; }
+    .quick-link-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .quick-link-card:hover { transform: translateY(-4px); box-shadow: 0 16px 35px rgba(24,24,27,.10); border-color: rgba(139,26,43,.25); }
+    .quick-link-card .icon-wrap { transition: transform .2s ease; }
+    .quick-link-card:hover .icon-wrap { transform: scale(1.08) rotate(-2deg); }
+
+    /* Content cards */
+    main { background: linear-gradient(180deg,#fff 0,#f8fafc 55%,#fff 100%); }
+    main .border, main .rounded-xl { border-color:#e4e4e7; }
+    main .group { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    main .group:hover { transform: translateY(-3px); box-shadow:0 18px 40px rgba(24,24,27,.09); border-color:rgba(139,26,43,.2); }
+    main .group h3 { transition: color .2s ease; }
+    main .group:hover h3 { color:var(--school-red); }
+    main .bg-zinc-200 { background: linear-gradient(135deg,#e4e4e7,#d4d4d8); }
+    main .cursor-pointer { cursor:pointer; }
+
+    /* Section headings */
+    main h2 { letter-spacing:-.02em; }
+    main h2 + a { padding:.5rem .75rem; border-radius:.6rem; }
+    main h2 + a:hover { background:#fff7ed; }
+
+    /* Footer */
+    footer { box-shadow: inset 0 12px 35px rgba(0,0,0,.08); }
+    footer a { border-radius:.45rem; }
+    footer .flex.gap-3 a:hover { transform: translateY(-2px); }
+    footer .flex.gap-3 a { transition: transform .2s ease, background .2s ease; }
+
+    /* Floating back-to-top */
+    #back-to-top { position:fixed; right:1.25rem; bottom:1.25rem; z-index:60; width:3rem; height:3rem; border-radius:999px; display:grid; place-items:center; background:var(--school-red); color:#fff; border:2px solid rgba(255,255,255,.9); box-shadow:0 12px 30px rgba(0,0,0,.2); opacity:0; visibility:hidden; transform:translateY(12px); transition:.25s ease; }
+    #back-to-top.show { opacity:1; visibility:visible; transform:translateY(0); }
+    #back-to-top:hover { background:#6f1422; transform:translateY(-2px); }
+
+    /* Better touch targets */
+    @media (max-width: 767px) {
+      .nav-item > button { min-height:52px; }
+      header { padding-top:1rem !important; padding-bottom:1rem !important; }
+      header .flex.items-center.gap-3 { width:100%; justify-content:center; flex-wrap:wrap; }
+      .slide { min-height:460px; }
+      .slide h2 { font-size:2.2rem; line-height:1.05; }
+      #back-to-top { right:.85rem; bottom:.85rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior:auto; }
+      *, *::before, *::after { animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; }
+      .slide.active img { transform:none; }
+    }
+
+  </style>
+</head>
+<body class="bg-white text-zinc-900 min-h-screen flex flex-col">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium">
+    <p class="truncate">
+      2024-2025 KY Summative Assessment Results&nbsp;|&nbsp;Proficient Reading: 41%&nbsp;|&nbsp;Distinguished Reading: 28%&nbsp;|&nbsp;Proficient Math: 34%&nbsp;|&nbsp;Distinguished Math: 22%
+    </p>
+    <a href="https://kyschoolreportcard.com" target="_blank"
+       class="shrink-0 bg-white text-[#8B1A2B] font-bold text-[10px] uppercase tracking-wider px-3 py-1 hover:bg-[#C49A2A] hover:text-white transition-colors">
+      See All Results
+    </a>
+  </div>
+
+  <!-- Main Header -->
+  <header class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-b border-zinc-100">
+    <div class="flex items-center gap-5">
+      <div class="w-16 h-16 bg-[#8B1A2B]/10 rounded-full border-2 border-[#8B1A2B] flex items-center justify-center shrink-0">
+        <span class="text-[#8B1A2B] font-bold text-lg tracking-tighter">MC</span>
+      </div>
+      <div>
+        <h1 class="text-xl md:text-2xl font-bold text-zinc-900">McCreary Central High School</h1>
+        <p class="text-[#8B1A2B] text-sm italic font-medium">A Great Place to Learn</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <!-- Clickable S.T.O.P. School Safety logo -->
+      <a href="https://homelandsecurity.ky.gov/SafeSchools/Pages/default.aspx"
+         target="_blank"
+         rel="noopener noreferrer"
+         aria-label="Kentucky Safe Schools S.T.O.P. - opens in a new tab"
+         title="Kentucky Safe Schools S.T.O.P."
+         class="shrink-0 flex items-center justify-center hover:scale-105 transition-transform">
+        <img src="data:image/png;base64,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"
+             alt="S.T.O.P. School Safety logo"
+             class="w-16 h-16 md:w-20 md:h-20 object-contain" />
+      </a>
+
+      <a href="#" class="bg-[#8B1A2B] text-white font-bold text-xs uppercase tracking-wider px-4 py-2 hover:opacity-90 transition-opacity">
+        Job Opportunities
+      </a>
+      <a href="#" class="w-9 h-9 border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-[#8B1A2B] hover:border-[#8B1A2B] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+      </a>
+      <a href="#" class="w-9 h-9 border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-[#8B1A2B] hover:border-[#8B1A2B] transition-colors">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      </a>
+    </div>
+  </header>
+
+  <!-- Primary Navigation -->
+  <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-b border-black/10">
+    <!-- Desktop Nav -->
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <ul class="hidden md:flex items-center justify-center no-scrollbar" id="desktop-nav">
+
+        <!-- ACADEMICS -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">ACADEMICS</button>
+          <!-- No max-h or overflow — no scrollbar -->
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
+            <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
+
+            <!-- Departments with flyout submenu — pops out to the right -->
+            <div class="has-submenu relative">
+              <a href="/page.html?p=departments" target="_blank" class="flex items-center justify-between px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">
+                Departments
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+              <div class="submenu absolute top-0 left-full w-56 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
+                <a href="/page.html?p=dept-math" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Math</a>
+                <a href="/page.html?p=dept-english" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">English</a>
+                <a href="/page.html?p=dept-science" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Science</a>
+                <a href="/page.html?p=dept-social-studies" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Social Studies</a>
+                <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Arts and Humanities</a>
+                <a href="/page.html?p=dept-cte" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">CTE</a>
+              </div>
+            </div>
+
+            <a href="/page.html?p=raider-immigration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Raider Nation Immigration Guide</a>
+            <a href="/page.html?p=class-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Class Registration Guide</a>
+            <a href="/page.html?p=how-to" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">How-To &amp; Tech Support</a>
+            <a href="/page.html?p=library-resources" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Library Resources</a>
+            <a href="https://www.parchment.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Request Transcript (Parchment)</a>
+            <a href="https://www.ixl.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">IXL Learning</a>
+          </div>
+        </li>
+
+        <!-- STUDENTS -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">STUDENTS</button>
+          <div class="dropdown-menu absolute top-full left-0 w-[22rem] max-w-[calc(100vw-2rem)] bg-white shadow-xl z-50" role="menu" aria-label="Student resources">
+            <div class="dropdown-heading">Student Quick Links</div>
+            <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem" aria-label="Infinite Campus login - opens in a new tab">
+              <span class="menu-icon" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg>
+              </span>
+              <span class="menu-copy"><span class="menu-title">Infinite Campus</span><span class="menu-desc">Student information &amp; grades</span></span>
+              <span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">📚</span><span class="menu-copy"><span class="menu-title">Khan Academy</span><span class="menu-desc">Learning and practice</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://mail.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">✉</span><span class="menu-copy"><span class="menu-title">Student Email Login</span><span class="menu-desc">Access your school email</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="#" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">🪪</span><span class="menu-copy"><span class="menu-title">Digital Driver's License</span><span class="menu-desc">Student digital ID resources</span></span>
+            </a>
+            <a href="https://accounts.google.com/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">G</span><span class="menu-copy"><span class="menu-title">Google Classroom</span><span class="menu-desc">Classes and assignments</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="#" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">🛡</span><span class="menu-copy"><span class="menu-title">Teen Guide to Social Media Safety</span><span class="menu-desc">Online safety resources</span></span>
+            </a>
+            <a href="https://www.smartpass.app/" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">✓</span><span class="menu-copy"><span class="menu-title">SmartPass</span><span class="menu-desc">Digital hall pass</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+            <a href="https://clever.com/in/mccreary" target="_blank" rel="noopener noreferrer" class="menu-link" role="menuitem">
+              <span class="menu-icon" aria-hidden="true">C</span><span class="menu-copy"><span class="menu-title">Clever Login</span><span class="menu-desc">School app portal</span></span><span class="menu-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </li>
+
+        <!-- CLUBS & ACTIVITIES -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">CLUBS &amp; ACTIVITIES</button>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Drama Club</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Band</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">FFA</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Beta Club</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">HOSA</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">TSA</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">FCA</a>
+          </div>
+        </li>
+
+        <!-- DIRECTORY -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DIRECTORY</button>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Directory</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselors</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Administration</a>
+          </div>
+        </li>
+
+        <!-- DISTRICT -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DISTRICT</button>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-[32rem] overflow-y-auto z-50">
+            <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Homepage</a>
+            <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">About Us</a>
+            <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Board of Education</a>
+            <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Calendar</a>
+            <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District News</a>
+            <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Our Schools</a>
+            <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
+            <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Curriculum &amp; Instruction</a>
+            <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Transportation</a>
+            <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Food Services</a>
+            <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">School Menu</a>
+            <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Online Student Registration</a>
+            <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Resources</a>
+            <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Resources</a>
+            <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Quick Links</a>
+            <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">YouTube — News Channel</a>
+          </div>
+        </li>
+
+        <!-- PARENTS & COMMUNITY -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">PARENTS &amp; COMMUNITY</button>
+          <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
+            <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent Infinite Campus Portal</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Parent's Guide to Protecting Teens on Social Media</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Cyberbullying: A Word for Parents</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Teen Guide to Social Media Safety</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Right to Request Teacher Qualifications</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Testing Transparency Letter</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Title I Parent &amp; Family Policy</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Volunteer</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Community Resources</a>
+          </div>
+        </li>
+
+        <!-- MCHS STAFF -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">MCHS STAFF</button>
+          <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 max-h-96 overflow-y-auto z-50">
+            <a href="https://www.parentsquare.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">ParentSquare</a>
+            <a href="https://mail.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Email (McCreary Co Schools)</a>
+            <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Infinite Campus (New Link – Dec 26+)</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">MFA – Sign-In Settings</a>
+            <a href="https://education.ky.gov/curriculum/standards/kyacadstand/Pages/default.aspx" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Kentucky Academic Standards</a>
+            <a href="https://clever.com/in/mccreary" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Clever Login</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">SmartFind Express</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Technology / Maintenance Help Portal</a>
+            <a href="https://www.goguardian.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Go Guardian</a>
+            <a href="https://education.ky.gov/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Kentucky Department of Education</a>
+            <a href="https://www.careercruising.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Career Cruising</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">McCreary Public Library</a>
+            <a href="https://www.khanacademy.org/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Khan Academy</a>
+            <a href="https://accounts.google.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Staff Google for Education</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Handbook for Coaches</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">District Handbook for Substitutes</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">District Handbook for Employees</a>
+          </div>
+        </li>
+
+        <!-- SPORTS -->
+        <li class="nav-item relative">
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">SPORTS</button>
+          <div class="dropdown-menu absolute top-full right-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Fall Sports</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Winter Sports</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Spring Sports</a>
+            <a href="#" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Athletic Director</a>
+          </div>
+        </li>
+
+      </ul>
+
+      <!-- Mobile hamburger -->
+      <div class="flex md:hidden items-center justify-between py-3">
+        <span class="text-white font-bold text-xs tracking-widest uppercase">Menu</span>
+        <button id="hamburger-btn" class="text-white p-2 rounded hover:bg-white/10 transition-colors" onclick="toggleMobileMenu()" aria-label="Toggle navigation menu" aria-expanded="false">
+          <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div id="mobile-drawer" class="md:hidden bg-white" style="display:none">
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-academics')">
+          ACADEMICS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-academics" class="accordion-content bg-zinc-50 px-8">
+          <a href="/page.html?p=counselors-corner" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselor's Corner</a>
+          <a href="/page.html?p=departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
+          <div class="pl-4 border-b border-zinc-100">
+            <a href="/page.html?p=dept-math" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Math</a>
+            <a href="/page.html?p=dept-english" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• English</a>
+            <a href="/page.html?p=dept-science" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Science</a>
+            <a href="/page.html?p=dept-social-studies" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Social Studies</a>
+            <a href="/page.html?p=dept-arts-and-humanities" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Arts and Humanities</a>
+            <a href="/page.html?p=dept-cte" target="_blank" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• CTE</a>
+          </div>
+          <a href="/page.html?p=raider-immigration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Raider Nation Immigration Guide</a>
+          <a href="/page.html?p=class-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Class Registration Guide</a>
+          <a href="/page.html?p=how-to" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">How-To &amp; Tech Support</a>
+          <a href="/page.html?p=library-resources" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Library Resources</a>
+          <a href="https://www.parchment.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Request Transcript (Parchment)</a>
+          <a href="https://www.ixl.com/" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">IXL Learning</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-students')">
+          STUDENTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-students" class="accordion-content bg-zinc-50 px-8">
+          <a href="https://www.infinitecampus.com/login" target="_blank" rel="noopener noreferrer" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus – Login</a>
+          <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Clever Login</a>
+          <a href="https://accounts.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Google Classroom</a>
+          <a href="https://www.smartpass.app/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartPass</a>
+          <a href="https://mail.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Email Login</a>
+          <a href="https://www.khanacademy.org/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Khan Academy</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Digital Driver's License</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-clubs')">
+          CLUBS &amp; ACTIVITIES <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-clubs" class="accordion-content bg-zinc-50 px-8">
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Drama Club</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Band</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">FFA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Beta Club</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">HOSA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">TSA</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">FCA</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-directory')">
+          DIRECTORY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-directory" class="accordion-content bg-zinc-50 px-8">
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Directory</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselors</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Administration</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-district')">
+          DISTRICT <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-district" class="accordion-content bg-zinc-50 px-8">
+          <a href="https://www.mccreary.k12.ky.us/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Homepage</a>
+          <a href="https://www.mccreary.k12.ky.us/about-us" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">About Us</a>
+          <a href="https://www.mccreary.k12.ky.us/board-of-education" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Board of Education</a>
+          <a href="https://www.mccreary.k12.ky.us/calendar" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Calendar</a>
+          <a href="https://www.mccreary.k12.ky.us/district-news" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District News</a>
+          <a href="https://www.mccreary.k12.ky.us/schools" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Our Schools</a>
+          <a href="https://www.mccreary.k12.ky.us/departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
+          <a href="https://www.mccreary.k12.ky.us/curriculum-instruction" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Curriculum &amp; Instruction</a>
+          <a href="https://www.mccreary.k12.ky.us/departments/transportation" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Transportation</a>
+          <a href="https://www.mccreary.k12.ky.us/departments/food-services" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Food Services</a>
+          <a href="https://www.mccreary.k12.ky.us/schoolmenu" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">School Menu</a>
+          <a href="https://www.mccreary.k12.ky.us/quick-links/online-student-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Online Student Registration</a>
+          <a href="https://www.mccreary.k12.ky.us/parent" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent Resources</a>
+          <a href="https://www.mccreary.k12.ky.us/staff" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Resources</a>
+          <a href="https://www.mccreary.k12.ky.us/quick-links" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Quick Links</a>
+          <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">YouTube — News Channel</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-parents')">
+          PARENTS &amp; COMMUNITY <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-parents" class="accordion-content bg-zinc-50 px-8">
+          <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent Infinite Campus Portal</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Student Insurance Enrollment</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Parent's Guide to Protecting Teens on Social Media</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Cyberbullying: A Word for Parents</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Teen Guide to Social Media Safety</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Right to Request Teacher Qualifications</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Testing Transparency Letter</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Title I Parent &amp; Family Policy</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Volunteer</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Community Resources</a>
+        </div>
+      </div>
+      <div class="border-b border-zinc-100">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-staff')">
+          MCHS STAFF <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-staff" class="accordion-content bg-zinc-50 px-8">
+          <a href="https://www.parentsquare.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">ParentSquare</a>
+          <a href="https://mail.google.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Staff Email (McCreary Co Schools)</a>
+          <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Infinite Campus (New Link – Dec 26+)</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">MFA – Sign-In Settings</a>
+          <a href="https://education.ky.gov/curriculum/standards/kyacadstand/Pages/default.aspx" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Kentucky Academic Standards</a>
+          <a href="https://clever.com/in/mccreary" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Clever Login</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">SmartFind Express</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Technology / Maintenance Help Portal</a>
+          <a href="https://www.goguardian.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Go Guardian</a>
+          <a href="https://education.ky.gov/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Kentucky Department of Education</a>
+          <a href="https://www.careercruising.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Career Cruising</a>
+          <a href="https://www.khanacademy.org/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Khan Academy</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Handbook for Coaches</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">District Handbook for Substitutes</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">District Handbook for Employees</a>
+        </div>
+      </div>
+      <div>
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-sports')">
+          SPORTS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div id="acc-sports" class="accordion-content bg-zinc-50 px-8">
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Fall Sports</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Winter Sports</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Spring Sports</a>
+          <a href="#" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Athletic Director</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Slideshow -->
+  <div id="main-content" class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(220px, 45vw, 520px);">
+    <div id="slide-0" class="slide active absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1563186627-0d185db94083?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming underwater" class="w-full h-full object-cover"/></div>
+    <div id="slide-1" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1674786272877-98e180235c48?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark swimming in the ocean" class="w-full h-full object-cover"/></div>
+    <div id="slide-2" class="slide absolute inset-0 w-full h-full"><img src="https://images.unsplash.com/photo-1637380781238-9b703b0d2db0?auto=format&fit=crop&fm=jpg&q=80&w=1400" alt="Shark in deep blue water" class="w-full h-full object-cover"/></div>
+
+    <button id="pause-btn" onclick="togglePause()" class="absolute top-3 left-3 z-10 w-7 h-7 bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors">
+      <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+      <svg id="play-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24" style="display:none"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    </button>
+    <button onclick="changeSlide(-1)" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-16 bg-black/30 text-white flex items-center justify-center hover:bg-black/50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button onclick="changeSlide(1)" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-16 bg-black/30 text-white flex items-center justify-center hover:bg-black/50">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+    <div class="absolute bottom-4 right-4 flex gap-2 z-10" id="slide-dots">
+      <button onclick="goToSlide(0)" class="slide-dot h-2 w-6 rounded-full bg-white transition-all"></button>
+      <button onclick="goToSlide(1)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+      <button onclick="goToSlide(2)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+    </div>
+  </div>
+
+  <!-- Quick Links Row -->
+  <div class="bg-white border-b border-zinc-200 shadow-sm">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 divide-x divide-zinc-100">
+        <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Chromebook Form</span>
+        </a>
+        <a href="https://gofan.co" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Go Fan</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Athletics</span>
+        </a>
+        <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Parent Portal</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">College &amp; Career</span>
+        </a>
+        <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><rect width="20" height="14" x="2" y="7" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Employment</span>
+        </a>
+        <a href="https://classroom.google.com" target="_blank" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Google Classroom</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Latest Video from YouTube -->
+  <div class="max-w-7xl mx-auto px-4 md:px-8 pt-12 w-full">
+    <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3">
+        <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span>
+        Latest Video
+      </h2>
+      <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ/videos" target="_blank" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1">
+        Visit Channel
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="relative w-full overflow-hidden rounded-xl shadow-md bg-black" style="padding-top:56.25%">
+      <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/videoseries?list=UUNPz7IrsfYUeE6dGvWCnerQ" title="Latest video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- Main Content: News & Events -->
+  <div class="max-w-7xl mx-auto px-4 md:px-8 py-12 flex flex-col lg:flex-row gap-10 w-full">
+
+    <!-- Latest News -->
+    <div class="w-full lg:w-2/3">
+      <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4">
+        <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3">
+          <span class="w-1.5 h-7 bg-[#C49A2A] inline-block rounded-sm"></span>
+          Latest News
+        </h2>
+        <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1">
+          View All
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group">
+          <div class="h-36 bg-zinc-200 flex items-center justify-center">
+            <span class="text-3xl font-bold text-white/40">MCHS</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 15, 2024</p>
+            <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">Raider Band Wins Regional Championship</h3>
+            <p class="text-sm text-zinc-600 mb-4 flex-grow">The McCreary Central High School marching band took home first place honors at the regional competition...</p>
+            <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a>
+          </div>
+        </div>
+        <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group">
+          <div class="h-36 bg-zinc-200 flex items-center justify-center">
+            <span class="text-3xl font-bold text-white/40">MCHS</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 10, 2024</p>
+            <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">Fall Parent-Teacher Conferences</h3>
+            <p class="text-sm text-zinc-600 mb-4 flex-grow">Join us next Tuesday evening to discuss your student's progress with their teachers...</p>
+            <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a>
+          </div>
+        </div>
+        <div class="border border-zinc-200 shadow-sm hover:shadow-md transition-shadow rounded-xl overflow-hidden flex flex-col group">
+          <div class="h-36 bg-zinc-200 flex items-center justify-center">
+            <span class="text-3xl font-bold text-white/40">MCHS</span>
+          </div>
+          <div class="p-5 flex flex-col flex-grow">
+            <p class="text-xs font-bold text-[#C49A2A] uppercase tracking-wider mb-2">Oct 05, 2024</p>
+            <h3 class="text-base font-bold leading-tight mb-2 text-zinc-900 group-hover:text-[#8B1A2B] transition-colors">New STEM Lab Equipment Arrives</h3>
+            <p class="text-sm text-zinc-600 mb-4 flex-grow">Thanks to a generous district grant, our science department has received brand-new lab equipment...</p>
+            <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] transition-colors">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Events -->
+    <div class="w-full lg:w-1/3">
+      <div class="flex items-center justify-between mb-6 border-b-2 border-zinc-100 pb-4">
+        <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3">
+          <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span>
+          Events
+        </h2>
+        <a href="#" class="text-[#8B1A2B] font-bold text-sm hover:text-[#C49A2A] flex items-center gap-1">
+          Calendar
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </a>
+      </div>
+      <div class="flex flex-col gap-3">
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">18</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Varsity Football vs. Somerset</h3>
+            <p class="text-xs text-zinc-500 mt-1">7:30 PM · Raider Stadium</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">20</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Financial Aid Workshop</h3>
+            <p class="text-xs text-zinc-500 mt-1">6:00 PM · Cafeteria</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">24</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">School Board Meeting</h3>
+            <p class="text-xs text-zinc-500 mt-1">6:30 PM · District Office</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-zinc-50 hover:bg-white hover:shadow-md transition-all group cursor-pointer">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center shadow-sm overflow-hidden group-hover:border-[#8B1A2B] transition-colors">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">OCT</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">27</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug group-hover:text-[#8B1A2B] transition-colors text-sm">Fall Choral Concert</h3>
+            <p class="text-xs text-zinc-500 mt-1">7:00 PM · Auditorium</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto bg-[#8B1A2B] text-white pt-14 pb-8 border-t-8 border-[#C49A2A]">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="w-12 h-12 bg-white/10 rounded-full border-2 border-[#C49A2A] flex items-center justify-center shrink-0">
+            <span class="text-[#C49A2A] font-bold text-lg tracking-tighter">MC</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-extrabold tracking-tight uppercase">McCreary Central</h3>
+            <p class="text-[#C49A2A] italic text-sm">High School</p>
+          </div>
+        </div>
+        <p class="text-white/80 text-sm leading-relaxed max-w-sm mb-5">
+          Empowering students to achieve their highest potential in a safe, supportive, and engaging environment. Home of the Raiders!
+        </p>
+        <div class="flex gap-3">
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>
+          </a>
+          <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#C49A2A] transition-colors">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+        </div>
+      </div>
+      <div>
+        <h4 class="text-base font-bold mb-5 tracking-wide border-b border-white/20 pb-2">Contact Us</h4>
+        <ul class="space-y-3 text-sm text-white/80">
+          <li class="flex items-start gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24" class="shrink-0 mt-0.5"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>400 Raider Way<br/>Stearns, KY 42647</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 9 19.79 19.79 0 0 1 1.9 .37 2 2 0 0 1 3.89 0h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>(606) 376-5051</span>
+          </li>
+          <li class="flex items-center gap-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="#C49A2A" stroke-width="2" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@mccreary.kyschools.us</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-base font-bold mb-5 tracking-wide border-b border-white/20 pb-2">Quick Links</h4>
+        <ul class="space-y-1.5 text-sm text-white/80">
+          <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">District Homepage</a></li>
+          <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">Board of Education</a></li>
+          <li><a href="#" class="hover:text-[#C49A2A] transition-colors block py-0.5">Employment</a></li>
+          <li><a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="hover:text-[#C49A2A] transition-colors block py-0.5">Infinite Campus</a></li>
+          <li><a href="https://mail.google.com/" target="_blank" class="hover:text-[#C49A2A] transition-colors block py-0.5">Staff Webmail</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-4 md:px-8 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/60">
+      <p>&copy; <span id="year"></span> McCreary Central High School. All rights reserved.</p>
+      <div class="flex gap-4">
+        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors">Accessibility</a>
+        <a href="#" class="hover:text-white transition-colors">Sitemap</a>
+      </div>
+    </div>
+  </footer>
+
+  <button id="back-to-top" type="button" aria-label="Back to top" title="Back to top">
+    <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    let currentSlide = 0;
+    let paused = false;
+    let slideTimer;
+    const totalSlides = 3;
+
+    function showSlide(n) {
+      document.querySelectorAll('.slide').forEach((s, i) => s.classList.toggle('active', i === n));
+      document.querySelectorAll('.slide-dot').forEach((d, i) => {
+        d.style.width = i === n ? '24px' : '8px';
+        d.style.backgroundColor = i === n ? '#fff' : 'rgba(255,255,255,0.5)';
+      });
+    }
+
+    function changeSlide(dir) {
+      currentSlide = (currentSlide + dir + totalSlides) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      showSlide(n);
+    }
+
+    function startTimer() {
+      slideTimer = setInterval(() => {
+        if (!paused) changeSlide(1);
+      }, 5000);
+    }
+
+    function togglePause() {
+      paused = !paused;
+      document.getElementById('pause-icon').style.display = paused ? 'none' : 'block';
+      document.getElementById('play-icon').style.display = paused ? 'block' : 'none';
+    }
+
+
+    // ===== UX behavior enhancements =====
+    const backToTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) backToTop.classList.add('show');
+      else backToTop.classList.remove('show');
+    }, { passive: true });
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    // Close menus with Escape and restore focus.
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDropdowns();
+        const mobileDrawer = document.getElementById('mobile-drawer');
+        if (mobileDrawer && mobileDrawer.classList.contains('mobile-open')) {
+          const toggle = document.getElementById('hamburger-btn');
+          mobileDrawer.classList.remove('mobile-open');
+          if (toggle) { toggle.setAttribute('aria-expanded','false'); toggle.focus(); }
+        }
+      }
+    });
+
+    // External links get a consistent visual cue without changing their destinations.
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+
+    // Give placeholder links a gentle no-op message instead of jumping to the top.
+    document.querySelectorAll('a[href="#"]').forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        const label = link.textContent.trim();
+        if (label && label.toLowerCase() !== 'job opportunities') {
+          link.animate([
+            { transform:'scale(1)' }, { transform:'scale(.98)' }, { transform:'scale(1)' }
+          ], { duration:180 });
+        }
+      });
+    });
+
+    startTimer();
+
+    function closeAllDropdowns(except = null) {
+      document.querySelectorAll('.nav-item.open').forEach(item => {
+        if (item !== except) item.classList.remove('open');
+      });
+      document.querySelectorAll('.has-submenu.open').forEach(item => {
+        item.classList.remove('open');
+      });
+    }
+
+    document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => {
+      button.setAttribute('aria-expanded', 'false');
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        const item = button.closest('.nav-item');
+        const opening = !item.classList.contains('open');
+        closeAllDropdowns(item);
+        item.classList.toggle('open', opening);
+        button.setAttribute('aria-expanded', String(opening));
+      });
+    });
+
+    document.querySelectorAll('.has-submenu > a').forEach(link => {
+      link.addEventListener('click', (event) => {
+        if (window.innerWidth >= 768) {
+          event.preventDefault();
+          event.stopPropagation();
+          const item = link.closest('.has-submenu');
+          const opening = !item.classList.contains('open');
+          document.querySelectorAll('.has-submenu.open').forEach(other => {
+            if (other !== item) other.classList.remove('open');
+          });
+          item.classList.toggle('open', opening);
+        }
+      });
+    });
+
+    document.addEventListener('click', () => closeAllDropdowns());
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') closeAllDropdowns();
+    });
+
+    function toggleMobileMenu() {
+      const drawer = document.getElementById('mobile-drawer');
+      const isOpen = drawer.classList.contains('mobile-open');
+      drawer.classList.toggle('mobile-open', !isOpen);
+      drawer.style.display = !isOpen ? 'block' : 'none';
+      document.getElementById('icon-menu').style.display = isOpen ? 'block' : 'none';
+      document.getElementById('icon-close').style.display = isOpen ? 'none' : 'block';
+      document.getElementById('hamburger-btn').setAttribute('aria-expanded', String(!isOpen));
+    }
+
+    function toggleAccordion(id) {
+      const el = document.getElementById(id);
+      const button = document.querySelector(`[onclick="toggleAccordion('${id}')"]`);
+      const opening = !el.classList.contains('open');
+
+      document.querySelectorAll('.accordion-content.open').forEach(panel => {
+        if (panel !== el) panel.classList.remove('open');
+      });
+      document.querySelectorAll('.mobile-section-btn[aria-expanded="true"]').forEach(btn => {
+        if (btn !== button) btn.setAttribute('aria-expanded', 'false');
+      });
+
+      el.classList.toggle('open', opening);
+      if (button) button.setAttribute('aria-expanded', String(opening));
+    }
+
+    // Enhanced keyboard and outside-click behavior for desktop navigation.
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('#desktop-nav')) closeAllDropdowns();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllDropdowns();
+        document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false'));
+      }
+    });
+
+    document.querySelectorAll('#desktop-nav .dropdown-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth >= 768) {
+          closeAllDropdowns();
+          document.querySelectorAll('#desktop-nav > .nav-item > button').forEach(button => button.setAttribute('aria-expanded', 'false'));
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>
