@@ -233,8 +233,8 @@
     .skip-link:focus { transform: translateY(0); }
 
     /* Header */
-    body > header { position: relative; overflow: hidden; }
-    body > header::after { content:''; position:absolute; inset:auto -10% -35px 35%; height:90px; background: radial-gradient(circle, rgba(139,26,43,.08), transparent 65%); pointer-events:none; }
+    body > header { position: relative; overflow: hidden; border-bottom: 0 !important; box-shadow: none !important; }
+    body > header::after { display:none !important; }
     header h1 { letter-spacing: -.025em; }
     header .w-16.h-16 { box-shadow: 0 8px 24px rgba(139,26,43,.12); }
 
@@ -361,7 +361,7 @@
   </div>
 
   <!-- Main Header -->
-  <header class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-b border-zinc-100">
+  <header class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-0">
     <div class="flex items-center gap-5">
       <div class="w-16 h-16 bg-[#8B1A2B]/10 rounded-full border-2 border-[#8B1A2B] flex items-center justify-center shrink-0">
         <span class="text-[#8B1A2B] font-bold text-lg tracking-tighter">MC</span>
@@ -397,7 +397,7 @@
   </header>
 
   <!-- Primary Navigation -->
-  <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-b border-black/10">
+  <nav class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-0">
     <!-- Desktop Nav -->
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <ul class="hidden md:flex items-center justify-center no-scrollbar" id="desktop-nav">
