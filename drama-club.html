@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#8B1A2B" />
+  <meta name="description" content="McCreary Central High School Drama Club - meetings, productions, auditions, and how to join." />
+  <title>Drama Club | McCreary Central High School</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B1A2B',
+            secondary: '#C49A2A',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body { font-family: 'Inter', sans-serif; background:#f8fafc; }
+    :root { --school-red:#8B1A2B; --school-gold:#C49A2A; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid var(--school-gold) !important; outline-offset: 3px; }
+    .breadcrumb a:hover { color: var(--school-gold); }
+    .info-card { transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+    .info-card:hover { transform: translateY(-3px); box-shadow: 0 16px 35px rgba(24,24,27,.10); border-color: rgba(139,26,43,.25); }
+  </style>
+</head>
+<body class="text-zinc-900 min-h-screen flex flex-col">
+
+  <!-- Simple header matching site branding -->
+  <header class="bg-white border-b border-zinc-200 px-4 md:px-8 py-4 flex items-center gap-5">
+    <a href="/index.html" class="flex items-center gap-4 shrink-0">
+      <div class="w-12 h-12 bg-[#8B1A2B]/10 rounded-full border-2 border-[#8B1A2B] flex items-center justify-center">
+        <span class="text-[#8B1A2B] font-bold text-base tracking-tighter">MC</span>
+      </div>
+      <div>
+        <p class="text-base font-bold text-zinc-900 leading-tight">McCreary Central High School</p>
+        <p class="text-[#8B1A2B] text-xs italic font-medium leading-tight">A Great Place to Learn</p>
+      </div>
+    </a>
+    <nav class="breadcrumb ml-auto text-xs font-medium text-zinc-500 flex items-center gap-2">
+      <a href="/index.html" class="hover:text-[#8B1A2B] transition-colors">Home</a>
+      <span>/</span>
+      <span class="text-zinc-400">Clubs &amp; Activities</span>
+      <span>/</span>
+      <span class="text-[#8B1A2B] font-bold">Drama Club</span>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="relative w-full overflow-hidden bg-[#8B1A2B]" style="min-height: 260px;">
+    <div class="absolute inset-0 opacity-25 bg-[radial-gradient(circle_at_20%_20%,white,transparent_35%),radial-gradient(circle_at_80%_60%,white,transparent_30%)]"></div>
+    <div class="relative max-w-5xl mx-auto px-4 md:px-8 py-16 text-center">
+      <p class="text-[#C49A2A] uppercase tracking-[0.2em] text-xs font-bold mb-3">Clubs &amp; Activities</p>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white tracking-tight mb-4">Raider Drama Club</h1>
+      <p class="text-white/80 max-w-2xl mx-auto text-sm md:text-base">
+        Where Raiders take the stage. All students are welcome — no experience necessary, just enthusiasm for storytelling, performance, and teamwork.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <main class="max-w-5xl mx-auto px-4 md:px-8 py-12 w-full flex-1">
+
+    <!-- Quick facts -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-14">
+      <div class="info-card border border-zinc-200 rounded-xl bg-white p-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#8B1A2B" stroke-width="1.8" viewBox="0 0 24 24" class="mb-3"><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <h3 class="font-bold text-sm uppercase tracking-wide text-zinc-500 mb-1">Meetings</h3>
+        <p class="text-zinc-800 font-semibold">Thursdays, 3:15–4:30 PM</p>
+        <p class="text-zinc-500 text-sm">Room 112 / Auditorium</p>
+      </div>
+      <div class="info-card border border-zinc-200 rounded-xl bg-white p-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#8B1A2B" stroke-width="1.8" viewBox="0 0 24 24" class="mb-3"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <h3 class="font-bold text-sm uppercase tracking-wide text-zinc-500 mb-1">Sponsor</h3>
+        <p class="text-zinc-800 font-semibold">[Sponsor Name]</p>
+        <p class="text-zinc-500 text-sm">[sponsor@mccreary.kyschools.us]</p>
+      </div>
+      <div class="info-card border border-zinc-200 rounded-xl bg-white p-6">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="none" stroke="#8B1A2B" stroke-width="1.8" viewBox="0 0 24 24" class="mb-3"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        <h3 class="font-bold text-sm uppercase tracking-wide text-zinc-500 mb-1">Open To</h3>
+        <p class="text-zinc-800 font-semibold">All grades, 9–12</p>
+        <p class="text-zinc-500 text-sm">No audition required to join</p>
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3 mb-5 border-b-2 border-zinc-100 pb-4">
+        <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span>
+        About Drama Club
+      </h2>
+      <p class="text-zinc-700 leading-relaxed mb-4">
+        [Replace this paragraph with your club description — mission, history, and what students can expect. For example: The McCreary Central Drama Club gives students hands-on experience in acting, stagecraft, and production. Members work together on fall and spring productions, one-act competitions, and community performances.]
+      </p>
+      <p class="text-zinc-700 leading-relaxed">
+        [Add a second paragraph here about skills students build — public speaking, confidence, collaboration — and any competitions or festivals the club participates in, such as KHSSA Thespian events.]
+      </p>
+    </section>
+
+    <!-- Upcoming productions / events -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3 mb-5 border-b-2 border-zinc-100 pb-4">
+        <span class="w-1.5 h-7 bg-[#C49A2A] inline-block rounded-sm"></span>
+        Upcoming Productions &amp; Events
+      </h2>
+      <div class="flex flex-col gap-3">
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-white shadow-sm">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center overflow-hidden">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">MON</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">00</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug text-sm">[Production or Event Name]</h3>
+            <p class="text-xs text-zinc-500 mt-1">[Time] · [Location]</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-4 rounded-xl border border-zinc-100 bg-white shadow-sm">
+          <div class="w-14 h-14 shrink-0 bg-white border border-zinc-200 rounded-lg flex flex-col items-center justify-center overflow-hidden">
+            <div class="w-full bg-[#8B1A2B] text-white text-[9px] font-bold uppercase tracking-wider py-0.5 text-center">MON</div>
+            <div class="text-lg font-extrabold text-zinc-900 leading-none py-1">00</div>
+          </div>
+          <div>
+            <h3 class="font-bold text-zinc-900 leading-snug text-sm">[Audition Dates]</h3>
+            <p class="text-xs text-zinc-500 mt-1">[Time] · [Location]</p>
+          </div>
+        </div>
+        <p class="text-xs text-zinc-400 italic mt-1">Replace these placeholders with real dates, or wire this section to your events/calendar feed.</p>
+      </div>
+    </section>
+
+    <!-- How to join -->
+    <section class="mb-14">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3 mb-5 border-b-2 border-zinc-100 pb-4">
+        <span class="w-1.5 h-7 bg-[#8B1A2B] inline-block rounded-sm"></span>
+        How to Join
+      </h2>
+      <ol class="space-y-4">
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full bg-[#8B1A2B] text-white font-bold text-sm flex items-center justify-center">1</span>
+          <p class="text-zinc-700 pt-1">[Step one — e.g., attend an informational meeting or reach out to the sponsor.]</p>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full bg-[#8B1A2B] text-white font-bold text-sm flex items-center justify-center">2</span>
+          <p class="text-zinc-700 pt-1">[Step two — e.g., complete a club interest form or membership dues if applicable.]</p>
+        </li>
+        <li class="flex gap-4">
+          <span class="shrink-0 w-8 h-8 rounded-full bg-[#8B1A2B] text-white font-bold text-sm flex items-center justify-center">3</span>
+          <p class="text-zinc-700 pt-1">[Step three — e.g., show up to the next Thursday meeting in Room 112.]</p>
+        </li>
+      </ol>
+      <a href="#" class="inline-block mt-6 bg-[#8B1A2B] text-white font-bold text-xs uppercase tracking-wider px-6 py-3 rounded hover:opacity-90 transition-opacity">
+        [Link: Interest Form / Sign-Up]
+      </a>
+    </section>
+
+    <!-- Gallery placeholder -->
+    <section class="mb-4">
+      <h2 class="text-2xl font-extrabold text-zinc-900 uppercase flex items-center gap-3 mb-5 border-b-2 border-zinc-100 pb-4">
+        <span class="w-1.5 h-7 bg-[#C49A2A] inline-block rounded-sm"></span>
+        Photos
+      </h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="aspect-square bg-zinc-200 rounded-xl flex items-center justify-center text-white/50 font-bold text-sm">Photo</div>
+        <div class="aspect-square bg-zinc-200 rounded-xl flex items-center justify-center text-white/50 font-bold text-sm">Photo</div>
+        <div class="aspect-square bg-zinc-200 rounded-xl flex items-center justify-center text-white/50 font-bold text-sm">Photo</div>
+        <div class="aspect-square bg-zinc-200 rounded-xl flex items-center justify-center text-white/50 font-bold text-sm">Photo</div>
+      </div>
+      <p class="text-xs text-zinc-400 italic mt-3">Swap these tiles for real production photos.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer matching site branding -->
+  <footer class="bg-[#8B1A2B] text-white py-8 border-t-8 border-[#C49A2A]">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-white/70">
+      <p>&copy; <span id="year"></span> McCreary Central High School — Drama Club</p>
+      <a href="/index.html" class="hover:text-white transition-colors font-bold uppercase tracking-wider">← Back to MCHS Home</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
