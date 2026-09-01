@@ -1,0 +1,4762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#8B1A2B">
+
+  <meta
+    name="description"
+    content="McCreary Central High School Departments and Staff Directory"
+  >
+
+  <title>Departments | McCreary Central High School</title>
+
+  <!-- Tailwind - same framework used by your existing site -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#8B1A2B',
+            secondary: '#C49A2A'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+
+    /* =========================================================
+       ROOT / GENERAL
+       ========================================================= */
+
+    :root {
+      --school-red: #8B1A2B;
+      --school-gold: #C49A2A;
+      --ink: #18181b;
+      --muted: #71717a;
+      --surface: #ffffff;
+      --soft: #f8fafc;
+      --parchment: #faf7f2;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', Arial, sans-serif;
+      background: #f8fafc;
+      color: var(--ink);
+    }
+
+    a,
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--school-gold) !important;
+      outline-offset: 3px;
+    }
+
+    ::selection {
+      background: rgba(196,154,42,.28);
+    }
+
+    .skip-link {
+      position: fixed;
+      left: 1rem;
+      top: .75rem;
+      transform: translateY(-150%);
+      z-index: 999999;
+      background: #fff;
+      color: var(--school-red);
+      padding: .75rem 1rem;
+      border-radius: .75rem;
+      font-weight: 800;
+      box-shadow: 0 12px 30px rgba(0,0,0,.2);
+      transition: transform .2s ease;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+
+    /* =========================================================
+       NAVIGATION
+       ========================================================= */
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-item > button {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      min-height: 58px;
+      border-bottom: 3px solid transparent;
+      padding-left: .8rem;
+      padding-right: .8rem;
+      color: white;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      background: transparent;
+      border-radius: .65rem;
+      margin: .35rem 0;
+      cursor: pointer;
+      transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .nav-item > button::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-right: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+      transform: rotate(45deg) translateY(-2px);
+      transition: transform .2s ease;
+      opacity: .8;
+    }
+
+    .nav-item > button:hover,
+    .nav-item.open > button {
+      background: rgba(255,255,255,.10);
+      border-bottom-color: var(--school-gold);
+      transform: translateY(-1px);
+      box-shadow:
+        inset 0 -3px 0 var(--school-gold),
+        0 5px 15px rgba(0,0,0,.12);
+    }
+
+    .nav-item.open > button::after {
+      transform: rotate(225deg) translateY(-1px);
+    }
+
+    .dropdown-menu {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+
+      min-width: 18rem;
+      max-width: min(24rem, calc(100vw - 2rem));
+      max-height: min(32rem, calc(100vh - 9rem));
+
+      overflow-y: auto;
+
+      padding: .45rem;
+
+      background: rgba(255,255,255,.98);
+
+      border: 1px solid #e4e4e7;
+      border-top: 4px solid var(--school-gold);
+
+      border-radius: 0 0 1rem 1rem;
+
+      box-shadow: 0 24px 60px rgba(24,24,27,.20);
+
+      z-index: 9999;
+
+      animation: dropdownIn .16s ease-out;
+    }
+
+    .nav-item.open > .dropdown-menu {
+      display: flex;
+    }
+
+    @keyframes dropdownIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .dropdown-menu a {
+      display: flex;
+      align-items: center;
+
+      min-height: 44px;
+
+      padding: .7rem .75rem;
+
+      color: #3f3f46;
+      font-weight: 600;
+
+      border-radius: .65rem;
+
+      transition:
+        transform .15s ease,
+        background-color .15s ease,
+        color .15s ease,
+        box-shadow .15s ease;
+    }
+
+    .dropdown-menu a:hover,
+    .dropdown-menu a:focus-visible {
+      transform: translateX(3px);
+      background: #fff7ed;
+      color: var(--school-red);
+      box-shadow: inset 3px 0 0 var(--school-gold);
+      outline: none;
+    }
+
+    .dropdown-heading {
+      padding: .7rem .85rem .5rem;
+
+      font-size: .68rem;
+      font-weight: 900;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+
+      color: var(--school-red);
+    }
+
+
+    /* =========================================================
+       SUBMENU
+       ========================================================= */
+
+    .has-submenu {
+      position: relative;
+    }
+
+    .submenu {
+      display: none;
+
+      position: absolute;
+
+      top: 0;
+      left: 100%;
+
+      width: 230px;
+
+      background: white;
+
+      border-top: 4px solid var(--school-gold);
+
+      border-radius: .75rem;
+
+      overflow: hidden;
+
+      box-shadow: 0 20px 45px rgba(24,24,27,.18);
+
+      z-index: 99999;
+    }
+
+    .has-submenu.open > .submenu {
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* =========================================================
+       MOBILE MENU
+       ========================================================= */
+
+    #mobile-drawer {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+
+      transition:
+        max-height .3s ease,
+        opacity .2s ease;
+
+      background: white;
+    }
+
+    #mobile-drawer.mobile-open {
+      display: block !important;
+      max-height: 80vh;
+      overflow-y: auto;
+      opacity: 1;
+
+      box-shadow: 0 14px 28px rgba(24,24,27,.18);
+    }
+
+    .accordion-content {
+      display: none;
+    }
+
+    .accordion-content.open {
+      display: block;
+    }
+
+    .mobile-section-btn {
+      border-radius: .7rem;
+      margin: .2rem 0;
+
+      transition: background .2s ease;
+    }
+
+    .mobile-section-btn:hover,
+    .mobile-section-btn[aria-expanded="true"] {
+      background: #fff7ed;
+      color: var(--school-red);
+    }
+
+    .mobile-section-btn svg {
+      transition: transform .2s ease;
+    }
+
+    .mobile-section-btn[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+
+    /* =========================================================
+       PAGE HEADER
+       ========================================================= */
+
+    .page-hero {
+      background:
+        linear-gradient(
+          135deg,
+          #8B1A2B 0%,
+          #641321 55%,
+          #4c0e19 100%
+        );
+
+      color: white;
+
+      padding:
+        70px
+        20px
+        75px;
+
+      position: relative;
+
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 500px;
+
+      border-radius: 50%;
+
+      background: rgba(255,255,255,.04);
+
+      top: -250px;
+      right: -150px;
+    }
+
+    .page-hero::after {
+      content: "";
+
+      position: absolute;
+
+      width: 350px;
+      height: 350px;
+
+      border-radius: 50%;
+
+      background: rgba(196,154,42,.07);
+
+      bottom: -200px;
+      left: -100px;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+
+      max-width: 1200px;
+
+      margin: 0 auto;
+    }
+
+    .hero-label {
+      color: var(--school-gold);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      margin-top: 8px;
+
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+
+      line-height: 1;
+
+      font-weight: 950;
+
+      letter-spacing: -.04em;
+    }
+
+    .hero-description {
+      max-width: 720px;
+
+      margin-top: 18px;
+
+      color: rgba(255,255,255,.82);
+
+      font-size: 17px;
+
+      line-height: 1.75;
+    }
+
+
+    /* =========================================================
+       DEPARTMENTS SECTION
+       Based on your County Officials layout
+       ========================================================= */
+
+    #departments {
+      background: var(--parchment);
+
+      padding:
+        75px
+        20px
+        90px;
+    }
+
+    .outer {
+      max-width: 1200px;
+
+      margin: 0 auto;
+    }
+
+    .section-label {
+      color: var(--school-red);
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: .16em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      margin: 0;
+
+      color: #18181b;
+
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+
+      line-height: 1.05;
+
+      font-weight: 950;
+
+      letter-spacing: -.035em;
+    }
+
+    .section-sub {
+      max-width: 760px;
+
+      margin-top: 14px;
+
+      margin-bottom: 38px;
+
+      color: #71717a;
+
+      font-size: 16px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       DEPARTMENT CARDS
+       ========================================================= */
+
+    .departments-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+      gap: 22px;
+    }
+
+    .dcard {
+      position: relative;
+
+      background: white;
+
+      border: 1px solid #e4e4e7;
+
+      border-radius: 18px;
+
+      padding: 24px;
+
+      min-height: 220px;
+
+      cursor: pointer;
+
+      overflow: visible;
+
+      box-shadow:
+        0 5px 18px rgba(24,24,27,.04);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+    }
+
+    .dcard:hover {
+      transform: translateY(-5px);
+
+      border-color:
+        rgba(139,26,43,.28);
+
+      box-shadow:
+        0 20px 45px rgba(24,24,27,.11);
+    }
+
+    .dcard::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 5px;
+
+      background: var(--school-red);
+
+      border-radius:
+        18px 18px 0 0;
+
+      transform:
+        scaleX(.25);
+
+      transform-origin: left;
+
+      transition:
+        transform .25s ease;
+    }
+
+    .dcard:hover::before {
+      transform:
+        scaleX(1);
+    }
+
+    .dcard-icon {
+      width: 58px;
+      height: 58px;
+
+      display: grid;
+
+      place-items: center;
+
+      border-radius: 16px;
+
+      background:
+        rgba(139,26,43,.08);
+
+      color: var(--school-red);
+
+      font-size: 29px;
+
+      margin-bottom: 18px;
+
+      transition:
+        transform .2s ease,
+        background .2s ease;
+    }
+
+    .dcard:hover .dcard-icon {
+      transform:
+        scale(1.08)
+        rotate(-2deg);
+
+      background:
+        rgba(139,26,43,.13);
+    }
+
+    .dcard-name {
+      color: #18181b;
+
+      font-size: 21px;
+
+      line-height: 1.2;
+
+      font-weight: 900;
+
+      margin-bottom: 6px;
+    }
+
+    .dcard-role {
+      color: var(--school-red);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+
+      margin-bottom: 12px;
+    }
+
+    .dcard-contact {
+      color: #52525b;
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+    .dcard-contact strong {
+      color: #18181b;
+    }
+
+    .dcard-arrow {
+      position: absolute;
+
+      right: 20px;
+      bottom: 20px;
+
+      color: var(--school-red);
+
+      font-size: 22px;
+
+      font-weight: 900;
+
+      opacity: .35;
+
+      transition:
+        opacity .2s ease,
+        transform .2s ease;
+    }
+
+    .dcard:hover .dcard-arrow {
+      opacity: 1;
+
+      transform:
+        translateX(4px);
+    }
+
+    /* Tooltip based on your .ocard-tooltip idea */
+
+    .dcard-tooltip {
+      position: absolute;
+
+      left: 50%;
+
+      bottom: calc(100% + 12px);
+
+      transform:
+        translateX(-50%)
+        translateY(8px);
+
+      width: 280px;
+
+      padding: 16px;
+
+      background: #18181b;
+
+      color: white;
+
+      border-radius: 12px;
+
+      font-size: 12px;
+
+      line-height: 1.6;
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      pointer-events: none;
+
+      z-index: 100;
+
+      box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+
+      transition:
+        opacity .18s ease,
+        transform .18s ease;
+    }
+
+    .dcard-tooltip::after {
+      content: "";
+
+      position: absolute;
+
+      left: 50%;
+
+      bottom: -7px;
+
+      transform: translateX(-50%);
+
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+
+      border-top: 7px solid #18181b;
+    }
+
+    .dcard:hover .dcard-tooltip {
+      opacity: 1;
+
+      visibility: visible;
+
+      transform:
+        translateX(-50%)
+        translateY(0);
+    }
+
+    .tt-title {
+      display: block;
+
+      color: var(--school-gold);
+
+      font-size: 10px;
+
+      font-weight: 900;
+
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 5px;
+    }
+
+
+    /* =========================================================
+       CATEGORY DIVIDERS
+       ========================================================= */
+
+    .department-category {
+      margin-top: 65px;
+    }
+
+    .department-category:first-of-type {
+      margin-top: 0;
+    }
+
+    .category-heading {
+      display: flex;
+
+      align-items: center;
+
+      gap: 15px;
+
+      margin-bottom: 22px;
+    }
+
+    .category-heading h3 {
+      margin: 0;
+
+      font-size: 20px;
+
+      font-weight: 900;
+
+      color: #18181b;
+    }
+
+    .category-line {
+      flex: 1;
+
+      height: 1px;
+
+      background: #dedbd6;
+    }
+
+
+    /* =========================================================
+       QUICK DIRECTORY
+       ========================================================= */
+
+    .directory-note {
+      margin-top: 45px;
+
+      padding: 25px;
+
+      background: #fff;
+
+      border:
+        1px solid #e4e4e7;
+
+      border-left:
+        5px solid var(--school-gold);
+
+      border-radius: 14px;
+
+      box-shadow:
+        0 8px 25px rgba(24,24,27,.04);
+    }
+
+    .directory-note h3 {
+      margin: 0 0 6px;
+
+      font-size: 18px;
+
+      font-weight: 900;
+
+      color: var(--school-red);
+    }
+
+    .directory-note p {
+      margin: 0;
+
+      color: #71717a;
+
+      font-size: 14px;
+
+      line-height: 1.7;
+    }
+
+
+    /* =========================================================
+       DEPARTMENT POPUP
+       ========================================================= */
+
+    .dept-modal {
+      display: none;
+
+      position: fixed;
+
+      inset: 0;
+
+      z-index: 99999;
+
+      background:
+        rgba(9,9,11,.75);
+
+      backdrop-filter:
+        blur(6px);
+
+      padding: 20px;
+
+      align-items: center;
+
+      justify-content: center;
+    }
+
+    .dept-modal.show {
+      display: flex;
+    }
+
+    .dept-modal-panel {
+      width: min(850px, 100%);
+
+      max-height: 90vh;
+
+      overflow-y: auto;
+
+      background: white;
+
+      border-radius: 24px;
+
+      box-shadow:
+        0 30px 90px rgba(0,0,0,.35);
+
+      animation:
+        deptIn .25s ease-out;
+    }
+
+    @keyframes deptIn {
+
+      from {
+        opacity: 0;
+
+        transform:
+          translateY(20px)
+          scale(.97);
+      }
+
+      to {
+        opacity: 1;
+
+        transform: none;
+      }
+
+    }
+
+    .dept-modal-head {
+      position: relative;
+
+      background:
+        linear-gradient(
+          135deg,
+          #8B1A2B,
+          #641321
+        );
+
+      color: white;
+
+      padding: 35px;
+    }
+
+    .dept-close {
+      position: absolute;
+
+      right: 20px;
+      top: 18px;
+
+      width: 42px;
+      height: 42px;
+
+      border: 0;
+
+      border-radius: 50%;
+
+      background:
+        rgba(255,255,255,.15);
+
+      color: white;
+
+      font-size: 28px;
+
+      cursor: pointer;
+
+      transition:
+        background .2s ease,
+        transform .2s ease;
+    }
+
+    .dept-close:hover {
+      background:
+        rgba(255,255,255,.3);
+
+      transform:
+        rotate(90deg);
+    }
+
+    .dept-icon-large {
+      font-size: 50px;
+
+      margin-bottom: 10px;
+    }
+
+    .dept-school {
+      color: var(--school-gold);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+    }
+
+    .dept-modal-title {
+      font-size: 38px;
+
+      font-weight: 950;
+
+      margin-top: 6px;
+
+      line-height: 1.05;
+    }
+
+    .dept-modal-intro {
+      margin-top: 13px;
+
+      color:
+        rgba(255,255,255,.82);
+
+      font-size: 15px;
+
+      line-height: 1.7;
+
+      max-width: 700px;
+    }
+
+    .dept-body {
+      padding: 32px;
+    }
+
+    .dept-label {
+      color: var(--school-red);
+
+      font-size: 11px;
+
+      font-weight: 900;
+
+      letter-spacing: .15em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 15px;
+    }
+
+    .dept-info-grid {
+      display: grid;
+
+      grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+      gap: 15px;
+    }
+
+    .dept-card {
+      padding: 18px;
+
+      border:
+        1px solid #e4e4e7;
+
+      border-radius: 16px;
+
+      background:
+        #fafafa;
+
+      transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .dept-card:hover {
+      border-color:
+        rgba(139,26,43,.35);
+
+      box-shadow:
+        0 8px 20px rgba(0,0,0,.07);
+    }
+
+    .dept-card h3 {
+      margin: 0;
+
+      font-size: 15px;
+
+      font-weight: 900;
+    }
+
+    .dept-card p {
+      margin-top: 7px;
+
+      color: #71717a;
+
+      font-size: 13px;
+
+      line-height: 1.65;
+    }
+
+    .dept-staff-list {
+      margin-top: 12px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    .dept-staff {
+      display: flex;
+
+      align-items: center;
+
+      justify-content: space-between;
+
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      background: white;
+
+      border:
+        1px solid #e4e4e7;
+
+      border-radius: 10px;
+
+      font-size: 13px;
+    }
+
+    .dept-staff-name {
+      font-weight: 800;
+    }
+
+    .dept-staff-ext {
+      color: var(--school-red);
+
+      font-weight: 900;
+
+      white-space: nowrap;
+    }
+
+    .dept-cta {
+      margin-top: 25px;
+
+      background:
+        var(--school-red);
+
+      color: white;
+
+      padding: 22px;
+
+      border-radius: 18px;
+    }
+
+    .dept-cta h3 {
+      margin: 0;
+
+      font-size: 18px;
+
+      font-weight: 900;
+    }
+
+    .dept-cta p {
+      margin-top: 5px;
+
+      color:
+        rgba(255,255,255,.78);
+
+      font-size: 13px;
+
+      line-height: 1.6;
+    }
+
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+
+    footer {
+      background:
+        #18181b;
+
+      color: white;
+
+      padding:
+        55px 20px 25px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+
+      grid-template-columns:
+        2fr 1fr 1fr;
+
+      gap: 40px;
+
+      padding-bottom: 35px;
+    }
+
+    .footer-title {
+      font-size: 20px;
+
+      font-weight: 900;
+    }
+
+    .footer-subtitle {
+      color: var(--school-gold);
+
+      font-size: 12px;
+
+      font-weight: 800;
+
+      margin-top: 4px;
+    }
+
+    .footer-text {
+      color:
+        rgba(255,255,255,.55);
+
+      font-size: 13px;
+
+      line-height: 1.7;
+
+      max-width: 450px;
+
+      margin-top: 15px;
+    }
+
+    .footer-heading {
+      color: white;
+
+      font-size: 12px;
+
+      font-weight: 900;
+
+      letter-spacing: .12em;
+
+      text-transform: uppercase;
+
+      margin-bottom: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    .footer-links a {
+      color:
+        rgba(255,255,255,.55);
+
+      font-size: 13px;
+
+      transition:
+        color .2s ease,
+        transform .2s ease;
+    }
+
+    .footer-links a:hover {
+      color: white;
+
+      transform:
+        translateX(3px);
+    }
+
+    .footer-bottom {
+      padding-top: 22px;
+
+      border-top:
+        1px solid rgba(255,255,255,.1);
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 20px;
+
+      color:
+        rgba(255,255,255,.4);
+
+      font-size: 12px;
+    }
+
+
+    /* =========================================================
+       BACK TO TOP
+       ========================================================= */
+
+    #back-to-top {
+      position: fixed;
+
+      right: 1.25rem;
+      bottom: 1.25rem;
+
+      z-index: 60;
+
+      width: 3rem;
+      height: 3rem;
+
+      border-radius: 999px;
+
+      display: grid;
+
+      place-items: center;
+
+      background:
+        var(--school-red);
+
+      color: white;
+
+      border:
+        2px solid rgba(255,255,255,.9);
+
+      box-shadow:
+        0 12px 30px rgba(0,0,0,.2);
+
+      opacity: 0;
+
+      visibility: hidden;
+
+      transform:
+        translateY(12px);
+
+      transition:
+        .25s ease;
+
+      cursor: pointer;
+    }
+
+    #back-to-top.show {
+      opacity: 1;
+
+      visibility: visible;
+
+      transform:
+        translateY(0);
+    }
+
+    #back-to-top:hover {
+      background:
+        #6f1422;
+
+      transform:
+        translateY(-2px);
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+       ========================================================= */
+
+    @media (max-width: 900px) {
+
+      .departments-grid {
+        grid-template-columns:
+          repeat(2, minmax(0,1fr));
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          1fr 1fr;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column:
+          1 / -1;
+      }
+
+    }
+
+    @media (max-width: 767px) {
+
+      .nav-item > button {
+        min-height: 52px;
+      }
+
+      #desktop-nav {
+        display: none !important;
+      }
+
+      .departments-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      #departments {
+        padding:
+          55px 16px 70px;
+      }
+
+      .page-hero {
+        padding:
+          55px 20px 60px;
+      }
+
+      .hero-title {
+        font-size:
+          2.8rem;
+      }
+
+      .dcard {
+        min-height:
+          205px;
+      }
+
+      .dcard-tooltip {
+        display: none;
+      }
+
+      .dept-modal {
+        padding:
+          10px;
+      }
+
+      .dept-modal-head {
+        padding:
+          28px 22px;
+      }
+
+      .dept-modal-title {
+        font-size:
+          32px;
+      }
+
+      .dept-body {
+        padding:
+          22px;
+      }
+
+      .dept-info-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns:
+          1fr;
+      }
+
+      .footer-grid > div:first-child {
+        grid-column:
+          auto;
+      }
+
+      .footer-bottom {
+        flex-direction:
+          column;
+      }
+
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration:
+          .001ms !important;
+
+        animation-iteration-count:
+          1 !important;
+
+        transition-duration:
+          .001ms !important;
+
+        scroll-behavior:
+          auto !important;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+<!-- =========================================================
+     SKIP LINK
+     ========================================================= -->
+
+<a
+  class="skip-link"
+  href="#main-content"
+>
+  Skip to main content
+</a>
+
+
+<!-- =========================================================
+     ANNOUNCEMENT BAR
+     ========================================================= -->
+
+<div
+  class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium"
+>
+
+  <p class="truncate">
+    McCreary Central High School &nbsp;|&nbsp; Raider Nation
+  </p>
+
+  <a
+    href="https://www.mccreary.k12.ky.us/"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="shrink-0 bg-white text-[#8B1A2B] font-bold text-[10px] uppercase tracking-wider px-3 py-1 hover:bg-[#C49A2A] hover:text-white transition-colors"
+  >
+    District Website
+  </a>
+
+</div>
+
+
+<!-- =========================================================
+     HEADER
+     ========================================================= -->
+
+<header
+  class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-0"
+>
+
+  <div class="flex items-center gap-5">
+
+    <a
+      href="index.html"
+      class="w-16 h-16 bg-[#8B1A2B]/10 rounded-full border-2 border-[#8B1A2B] flex items-center justify-center shrink-0 hover:scale-105 transition-transform"
+      aria-label="McCreary Central High School Home"
+    >
+      <span
+        class="text-[#8B1A2B] font-bold text-lg tracking-tighter"
+      >
+        MC
+      </span>
+    </a>
+
+    <div>
+
+      <h1
+        class="text-xl md:text-2xl font-bold text-zinc-900"
+      >
+        McCreary Central High School
+      </h1>
+
+      <p
+        class="text-[#8B1A2B] text-sm italic font-medium"
+      >
+        A Great Place to Learn
+      </p>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     PRIMARY NAVIGATION
+     ========================================================= -->
+
+<nav
+  class="bg-[#8B1A2B] sticky top-0 z-50 shadow-lg border-0"
+>
+
+  <div
+    class="max-w-7xl mx-auto px-4 md:px-8"
+  >
+
+    <!-- ================= DESKTOP NAV ================= -->
+
+    <ul
+      class="hidden md:flex items-center justify-center no-scrollbar"
+      id="desktop-nav"
+    >
+
+      <!-- HOME -->
+
+      <li class="nav-item relative">
+        <a
+          href="index.html"
+          style="display:flex;align-items:center;min-height:58px;padding:0 .8rem;color:white;font-weight:800;font-size:11px;letter-spacing:.08em;text-transform:uppercase;border-radius:.65rem;margin:.35rem 0;text-decoration:none;transition:background .2s ease,transform .2s ease,box-shadow .2s ease;"
+          onmouseover="this.style.background='rgba(255,255,255,.10)'"
+          onmouseout="this.style.background='transparent'"
+        >HOME</a>
+      </li>
+
+      <!-- ACADEMICS -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          ACADEMICS
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a
+            href="index.html"
+          >
+            Home
+          </a>
+
+          <a
+            href="departments.html"
+          >
+            Departments
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('counseling'); return false;"
+          >
+            Counselor's Corner
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('library'); return false;"
+          >
+            Library Media Center
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('cte'); return false;"
+          >
+            Career & Technical Education
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- STUDENTS -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          STUDENTS
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a
+            href="https://www.infinitecampus.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Infinite Campus
+          </a>
+
+          <a
+            href="https://clever.com/in/mccreary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Clever Login
+          </a>
+
+          <a
+            href="https://accounts.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Classroom
+          </a>
+
+          <a
+            href="https://mail.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Student Email
+          </a>
+
+          <a
+            href="https://www.khanacademy.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Khan Academy
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- CLUBS -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          CLUBS & ACTIVITIES
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a href="#">
+            Drama Club
+          </a>
+
+          <a href="#">
+            Band
+          </a>
+
+          <a href="#">
+            FFA
+          </a>
+
+          <a href="#">
+            Beta Club
+          </a>
+
+          <a href="#">
+            HOSA
+          </a>
+
+          <a href="#">
+            TSA
+          </a>
+
+          <a href="#">
+            FCA
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- DIRECTORY -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          DIRECTORY
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a href="#">
+            Staff Directory
+          </a>
+
+          <a href="#">
+            Counselors
+          </a>
+
+          <a href="departments.html">
+            Departments
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- DISTRICT -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          DISTRICT
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a
+            href="https://www.mccreary.k12.ky.us/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            District Homepage
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/about-us"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            About Us
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/board-of-education"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Board of Education
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/calendar"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            District Calendar
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/departments"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            District Departments
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- PARENTS -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          PARENTS & COMMUNITY
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a
+            href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Parent Infinite Campus
+          </a>
+
+          <a href="#">
+            Parent Resources
+          </a>
+
+          <a href="#">
+            Community Resources
+          </a>
+
+          <a href="#">
+            Volunteer
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- STAFF -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          MCHS STAFF
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a
+            href="https://mail.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Staff Email
+          </a>
+
+          <a
+            href="https://clever.com/in/mccreary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Clever Login
+          </a>
+
+          <a
+            href="https://www.khanacademy.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Khan Academy
+          </a>
+
+          <a href="#">
+            Technology Help
+          </a>
+
+        </div>
+
+      </li>
+
+
+      <!-- SPORTS -->
+
+      <li class="nav-item relative">
+
+        <button
+          type="button"
+          aria-expanded="false"
+        >
+          SPORTS
+        </button>
+
+        <div class="dropdown-menu">
+
+          <a href="#">
+            Fall Sports
+          </a>
+
+          <a href="#">
+            Winter Sports
+          </a>
+
+          <a href="#">
+            Spring Sports
+          </a>
+
+          <a href="#">
+            Athletic Director
+          </a>
+
+        </div>
+
+      </li>
+
+    </ul>
+
+
+    <!-- ================= MOBILE BUTTON ================= -->
+
+    <div
+      class="flex md:hidden items-center justify-between py-3"
+    >
+
+      <span
+        class="text-white font-bold text-xs tracking-widest uppercase"
+      >
+        Menu
+      </span>
+
+      <button
+        id="hamburger-btn"
+        type="button"
+        class="text-white p-2 rounded hover:bg-white/10 transition-colors"
+        onclick="toggleMobileMenu()"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+      >
+
+        <svg
+          id="icon-menu"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <line x1="3" y1="12" x2="21" y2="12"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+
+        <svg
+          id="icon-close"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+          style="display:none"
+        >
+          <line x1="18" y1="6" x2="6" y2="18"/>
+          <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+
+      </button>
+
+    </div>
+
+
+    <!-- ================= MOBILE DRAWER ================= -->
+
+    <div
+      id="mobile-drawer"
+      class="md:hidden bg-white"
+      style="display:none"
+    >
+
+      <a
+        href="index.html"
+        class="block px-5 py-4 text-sm font-bold uppercase tracking-wider text-zinc-800 border-b border-zinc-100 hover:bg-[#fff7ed] hover:text-[#8B1A2B]"
+      >
+        Home
+      </a>
+
+      <!-- ACADEMICS -->
+
+      <div class="border-b border-zinc-100">
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-academics')"
+        >
+
+          ACADEMICS
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-academics"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a
+            href="departments.html"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            Departments
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('math'); return false;"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            Mathematics
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('english'); return false;"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            English
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('science'); return false;"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            Science
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('social'); return false;"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            Social Studies
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('arts'); return false;"
+            class="block py-3 text-sm text-zinc-600 border-b border-zinc-100"
+          >
+            Arts & Humanities
+          </a>
+
+          <a
+            href="#"
+            onclick="openDepartmentModal('cte'); return false;"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            CTE
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- STUDENTS -->
+
+      <div class="border-b border-zinc-100">
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-students')"
+        >
+
+          STUDENTS
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-students"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a
+            href="https://www.infinitecampus.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Infinite Campus
+          </a>
+
+          <a
+            href="https://clever.com/in/mccreary"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Clever
+          </a>
+
+          <a
+            href="https://accounts.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Google Classroom
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- CLUBS -->
+
+      <div class="border-b border-zinc-100">
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-clubs')"
+        >
+
+          CLUBS & ACTIVITIES
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-clubs"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            Drama Club
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            Band
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            FFA
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            Beta Club
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            HOSA
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            TSA
+          </a>
+
+          <a href="#" class="block py-3 text-sm text-zinc-600">
+            FCA
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- DIRECTORY -->
+
+      <div class="border-b border-zinc-100">
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-directory')"
+        >
+
+          DIRECTORY
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-directory"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a
+            href="departments.html"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Departments
+          </a>
+
+          <a
+            href="#"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Staff Directory
+          </a>
+
+          <a
+            href="#"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Counselors
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- DISTRICT -->
+
+      <div class="border-b border-zinc-100">
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-district')"
+        >
+
+          DISTRICT
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-district"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a
+            href="https://www.mccreary.k12.ky.us/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            District Homepage
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/about-us"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            About Us
+          </a>
+
+          <a
+            href="https://www.mccreary.k12.ky.us/calendar"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            District Calendar
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <!-- STAFF -->
+
+      <div>
+
+        <button
+          class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800"
+          aria-expanded="false"
+          onclick="toggleAccordion('acc-staff')"
+        >
+
+          MCHS STAFF
+
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <polyline points="6 9 12 15 18 9"/>
+          </svg>
+
+        </button>
+
+        <div
+          id="acc-staff"
+          class="accordion-content bg-zinc-50 px-8"
+        >
+
+          <a
+            href="https://mail.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Staff Email
+          </a>
+
+          <a
+            href="https://clever.com/in/mccreary"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Clever
+          </a>
+
+          <a
+            href="#"
+            class="block py-3 text-sm text-zinc-600"
+          >
+            Technology Help
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+
+
+<!-- =========================================================
+     PAGE HERO
+     ========================================================= -->
+
+<section class="page-hero">
+
+  <div class="hero-inner">
+
+    <div class="hero-label">
+      McCreary Central High School
+    </div>
+
+    <h2 class="hero-title">
+      Departments
+    </h2>
+
+    <p class="hero-description">
+      Explore the departments, programs, facilities, and support services
+      available to students and families at McCreary Central High School.
+    </p>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN DEPARTMENTS
+     ========================================================= -->
+
+<main id="main-content">
+
+<section
+  id="departments"
+>
+
+  <div class="outer">
+
+    <div class="section-label">
+      Academics & Resources
+    </div>
+
+    <h2 class="section-title">
+      School Departments
+    </h2>
+
+    <p class="section-sub">
+      Find information about academic departments, career and technical
+      programs, student services, facilities, and technology resources.
+      Select a department to learn more.
+    </p>
+
+
+    <!-- =====================================================
+         ACADEMIC DEPARTMENTS
+         ===================================================== -->
+
+    <div class="department-category">
+
+      <div class="category-heading">
+
+        <h3>
+          Academic Departments
+        </h3>
+
+        <div class="category-line"></div>
+
+      </div>
+
+
+      <div class="departments-grid">
+
+
+        <!-- MATHEMATICS -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('math')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'math')"
+        >
+
+          <div class="dcard-icon">
+            📐
+          </div>
+
+          <div class="dcard-name">
+            Mathematics
+          </div>
+
+          <div class="dcard-role">
+            Mathematics Department
+          </div>
+
+          <div class="dcard-contact">
+            Algebra, geometry, statistics, and advanced mathematics courses.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Build mathematical reasoning, problem-solving,
+            algebraic thinking, and quantitative skills.
+
+          </div>
+
+        </div>
+
+
+        <!-- ENGLISH -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('english')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'english')"
+        >
+
+          <div class="dcard-icon">
+            📖
+          </div>
+
+          <div class="dcard-name">
+            English Language Arts
+          </div>
+
+          <div class="dcard-role">
+            English Department
+          </div>
+
+          <div class="dcard-contact">
+            Reading, writing, literature, research, communication, and analysis.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Strengthen reading, writing, research,
+            communication, analysis, and presentation skills.
+
+          </div>
+
+        </div>
+
+
+        <!-- SCIENCE -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('science')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'science')"
+        >
+
+          <div class="dcard-icon">
+            🔬
+          </div>
+
+          <div class="dcard-name">
+            Science
+          </div>
+
+          <div class="dcard-role">
+            Science Department
+          </div>
+
+          <div class="dcard-contact">
+            Scientific investigation, laboratory learning, evidence, and discovery.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Explore scientific concepts through investigation,
+            evidence, critical thinking, and hands-on learning.
+
+          </div>
+
+        </div>
+
+
+        <!-- SOCIAL STUDIES -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('social')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'social')"
+        >
+
+          <div class="dcard-icon">
+            🌎
+          </div>
+
+          <div class="dcard-name">
+            Social Studies
+          </div>
+
+          <div class="dcard-role">
+            Social Studies Department
+          </div>
+
+          <div class="dcard-contact">
+            History, government, geography, economics, and civic understanding.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Understand history, civics, geography, economics,
+            and the ideas that shape communities and society.
+
+          </div>
+
+        </div>
+
+
+        <!-- ARTS -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('arts')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'arts')"
+        >
+
+          <div class="dcard-icon">
+            🎨
+          </div>
+
+          <div class="dcard-name">
+            Arts & Humanities
+          </div>
+
+          <div class="dcard-role">
+            Arts & Humanities
+          </div>
+
+          <div class="dcard-contact">
+            Creativity, cultural awareness, communication, and the arts.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Develop creativity, cultural awareness,
+            communication, and appreciation for the arts and humanities.
+
+          </div>
+
+        </div>
+
+
+        <!-- CTE -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('cte')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'cte')"
+        >
+
+          <div class="dcard-icon">
+            🛠️
+          </div>
+
+          <div class="dcard-name">
+            Career & Technical Education
+          </div>
+
+          <div class="dcard-role">
+            CTE Department
+          </div>
+
+          <div class="dcard-contact">
+            Hands-on career preparation, technical skills, projects, and certifications.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Department Information
+            </span>
+
+            Connect classroom learning to real careers through
+            hands-on projects, technical skills, certifications,
+            and workplace preparation.
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STUDENT SERVICES
+         ===================================================== -->
+
+    <div class="department-category">
+
+      <div class="category-heading">
+
+        <h3>
+          Student Services & Support
+        </h3>
+
+        <div class="category-line"></div>
+
+      </div>
+
+
+      <div class="departments-grid">
+
+
+        <!-- COUNSELING -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('counseling')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'counseling')"
+        >
+
+          <div class="dcard-icon">
+            🧭
+          </div>
+
+          <div class="dcard-name">
+            Counseling
+          </div>
+
+          <div class="dcard-role">
+            Student Support
+          </div>
+
+          <div class="dcard-contact">
+            Academic planning, scheduling, graduation, college, and career guidance.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact For
+            </span>
+
+            Course planning, schedules, graduation requirements,
+            college planning, and career exploration.
+
+          </div>
+
+        </div>
+
+
+        <!-- HEALTHY KIDS -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('health')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'health')"
+        >
+
+          <div class="dcard-icon">
+            ❤️
+          </div>
+
+          <div class="dcard-name">
+            Healthy Kids
+          </div>
+
+          <div class="dcard-role">
+            Healthy Kids Clinic
+          </div>
+
+          <div class="dcard-contact">
+            Healthy Kids Clinic — Extension 8213.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Healthy Kids Clinic — extension 8213.
+
+          </div>
+
+        </div>
+
+
+        <!-- LIBRARY -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('library')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'library')"
+        >
+
+          <div class="dcard-icon">
+            📚
+          </div>
+
+          <div class="dcard-name">
+            Library Media Center
+          </div>
+
+          <div class="dcard-role">
+            Library
+          </div>
+
+          <div class="dcard-contact">
+            Library Media Center — Extension 8608.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Library Media Center — extension 8608.
+
+          </div>
+
+        </div>
+
+
+        <!-- TESTING -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('testing')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'testing')"
+        >
+
+          <div class="dcard-icon">
+            📝
+          </div>
+
+          <div class="dcard-name">
+            Testing Room
+          </div>
+
+          <div class="dcard-role">
+            Assessment Services
+          </div>
+
+          <div class="dcard-contact">
+            Testing Room — Extension 8713.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Testing Room — extension 8713.
+
+          </div>
+
+        </div>
+
+
+        <!-- CAFETERIA -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('cafeteria')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'cafeteria')"
+        >
+
+          <div class="dcard-icon">
+            🍽️
+          </div>
+
+          <div class="dcard-name">
+            Cafeteria
+          </div>
+
+          <div class="dcard-role">
+            Food Services
+          </div>
+
+          <div class="dcard-contact">
+            Cafeteria — Extension 8630.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Cafeteria — extension 8630.
+
+          </div>
+
+        </div>
+
+
+        <!-- KITCHEN -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('kitchen')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'kitchen')"
+        >
+
+          <div class="dcard-icon">
+            🍳
+          </div>
+
+          <div class="dcard-name">
+            Kitchen
+          </div>
+
+          <div class="dcard-role">
+            Food Services
+          </div>
+
+          <div class="dcard-contact">
+            Kitchen — Extension 8635.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Kitchen — extension 8635.
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CTE / SHOPS
+         ===================================================== -->
+
+    <div class="department-category">
+
+      <div class="category-heading">
+
+        <h3>
+          Career & Technical Education / Shops
+        </h3>
+
+        <div class="category-line"></div>
+
+      </div>
+
+
+      <div class="departments-grid">
+
+
+        <!-- AGRICULTURE -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('agriculture')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'agriculture')"
+        >
+
+          <div class="dcard-icon">
+            🌱
+          </div>
+
+          <div class="dcard-name">
+            Agriculture Shop
+          </div>
+
+          <div class="dcard-role">
+            CTE / Agriculture
+          </div>
+
+          <div class="dcard-contact">
+            Agriculture Shop — Extension 8320.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- AUTO -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('auto')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'auto')"
+        >
+
+          <div class="dcard-icon">
+            🚗
+          </div>
+
+          <div class="dcard-name">
+            Auto Shop / Grundy
+          </div>
+
+          <div class="dcard-role">
+            CTE / Automotive
+          </div>
+
+          <div class="dcard-contact">
+            Auto Shop / Grundy — Extension 8310.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- CONSTRUCTION -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('construction')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'construction')"
+        >
+
+          <div class="dcard-icon">
+            🏗️
+          </div>
+
+          <div class="dcard-name">
+            Construction Shop
+          </div>
+
+          <div class="dcard-role">
+            CTE / Construction
+          </div>
+
+          <div class="dcard-contact">
+            Construction Shop — Extension 8731.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- BAND -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('band')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'band')"
+        >
+
+          <div class="dcard-icon">
+            🎺
+          </div>
+
+          <div class="dcard-name">
+            Band
+          </div>
+
+          <div class="dcard-role">
+            Music / Performing Arts
+          </div>
+
+          <div class="dcard-contact">
+            Band Office — Extension 8401.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- KEYBOARDING -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('keyboarding')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'keyboarding')"
+        >
+
+          <div class="dcard-icon">
+            ⌨️
+          </div>
+
+          <div class="dcard-name">
+            Keyboarding
+          </div>
+
+          <div class="dcard-role">
+            Business / Technology
+          </div>
+
+          <div class="dcard-contact">
+            Keyboarding — Extension 8623.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- LAB -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('lab')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'lab')"
+        >
+
+          <div class="dcard-icon">
+            💻
+          </div>
+
+          <div class="dcard-name">
+            Computer Lab
+          </div>
+
+          <div class="dcard-role">
+            Technology
+          </div>
+
+          <div class="dcard-contact">
+            Lab — Extension 8616.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TECHNOLOGY / DISTRICT SUPPORT
+         ===================================================== -->
+
+    <div class="department-category">
+
+      <div class="category-heading">
+
+        <h3>
+          Technology & District Support
+        </h3>
+
+        <div class="category-line"></div>
+
+      </div>
+
+
+      <div class="departments-grid">
+
+
+        <!-- DISTRICT TECHNOLOGY -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('technology')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'technology')"
+        >
+
+          <div class="dcard-icon">
+            💻
+          </div>
+
+          <div class="dcard-name">
+            District Technology
+          </div>
+
+          <div class="dcard-role">
+            Technology Services
+          </div>
+
+          <div class="dcard-contact">
+            Technology support and district technology services.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Technology Staff
+            </span>
+
+            Baird, Dustin — 8804<br>
+            Chaney, Chad — 8803<br>
+            Corder, Angela — 8802<br>
+            Jones, Stuart — 8805<br>
+            Shook, Samantha — 8801
+
+          </div>
+
+        </div>
+
+
+        <!-- AUGMENT -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('augment')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'augment')"
+        >
+
+          <div class="dcard-icon">
+            🧠
+          </div>
+
+          <div class="dcard-name">
+            Augment MC
+          </div>
+
+          <div class="dcard-role">
+            Student Support
+          </div>
+
+          <div class="dcard-contact">
+            Augment MC — 606-354-3639.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+          <div class="dcard-tooltip">
+
+            <span class="tt-title">
+              Contact
+            </span>
+
+            Phone: 606-354-3639<br>
+            Fax: 606-354-3024<br>
+            Extension range: 4800–4810
+
+          </div>
+
+        </div>
+
+
+        <!-- HEALTHY KIDS -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('health')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'health')"
+        >
+
+          <div class="dcard-icon">
+            🏥
+          </div>
+
+          <div class="dcard-name">
+            Healthy Kids Clinic
+          </div>
+
+          <div class="dcard-role">
+            Health Services
+          </div>
+
+          <div class="dcard-contact">
+            Healthy Kids Clinic — Extension 8213.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         FACILITIES
+         ===================================================== -->
+
+    <div class="department-category">
+
+      <div class="category-heading">
+
+        <h3>
+          Facilities & Common Areas
+        </h3>
+
+        <div class="category-line"></div>
+
+      </div>
+
+
+      <div class="departments-grid">
+
+
+        <!-- CONFERENCE ROOM -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('conference')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'conference')"
+        >
+
+          <div class="dcard-icon">
+            🏢
+          </div>
+
+          <div class="dcard-name">
+            Conference Room
+          </div>
+
+          <div class="dcard-role">
+            School Facility
+          </div>
+
+          <div class="dcard-contact">
+            Conference Room — Extension 8003.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- TEACHERS LOUNGE -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('lounge')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'lounge')"
+        >
+
+          <div class="dcard-icon">
+            ☕
+          </div>
+
+          <div class="dcard-name">
+            Teacher's Lounge
+          </div>
+
+          <div class="dcard-role">
+            Staff Area
+          </div>
+
+          <div class="dcard-contact">
+            Teacher's Lounge — Extension 8615.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+        <!-- STUDENT PHONE -->
+
+        <div
+          class="dcard"
+          onclick="openDepartmentModal('studentphone')"
+          tabindex="0"
+          role="button"
+          onkeydown="cardKey(event,'studentphone')"
+        >
+
+          <div class="dcard-icon">
+            ☎️
+          </div>
+
+          <div class="dcard-name">
+            Student Phone
+          </div>
+
+          <div class="dcard-role">
+            Student Services
+          </div>
+
+          <div class="dcard-contact">
+            Student Phone — Extension 8600.
+          </div>
+
+          <div class="dcard-arrow">
+            →
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         STAFF EXTENSION QUICK REFERENCE
+         ===================================================== -->
+
+    <div class="directory-note">
+
+      <h3>
+        Staff Extension Directory
+      </h3>
+
+      <p>
+        The information above is based on the McCreary Central High School
+        extension list provided for this directory. Select a department
+        above for additional information.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- =========================================================
+     DEPARTMENT MODAL
+     ========================================================= -->
+
+<div
+  id="departmentModal"
+  class="dept-modal"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="deptTitle"
+  onclick="if(event.target === this) closeDepartmentModal()"
+>
+
+  <div class="dept-modal-panel">
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="dept-modal-head">
+
+      <button
+        class="dept-close"
+        type="button"
+        aria-label="Close department information"
+        onclick="closeDepartmentModal()"
+      >
+        ×
+      </button>
+
+      <div
+        id="deptIcon"
+        class="dept-icon-large"
+      >
+        📚
+      </div>
+
+      <div class="dept-school">
+        McCreary Central High School
+      </div>
+
+      <h2
+        id="deptTitle"
+        class="dept-modal-title"
+      >
+        Department
+      </h2>
+
+      <p
+        id="deptIntro"
+        class="dept-modal-intro"
+      >
+      </p>
+
+    </div>
+
+
+    <!-- MODAL BODY -->
+
+    <div class="dept-body">
+
+      <div class="dept-label">
+        Department Information
+      </div>
+
+
+      <div class="dept-info-grid">
+
+
+        <!-- WHAT YOU'LL FIND -->
+
+        <div class="dept-card">
+
+          <h3>
+            What You'll Find
+          </h3>
+
+          <p
+            id="deptLearn"
+          >
+          </p>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div class="dept-card">
+
+          <h3>
+            Contact Information
+          </h3>
+
+          <p
+            id="deptContact"
+          >
+          </p>
+
+        </div>
+
+
+      </div>
+
+
+      <!-- STAFF -->
+
+      <div
+        id="deptStaffCard"
+        class="dept-card mt-4"
+        style="display:none;"
+      >
+
+        <h3>
+          Staff / Extensions
+        </h3>
+
+        <div
+          id="deptStaff"
+          class="dept-staff-list"
+        >
+        </div>
+
+      </div>
+
+
+      <!-- CTA -->
+
+      <div class="dept-cta">
+
+        <h3>
+          Need More Information?
+        </h3>
+
+        <p id="deptCTA">
+          Contact the school office or speak with your counselor
+          or a teacher to learn more about available courses,
+          programs, and opportunities.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer>
+
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+
+      <div>
+
+        <div class="footer-title">
+          McCreary Central High School
+        </div>
+
+        <div class="footer-subtitle">
+          A Great Place to Learn
+        </div>
+
+        <p class="footer-text">
+          Welcome to Raider Nation. Explore academics, student services,
+          extracurricular activities, technology resources, and opportunities
+          available at McCreary Central High School.
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-heading">
+          School
+        </div>
+
+        <div class="footer-links">
+
+          <a href="index.html">
+            Home
+          </a>
+
+          <a href="departments.html">
+            Departments
+          </a>
+
+          <a href="#">
+            Staff Directory
+          </a>
+
+          <a href="#">
+            Contact
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <div class="footer-heading">
+          Resources
+        </div>
+
+        <div class="footer-links">
+
+          <a
+            href="https://www.mccreary.k12.ky.us/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            District Website
+          </a>
+
+          <a
+            href="https://www.infinitecampus.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Infinite Campus
+          </a>
+
+          <a
+            href="https://clever.com/in/mccreary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Clever
+          </a>
+
+          <a
+            href="https://mail.google.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Email
+          </a>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <p>
+        © <span id="year"></span>
+        McCreary Central High School.
+        All rights reserved.
+      </p>
+
+      <p>
+        Raider Nation
+      </p>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<!-- =========================================================
+     BACK TO TOP
+     ========================================================= -->
+
+<button
+  id="back-to-top"
+  type="button"
+  aria-label="Back to top"
+  title="Back to top"
+>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="19"
+    height="19"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    viewBox="0 0 24 24"
+  >
+    <path d="m18 15-6-6-6 6"/>
+  </svg>
+
+</button>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
+  /* =========================================================
+     YEAR
+     ========================================================= */
+
+  document.getElementById('year').textContent =
+    new Date().getFullYear();
+
+
+  /* =========================================================
+     DEPARTMENT DATA
+     ========================================================= */
+
+  const departmentData = {
+
+    math: {
+      title: "Mathematics",
+      icon: "📐",
+      intro:
+        "Build problem-solving, logical reasoning, algebraic thinking, and quantitative skills that support college and career readiness.",
+      learn:
+        "Mathematics courses focus on problem solving, mathematical reasoning, computation, algebraic thinking, geometry, statistics, and advanced mathematical concepts.",
+      contact:
+        "For course selection, scheduling, or mathematics program questions, contact the school counseling office or a mathematics teacher.",
+      cta:
+        "Talk with your counselor or a mathematics teacher to learn more about available mathematics courses.",
+      staff: []
+    },
+
+
+    english: {
+      title: "English Language Arts",
+      icon: "📖",
+      intro:
+        "Strengthen reading, writing, research, communication, analysis, and presentation skills.",
+      learn:
+        "Students develop skills in reading, writing, literature, research, communication, analysis, and presentation.",
+      contact:
+        "For English course information or scheduling questions, contact the counseling office or English department.",
+      cta:
+        "Talk with your counselor or an English teacher about available English and literature courses.",
+      staff: []
+    },
+
+
+    science: {
+      title: "Science",
+      icon: "🔬",
+      intro:
+        "Explore scientific concepts through investigation, evidence, critical thinking, and hands-on learning.",
+      learn:
+        "Science learning emphasizes investigation, evidence, scientific reasoning, laboratory experiences, and understanding the natural world.",
+      contact:
+        "For science course information, contact the counseling office or science department.",
+      cta:
+        "Ask your counselor or science teacher about available science courses and laboratory opportunities.",
+      staff: []
+    },
+
+
+    social: {
+      title: "Social Studies",
+      icon: "🌎",
+      intro:
+        "Understand history, civics, geography, economics, and the ideas that shape communities and society.",
+      learn:
+        "Students explore historical events, government, citizenship, geography, economics, and social issues.",
+      contact:
+        "For social studies course information, contact the counseling office or social studies department.",
+      cta:
+        "Talk with your counselor or social studies teacher about available courses.",
+      staff: []
+    },
+
+
+    arts: {
+      title: "Arts & Humanities",
+      icon: "🎨",
+      intro:
+        "Develop creativity, cultural awareness, communication, and appreciation for the arts and humanities.",
+      learn:
+        "Students can explore creative expression, culture, communication, performance, visual arts, and humanities.",
+      contact:
+        "For arts and humanities course information, contact the counseling office or appropriate teacher.",
+      cta:
+        "Ask your counselor or teacher about arts and humanities opportunities.",
+      staff: []
+    },
+
+
+    cte: {
+      title: "Career & Technical Education",
+      icon: "🛠️",
+      intro:
+        "Connect classroom learning to real careers through hands-on projects, technical skills, certifications, and workplace preparation.",
+      learn:
+        "CTE programs provide hands-on experiences designed to develop technical skills, workplace skills, career awareness, project experience, and industry preparation.",
+      contact:
+        "For CTE pathway information, course selection, or career preparation questions, contact the appropriate CTE teacher or school counselor.",
+      cta:
+        "Explore CTE pathways and discover opportunities to build skills for college, careers, certifications, and the workforce.",
+      staff: []
+    },
+
+
+    counseling: {
+      title: "Counseling",
+      icon: "🧭",
+      intro:
+        "The counseling department helps students plan their academic pathway and prepare for life after high school.",
+      learn:
+        "Counseling resources can include scheduling, graduation planning, academic support, college planning, career exploration, and student guidance.",
+      contact:
+        "For scheduling, graduation, college, career, and academic planning questions, contact the counseling office.",
+      cta:
+        "Make an appointment with your counselor when you need help planning your next step.",
+      staff: []
+    },
+
+
+    health: {
+      title: "Healthy Kids Clinic",
+      icon: "🏥",
+      intro:
+        "Healthy Kids Clinic provides a school-based health resource for students.",
+      learn:
+        "The provided school directory lists the Healthy Kids Clinic at extension 8213.",
+      contact:
+        "Healthy Kids Clinic — Extension 8213.",
+      cta:
+        "For questions about the clinic or available services, contact the Healthy Kids Clinic.",
+      staff: [
+        ["Healthy Kids Clinic", "8213"]
+      ]
+    },
+
+
+    library: {
+      title: "Library Media Center",
+      icon: "📚",
+      intro:
+        "The Library Media Center provides students with access to learning resources and supports research and academic success.",
+      learn:
+        "The provided directory lists the Library Media Center at extension 8608.",
+      contact:
+        "Library Media Center — Extension 8608.",
+      cta:
+        "Contact the Library Media Center for questions about resources and services.",
+      staff: [
+        ["Library Media Center", "8608"]
+      ]
+    },
+
+
+    testing: {
+      title: "Testing Room",
+      icon: "📝",
+      intro:
+        "The Testing Room provides a designated location for school assessment activities.",
+      learn:
+        "The provided directory lists the Testing Room at extension 8713.",
+      contact:
+        "Testing Room — Extension 8713.",
+      cta:
+        "Contact the school office or testing staff for assessment-related questions.",
+      staff: [
+        ["Testing Room", "8713"]
+      ]
+    },
+
+
+    cafeteria: {
+      title: "Cafeteria",
+      icon: "🍽️",
+      intro:
+        "The cafeteria supports student food services and daily school operations.",
+      learn:
+        "The provided directory lists the cafeteria at extension 8630.",
+      contact:
+        "Cafeteria — Extension 8630.",
+      cta:
+        "Contact the cafeteria or school office with food service questions.",
+      staff: [
+        ["Cafeteria", "8630"]
+      ]
+    },
+
+
+    kitchen: {
+      title: "Kitchen",
+      icon: "🍳",
+      intro:
+        "The school kitchen supports food preparation and cafeteria operations.",
+      learn:
+        "The provided directory lists the kitchen at extension 8635.",
+      contact:
+        "Kitchen — Extension 8635.",
+      cta:
+        "Contact school food services with questions about kitchen operations.",
+      staff: [
+        ["Kitchen", "8635"]
+      ]
+    },
+
+
+    agriculture: {
+      title: "Agriculture Shop",
+      icon: "🌱",
+      intro:
+        "The Agriculture Shop provides a hands-on environment for agricultural education and technical learning.",
+      learn:
+        "The provided directory lists the Agriculture Shop at extension 8320.",
+      contact:
+        "Agriculture Shop — Extension 8320.",
+      cta:
+        "Talk with the agriculture teacher or counselor about agriculture pathway opportunities.",
+      staff: [
+        ["Agriculture Shop", "8320"]
+      ]
+    },
+
+
+    auto: {
+      title: "Auto Shop / Grundy",
+      icon: "🚗",
+      intro:
+        "The Auto Shop / Grundy area supports automotive and career-focused technical learning.",
+      learn:
+        "The provided directory lists Auto Shop / Grundy at extension 8310.",
+      contact:
+        "Auto Shop / Grundy — Extension 8310.",
+      cta:
+        "Talk with the appropriate CTE teacher about automotive program opportunities.",
+      staff: [
+        ["Auto Shop / Grundy", "8310"]
+      ]
+    },
+
+
+    construction: {
+      title: "Construction Shop",
+      icon: "🏗️",
+      intro:
+        "The Construction Shop provides a hands-on environment for construction and technical education.",
+      learn:
+        "The provided directory lists the Construction Shop at extension 8731.",
+      contact:
+        "Construction Shop — Extension 8731.",
+      cta:
+        "Talk with the construction teacher or counselor about CTE opportunities.",
+      staff: [
+        ["Construction Shop", "8731"]
+      ]
+    },
+
+
+    band: {
+      title: "Band",
+      icon: "🎺",
+      intro:
+        "Band gives students opportunities to develop musical skills, discipline, teamwork, and performance experience.",
+      learn:
+        "The provided directory lists the Band Office at extension 8401.",
+      contact:
+        "Band Office — Extension 8401.",
+      cta:
+        "Contact the Band Office for information about band activities and opportunities.",
+      staff: [
+        ["Band Office", "8401"]
+      ]
+    },
+
+
+    keyboarding: {
+      title: "Keyboarding",
+      icon: "⌨️",
+      intro:
+        "Keyboarding helps students develop practical computer input and productivity skills.",
+      learn:
+        "The provided directory lists Keyboarding at extension 8623.",
+      contact:
+        "Keyboarding — Extension 8623.",
+      cta:
+        "Talk with the appropriate teacher or counselor about keyboarding course options.",
+      staff: [
+        ["Keyboarding", "8623"]
+      ]
+    },
+
+
+    lab: {
+      title: "Computer Lab",
+      icon: "💻",
+      intro:
+        "The computer lab provides a technology-focused learning environment.",
+      learn:
+        "The provided directory lists the Lab at extension 8616.",
+      contact:
+        "Lab — Extension 8616.",
+      cta:
+        "Contact the appropriate teacher or technology staff for questions about lab access.",
+      staff: [
+        ["Lab", "8616"]
+      ]
+    },
+
+
+    technology: {
+      title: "District Technology",
+      icon: "💻",
+      intro:
+        "District Technology supports technology systems and services used throughout the school district.",
+      learn:
+        "The provided directory identifies the following District Technology staff and extensions.",
+      contact:
+        "District Technology provides technology support for district systems and resources.",
+      cta:
+        "Contact the appropriate technology staff member for technology support.",
+      staff: [
+        ["Baird, Dustin", "8804"],
+        ["Chaney, Chad", "8803"],
+        ["Corder, Angela", "8802"],
+        ["Jones, Stuart", "8805"],
+        ["Shook, Samantha", "8801"]
+      ]
+    },
+
+
+    augment: {
+      title: "Augment MC",
+      icon: "🧠",
+      intro:
+        "Augment MC is listed in the provided school directory along with contact information and staff extensions.",
+      learn:
+        "The provided information lists Augment MC at 606-354-3639 with fax 606-354-3024. Staff extensions include the 4800 series.",
+      contact:
+        "Phone: 606-354-3639 | Fax: 606-354-3024",
+      cta:
+        "Contact Augment MC directly for information about available services.",
+      staff: [
+        ["Dr. Rebecca Blakley", "4800"],
+        ["Ashley Rowe Slaven", "4808"],
+        ["Dr. Michelle Trammell", "4802"],
+        ["Afton Trett", "4804"],
+        ["Joey McClendon", "4806"],
+        ["Kyleigh West", "4810"]
+      ]
+    },
+
+
+    conference: {
+      title: "Conference Room",
+      icon: "🏢",
+      intro:
+        "The Conference Room is a designated school facility for meetings and school activities.",
+      learn:
+        "The provided directory lists the Conference Room at extension 8003.",
+      contact:
+        "Conference Room — Extension 8003.",
+      cta:
+        "Contact the school office regarding conference room use.",
+      staff: [
+        ["Conference Room", "8003"]
+      ]
+    },
+
+
+    lounge: {
+      title: "Teacher's Lounge",
+      icon: "☕",
+      intro:
+        "The Teacher's Lounge is a designated staff area.",
+      learn:
+        "The provided directory lists the Teacher's Lounge at extension 8615.",
+      contact:
+        "Teacher's Lounge — Extension 8615.",
+      cta:
+        "This resource is intended for school staff.",
+      staff: [
+        ["Teacher's Lounge", "8615"]
+      ]
+    },
+
+
+    studentphone: {
+      title: "Student Phone",
+      icon: "☎️",
+      intro:
+        "The student phone is listed as a school communication resource.",
+      learn:
+        "The provided directory lists the Student Phone at extension 8600.",
+      contact:
+        "Student Phone — Extension 8600.",
+      cta:
+        "Contact the school office for questions regarding student communication.",
+      staff: [
+        ["Student Phone", "8600"]
+      ]
+    }
+
+  };
+
+
+  /* =========================================================
+     OPEN DEPARTMENT MODAL
+     ========================================================= */
+
+  function openDepartmentModal(key) {
+
+    const data = departmentData[key];
+
+    if (!data) {
+      return;
+    }
+
+    document.getElementById('deptIcon').textContent =
+      data.icon;
+
+    document.getElementById('deptTitle').textContent =
+      data.title;
+
+    document.getElementById('deptIntro').textContent =
+      data.intro;
+
+    document.getElementById('deptLearn').textContent =
+      data.learn;
+
+    document.getElementById('deptContact').textContent =
+      data.contact;
+
+    document.getElementById('deptCTA').textContent =
+      data.cta;
+
+
+    /* ================= STAFF ================= */
+
+    const staffCard =
+      document.getElementById('deptStaffCard');
+
+    const staffList =
+      document.getElementById('deptStaff');
+
+    staffList.innerHTML = "";
+
+
+    if (data.staff && data.staff.length > 0) {
+
+      staffCard.style.display = "block";
+
+      data.staff.forEach(function(person) {
+
+        const row =
+          document.createElement('div');
+
+        row.className =
+          "dept-staff";
+
+        row.innerHTML = `
+          <span class="dept-staff-name">
+            ${escapeHtml(person[0])}
+          </span>
+
+          <span class="dept-staff-ext">
+            ${escapeHtml(person[1])}
+          </span>
+        `;
+
+        staffList.appendChild(row);
+
+      });
+
+    } else {
+
+      staffCard.style.display =
+        "none";
+
+    }
+
+
+    /* ================= SHOW ================= */
+
+    document
+      .getElementById('departmentModal')
+      .classList
+      .add('show');
+
+    document.body.style.overflow =
+      'hidden';
+
+
+    /* Move focus to close button */
+
+    setTimeout(function() {
+
+      document
+        .querySelector('.dept-close')
+        .focus();
+
+    }, 50);
+
+  }
+
+
+  /* =========================================================
+     CLOSE DEPARTMENT MODAL
+     ========================================================= */
+
+  function closeDepartmentModal() {
+
+    document
+      .getElementById('departmentModal')
+      .classList
+      .remove('show');
+
+    document.body.style.overflow =
+      '';
+
+  }
+
+
+  /* =========================================================
+     KEYBOARD ACCESS FOR CARDS
+     ========================================================= */
+
+  function cardKey(event, key) {
+
+    if (
+      event.key === 'Enter' ||
+      event.key === ' '
+    ) {
+
+      event.preventDefault();
+
+      openDepartmentModal(key);
+
+    }
+
+  }
+
+
+  /* =========================================================
+     HTML ESCAPING
+     ========================================================= */
+
+  function escapeHtml(value) {
+
+    return String(value)
+
+      .replace(/&/g, '&amp;')
+
+      .replace(/</g, '&lt;')
+
+      .replace(/>/g, '&gt;')
+
+      .replace(/"/g, '&quot;')
+
+      .replace(/'/g, '&#039;');
+
+  }
+
+
+  /* =========================================================
+     ESCAPE KEY
+     ========================================================= */
+
+  document.addEventListener(
+    'keydown',
+    function(event) {
+
+      if (
+        event.key === 'Escape'
+      ) {
+
+        closeDepartmentModal();
+
+        closeAllDropdowns();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     DESKTOP NAVIGATION
+     ========================================================= */
+
+  function closeAllDropdowns(except = null) {
+
+    document
+      .querySelectorAll('.nav-item.open')
+      .forEach(function(item) {
+
+        if (item !== except) {
+
+          item.classList.remove('open');
+
+          const button =
+            item.querySelector(':scope > button');
+
+          if (button) {
+
+            button.setAttribute(
+              'aria-expanded',
+              'false'
+            );
+
+          }
+
+        }
+
+      });
+
+
+    document
+      .querySelectorAll('.has-submenu.open')
+      .forEach(function(item) {
+
+        item.classList.remove('open');
+
+      });
+
+  }
+
+
+  document
+    .querySelectorAll(
+      '#desktop-nav > .nav-item > button'
+    )
+    .forEach(function(button) {
+
+      button.addEventListener(
+        'click',
+        function(event) {
+
+          event.stopPropagation();
+
+          const item =
+            button.closest('.nav-item');
+
+          const opening =
+            !item.classList.contains('open');
+
+          closeAllDropdowns(item);
+
+          item.classList.toggle(
+            'open',
+            opening
+          );
+
+          button.setAttribute(
+            'aria-expanded',
+            String(opening)
+          );
+
+        }
+      );
+
+    });
+
+
+  /* Close dropdown when clicking outside */
+
+  document.addEventListener(
+    'click',
+    function(event) {
+
+      if (
+        !event.target.closest('#desktop-nav')
+      ) {
+
+        closeAllDropdowns();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     MOBILE MENU
+     ========================================================= */
+
+  function toggleMobileMenu() {
+
+    const drawer =
+      document.getElementById(
+        'mobile-drawer'
+      );
+
+    const button =
+      document.getElementById(
+        'hamburger-btn'
+      );
+
+    const menuIcon =
+      document.getElementById(
+        'icon-menu'
+      );
+
+    const closeIcon =
+      document.getElementById(
+        'icon-close'
+      );
+
+
+    const isOpen =
+      drawer.classList.contains(
+        'mobile-open'
+      );
+
+
+    if (isOpen) {
+
+      drawer.classList.remove(
+        'mobile-open'
+      );
+
+      drawer.style.display =
+        'none';
+
+      menuIcon.style.display =
+        'block';
+
+      closeIcon.style.display =
+        'none';
+
+      button.setAttribute(
+        'aria-expanded',
+        'false'
+      );
+
+    } else {
+
+      drawer.classList.add(
+        'mobile-open'
+      );
+
+      drawer.style.display =
+        'block';
+
+      menuIcon.style.display =
+        'none';
+
+      closeIcon.style.display =
+        'block';
+
+      button.setAttribute(
+        'aria-expanded',
+        'true'
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     MOBILE ACCORDIONS
+     ========================================================= */
+
+  function toggleAccordion(id) {
+
+    const element =
+      document.getElementById(id);
+
+    const button =
+      document.querySelector(
+        `[onclick="toggleAccordion('${id}')"]`
+      );
+
+    const opening =
+      !element.classList.contains('open');
+
+
+    document
+      .querySelectorAll(
+        '.accordion-content.open'
+      )
+      .forEach(function(panel) {
+
+        if (panel !== element) {
+
+          panel.classList.remove(
+            'open'
+          );
+
+        }
+
+      });
+
+
+    document
+      .querySelectorAll(
+        '.mobile-section-btn[aria-expanded="true"]'
+      )
+      .forEach(function(btn) {
+
+        if (btn !== button) {
+
+          btn.setAttribute(
+            'aria-expanded',
+            'false'
+          );
+
+        }
+
+      });
+
+
+    element.classList.toggle(
+      'open',
+      opening
+    );
+
+
+    if (button) {
+
+      button.setAttribute(
+        'aria-expanded',
+        String(opening)
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     BACK TO TOP
+     ========================================================= */
+
+  const backToTop =
+    document.getElementById(
+      'back-to-top'
+    );
+
+
+  window.addEventListener(
+    'scroll',
+    function() {
+
+      if (
+        window.scrollY > 500
+      ) {
+
+        backToTop.classList.add(
+          'show'
+        );
+
+      } else {
+
+        backToTop.classList.remove(
+          'show'
+        );
+
+      }
+
+    },
+    {
+      passive: true
+    }
+  );
+
+
+  backToTop.addEventListener(
+    'click',
+    function() {
+
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+
+    }
+  );
+
+
+  /* =========================================================
+     MODAL FOCUS / OUTSIDE CLICK
+     ========================================================= */
+
+  document.addEventListener(
+    'keydown',
+    function(event) {
+
+      if (
+        event.key === 'Escape'
+      ) {
+
+        closeDepartmentModal();
+
+      }
+
+    }
+  );
+
+
+</script>
+
+</body>
+</html>
