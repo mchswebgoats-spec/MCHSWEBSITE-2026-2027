@@ -449,12 +449,55 @@
       letter-spacing: .16em; text-transform: uppercase; color: var(--school-red);
       margin-bottom: .5rem;
     }
+
+    /* ===== Departments directory section ===== */
+    .dept-card {
+      background: #fff;
+      border: 1px solid #e4e4e7;
+      border-top: 4px solid var(--school-gold);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .dept-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px rgba(24,24,27,.09);
+      border-top-color: var(--school-red);
+    }
+    .dept-card .dept-card-head {
+      display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem;
+    }
+    .dept-card .dept-card-icon {
+      width: 2.6rem; height: 2.6rem; flex: 0 0 2.6rem; border-radius: .75rem;
+      background: rgba(139,26,43,.08); color: var(--school-red);
+      display: grid; place-items: center; font-size: 1.15rem;
+    }
+    .dept-card .dept-card-title { font-weight: 800; color: #18181b; font-size: 1.05rem; letter-spacing: -.01em; }
+    .dept-staff-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .4rem; }
+    .dept-staff-list li {
+      display: flex; align-items: baseline; gap: .55rem;
+      font-size: .875rem; color: #3f3f46; line-height: 1.4;
+    }
+    .dept-staff-list li::before {
+      content: ''; width: 6px; height: 6px; border-radius: 999px;
+      background: var(--school-gold); flex: 0 0 6px; margin-top: .45em;
+    }
+    .dept-subgroup { margin-top: 1rem; padding-top: .85rem; border-top: 1px dashed #e4e4e7; }
+    .dept-subgroup:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+    .dept-subgroup-title {
+      font-size: .68rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--school-red); margin-bottom: .5rem;
+    }
+    .dept-card.dept-card-wide { grid-column: span 1; }
+    @media (min-width: 1024px) {
+      .dept-card.dept-card-wide { grid-column: span 2; }
+    }
   </style>
 
 <style id="club-popup-css">.club-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(9,9,11,.75);backdrop-filter:blur(6px);padding:20px;align-items:center;justify-content:center}.club-modal.show{display:flex}.club-modal-panel{width:min(850px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:clubIn .25s ease-out}@keyframes clubIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}.club-head{position:relative;background:linear-gradient(135deg,#8B1A2B,#641321);color:#fff;padding:35px}.club-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:#ffffff26;color:#fff;font-size:28px;cursor:pointer}.club-close:hover{background:#ffffff4d}.club-icon{font-size:48px}.club-school{color:#C49A2A;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.club-title{font-size:42px;font-weight:900;margin-top:5px}.club-intro{margin-top:12px;color:#ffffffd1;font-size:16px;line-height:1.7}.club-body{padding:32px}.club-label{color:#8B1A2B;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-bottom:15px}.club-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.club-benefit{display:flex;gap:14px;padding:16px;border:1px solid #e4e4e7;border-radius:16px;background:#fafafa}.club-bi{width:45px;height:45px;min-width:45px;border-radius:13px;background:#8B1A2B12;display:grid;place-items:center;font-size:22px}.club-bt{font-weight:900;font-size:14px}.club-bd{margin-top:4px;color:#71717a;font-size:12px;line-height:1.6}.club-cta{margin-top:25px;background:#8B1A2B;color:#fff;padding:22px;border-radius:18px}.club-ctat{font-weight:900;font-size:18px;margin-bottom:5px}.club-ctad{color:#ffffffcc;font-size:13px;line-height:1.6}@media(max-width:640px){.club-modal{padding:10px}.club-head{padding:28px 22px}.club-title{font-size:32px}.club-body{padding:22px}.club-benefits{grid-template-columns:1fr}}</style>
 
 <style id="department-modal-styles">
-.dept-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(9,9,11,.75);backdrop-filter:blur(6px);padding:20px;align-items:center;justify-content:center}.dept-modal.show{display:flex}.dept-modal-panel{width:min(850px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:deptIn .25s ease-out}@keyframes deptIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}.dept-modal-head{position:relative;background:linear-gradient(135deg,#8B1A2B,#641321);color:#fff;padding:35px}.dept-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:28px;cursor:pointer}.dept-close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}.dept-body{padding:32px}.dept-card{padding:18px;border:1px solid #e4e4e7;border-radius:16px;background:#fafafa}.dept-card:hover{border-color:#8B1A2B55;box-shadow:0 8px 20px rgba(0,0,0,.07)}@media(max-width:640px){.dept-modal{padding:10px}.dept-modal-head{padding:28px 22px}.dept-body{padding:22px}}
+.dept-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(9,9,11,.75);backdrop-filter:blur(6px);padding:20px;align-items:center;justify-content:center}.dept-modal.show{display:flex}.dept-modal-panel{width:min(850px,100%);max-height:90vh;overflow-y:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:deptIn .25s ease-out}@keyframes deptIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}.dept-modal-head{position:relative;background:linear-gradient(135deg,#8B1A2B,#641321);color:#fff;padding:35px}.dept-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:28px;cursor:pointer}.dept-close:hover{background:rgba(255,255,255,.3);transform:rotate(90deg)}.dept-body{padding:32px}.dept-modal-panel .dept-card{padding:18px;border:1px solid #e4e4e7;border-radius:16px;background:#fafafa;border-top:1px solid #e4e4e7}.dept-modal-panel .dept-card:hover{border-color:#8B1A2B55;box-shadow:0 8px 20px rgba(0,0,0,.07);transform:none}@media(max-width:640px){.dept-modal{padding:10px}.dept-modal-head{padding:28px 22px}.dept-body{padding:22px}}
 </style>
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
@@ -535,7 +578,7 @@
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">ACADEMICS</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
-            <a href="/page.html?p=departments" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
+            <a href="#" onclick="openDepartmentsModal(); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
             <a href="/page.html?p=raider-immigration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Raider Nation Immigration Guide</a>
             <a href="/page.html?p=class-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Class Registration Guide</a>
             <a href="/page.html?p=how-to" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">How-To &amp; Tech Support</a>
@@ -699,15 +742,7 @@
         </button>
         <div id="acc-academics" class="accordion-content bg-zinc-50 px-8">
           <a href="/page.html?p=counselors-corner" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselor's Corner</a>
-          <a href="/page.html?p=departments" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
-          <div class="pl-4 border-b border-zinc-100">
-            <a href="#" onclick="openDepartmentModal('math'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Math</a>
-            <a href="#" onclick="openDepartmentModal('english'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• English</a>
-            <a href="#" onclick="openDepartmentModal('science'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Science</a>
-            <a href="#" onclick="openDepartmentModal('social'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Social Studies</a>
-            <a href="#" onclick="openDepartmentModal('arts'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• Arts and Humanities</a>
-            <a href="#" onclick="openDepartmentModal('cte'); return false;" class="block py-2 text-xs text-zinc-500 hover:text-[#8B1A2B]">• CTE</a>
-          </div>
+          <a href="#" onclick="openDepartmentsModal(); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
           <a href="/page.html?p=raider-immigration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Raider Nation Immigration Guide</a>
           <a href="/page.html?p=class-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Class Registration Guide</a>
           <a href="/page.html?p=how-to" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">How-To &amp; Tech Support</a>
@@ -1298,7 +1333,80 @@
 <div id="clubModal" class="club-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeClubModal()"><div class="club-modal-panel"><div class="club-head"><button class="club-close" aria-label="Close" onclick="closeClubModal()">×</button><div id="clubModalIcon" class="club-icon">🎭</div><div class="club-school">McCreary Central High School</div><h2 id="clubModalTitle" class="club-title">Club</h2><p id="clubModalIntro" class="club-intro"></p></div><div class="club-body"><div class="club-label">Benefits of Joining</div><div id="clubBenefits" class="club-benefits"></div><div class="club-cta"><div class="club-ctat">Get Involved</div><p id="clubCTA" class="club-ctad"></p></div></div></div></div>
 
 <script id="club-popup-js">const clubData={"drama": {"title": "Drama Club", "icon": "🎭", "intro": "Find your voice, discover your creativity, and become part of a team that brings stories to life on stage.", "cta": "Find your voice, discover your creativity, and become part of a team that brings stories to life on stage.", "benefits": [["🎤", "Build Confidence", "Become more comfortable speaking, performing, and expressing yourself."], ["🤝", "Learn Teamwork", "Collaborate with others and work toward a shared production goal."], ["💡", "Unleash Creativity", "Explore acting, storytelling, writing, costumes, sets, lighting, and sound."], ["🗣️", "Improve Communication", "Strengthen speaking, listening, presentation, and interpersonal skills."], ["⭐", "Develop Leadership", "Take responsibility, organize projects, solve problems, and help others."], ["🎬", "Production Experience", "Experience rehearsals, performances, and backstage production."], ["🧠", "Problem Solving", "Think creatively and adapt when unexpected challenges happen."], ["📄", "Build Your Resume", "Demonstrate communication, teamwork, leadership, creativity, and commitment."]]}, "band": {"title": "Band", "icon": "🎺", "intro": "Make music, build friendships, develop discipline, and become part of a team that represents Raider Nation with pride.", "cta": "Make music, build friendships, develop discipline, and become part of a team that represents Raider Nation with pride.", "benefits": [["🎵", "Develop Musical Skills", "Improve music reading, performance, practice, listening, and instrumental skills."], ["🤝", "Learn Teamwork", "Communicate, listen, cooperate, and contribute to a musical team."], ["💪", "Build Discipline", "Practice consistency, preparation, responsibility, patience, and dedication."], ["⭐", "Grow Confidence", "Perform for audiences and gain confidence through preparation and performance."], ["👑", "Develop Leadership", "Help others, take responsibility, and set an example."], ["🧠", "Strengthen Focus", "Build concentration, attention to detail, memory, and persistence."], ["👥", "Make Friendships", "Create lasting friendships and memories while working toward shared goals."], ["📄", "Build Your Resume", "Demonstrate commitment, teamwork, leadership, time management, and responsibility."]]}, "ffa": {"title": "FFA", "icon": "🌱", "intro": "Develop leadership, career skills, agricultural knowledge, and a strong connection to your community.", "cta": "Develop leadership, career skills, agricultural knowledge, and a strong connection to your community.", "benefits": [["🌾", "Explore Agriculture", "Learn about agriculture, food, natural resources, and related careers."], ["🏆", "Competitive Events", "Challenge yourself through career and leadership development events."], ["👑", "Leadership", "Develop responsibility, public speaking, organization, and decision-making."], ["🚜", "Hands-On Skills", "Gain practical experience through projects and agricultural activities."], ["🤝", "Teamwork", "Work with classmates toward shared goals."], ["❤️", "Community Service", "Participate in activities that support your school and community."], ["🎤", "Public Speaking", "Build confidence through presentations, meetings, and leadership activities."], ["📄", "Build Your Resume", "Show commitment, leadership, teamwork, service, and career preparation."]]}, "beta": {"title": "Beta Club", "icon": "🏅", "intro": "Recognize achievement while developing leadership, service, character, and responsibility.", "cta": "Recognize achievement while developing leadership, service, character, and responsibility.", "benefits": [["📚", "Academic Achievement", "Be part of an organization that values academic success and achievement."], ["❤️", "Community Service", "Participate in service projects that benefit your school and community."], ["👑", "Leadership", "Develop leadership through planning, teamwork, and responsibility."], ["🤝", "Teamwork", "Work with other students on service activities and club projects."], ["🌟", "Character Development", "Practice responsibility, integrity, helpfulness, and commitment."], ["🎯", "Goal Setting", "Set goals and follow through on projects and responsibilities."], ["🗣️", "Communication", "Build communication skills while working with peers and adults."], ["📄", "Build Your Resume", "Demonstrate achievement, service, leadership, and dedication."]]}, "hosa": {"title": "HOSA", "icon": "🩺", "intro": "Explore healthcare careers, develop leadership skills, serve your community, and challenge yourself through HOSA activities and competitive events.", "cta": "Explore healthcare careers, develop leadership skills, serve your community, and challenge yourself through HOSA activities and competitive events.", "benefits": [["🏥", "Explore Healthcare Careers", "Discover careers and pathways across the healthcare field."], ["🏆", "Competitive Events", "Prepare for events that challenge your knowledge and skills."], ["👑", "Leadership", "Build communication, organization, responsibility, and decision-making skills."], ["🤝", "Networking", "Meet students and others who share an interest in healthcare."], ["❤️", "Community Service", "Participate in service opportunities and help make a difference."], ["🎤", "Confidence", "Practice presentations, interviews, teamwork, and communication."], ["📚", "Career Skills", "Strengthen preparation, problem-solving, study habits, and professionalism."], ["📄", "Resume Building", "Show leadership, service, commitment, teamwork, and career interest."]]}, "tsa": {"title": "TSA", "icon": "⚙️", "intro": "Turn technology and creativity into real-world projects, competitions, leadership experiences, and career skills.", "cta": "Turn technology and creativity into real-world projects, competitions, leadership experiences, and career skills.", "benefits": [["💻", "Explore Technology", "Develop interests in technology, engineering, design, and STEM careers."], ["🏆", "Compete", "Challenge yourself through competitive events and project-based activities."], ["🛠️", "Build Real Projects", "Create projects requiring planning, creativity, and technical skills."], ["🧠", "Problem Solving", "Break down challenges and develop practical solutions."], ["👑", "Leadership", "Develop leadership, organization, communication, and responsibility."], ["🤝", "Teamwork", "Collaborate with teammates and combine different strengths."], ["🎨", "Creativity", "Use design and innovation to develop unique solutions."], ["📄", "Build Your Resume", "Showcase technical skills, teamwork, leadership, creativity, and initiative."]]}, "fca": {"title": "FCA", "icon": "🏃", "intro": "Build friendships, leadership, character, and a supportive school community through fellowship and activities.", "cta": "Build friendships, leadership, character, and a supportive school community through fellowship and activities.", "benefits": [["🤝", "Build Friendships", "Connect with other students and develop positive relationships."], ["👑", "Leadership", "Practice leadership through activities, service, and student involvement."], ["❤️", "Serve Others", "Participate in opportunities that encourage helping and supporting others."], ["🌟", "Build Character", "Develop responsibility, encouragement, respect, and positive habits."], ["🗣️", "Communication", "Practice speaking, listening, teamwork, and working with others."], ["🎯", "Set Goals", "Work toward personal and group goals while staying involved."], ["👥", "Belong to a Team", "Be part of a supportive group within the school community."], ["📄", "Build Your Resume", "Demonstrate leadership, service, teamwork, commitment, and involvement."]]}};function openClubModal(club){const d=clubData[club];if(!d)return;document.getElementById('clubModalIcon').textContent=d.icon;document.getElementById('clubModalTitle').textContent=d.title;document.getElementById('clubModalIntro').textContent=d.intro;document.getElementById('clubCTA').textContent=d.cta;document.getElementById('clubBenefits').innerHTML=d.benefits.map(b=>`<div class="club-benefit"><div class="club-bi">${b[0]}</div><div><div class="club-bt">${b[1]}</div><div class="club-bd">${b[2]}</div></div></div>`).join('');document.getElementById('clubModal').classList.add('show');document.body.style.overflow='hidden'}function closeClubModal(){document.getElementById('clubModal').classList.remove('show');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeClubModal()});</script>
-<div id="departmentModal" class="dept-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeDepartmentModal()"><div class="dept-modal-panel"><div class="dept-modal-head"><button class="dept-close" aria-label="Close" onclick="closeDepartmentModal()">×</button><div class="text-5xl mb-3" id="deptIcon">📚</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 id="deptTitle" class="text-3xl md:text-4xl font-black mt-2">Department</h2><p id="deptIntro" class="text-white/80 mt-3 leading-7"></p></div><div class="dept-body"><div class="text-[#8B1A2B] text-xs font-black uppercase tracking-widest mb-3">About This Department</div><div class="grid md:grid-cols-2 gap-4"><div class="dept-card"><h3 class="font-black">What You'll Learn</h3><p id="deptLearn" class="text-zinc-600 text-sm leading-6 mt-2"></p></div><div class="dept-card"><h3 class="font-black">Why It Matters</h3><p class="text-zinc-600 text-sm leading-6 mt-2">Courses in this department can help students develop skills for high school success, college, careers, and lifelong learning.</p></div></div><div class="mt-6 rounded-2xl bg-[#8B1A2B] text-white p-5"><h3 class="font-black text-lg">Explore Your Options</h3><p id="deptCTA" class="text-white/80 text-sm leading-6 mt-1">Talk with your counselor or a teacher to learn more about available courses and opportunities.</p></div></div></div></div>
-<script id="department-modal-script">const departmentData={overview:{title:'Departments',icon:'🏫',intro:'Explore the academic departments at McCreary Central High School and discover opportunities to learn, grow, and prepare for your future.'},math:{title:'Mathematics',icon:'📐',intro:'Build problem-solving, logical reasoning, algebraic thinking, and quantitative skills that support college and career readiness.'},english:{title:'English Language Arts',icon:'📖',intro:'Strengthen reading, writing, research, communication, analysis, and presentation skills.'},science:{title:'Science',icon:'🔬',intro:'Explore scientific concepts through investigation, evidence, critical thinking, and hands-on learning.'},social:{title:'Social Studies',icon:'🌎',intro:'Understand history, civics, geography, economics, and the ideas that shape communities and society.'},arts:{title:'Arts & Humanities',icon:'🎨',intro:'Develop creativity, cultural awareness, communication, and appreciation for the arts and humanities.'},cte:{title:'Career & Technical Education',icon:'🛠️',intro:'Connect classroom learning to real careers through hands-on projects, technical skills, certifications, and workplace preparation.'}};function openDepartmentModal(k){const d=departmentData[k];if(!d)return;document.getElementById('deptIcon').textContent=d.icon;document.getElementById('deptTitle').textContent=d.title;document.getElementById('deptIntro').textContent=d.intro;document.getElementById('deptLearn').textContent=d.intro;document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';}function closeDepartmentModal(){document.getElementById('departmentModal').classList.remove('show');document.body.style.overflow='';}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDepartmentModal();});</script>
+<div id="departmentModal" class="dept-modal" role="dialog" aria-modal="true" aria-label="Departments directory" onclick="if(event.target===this)closeDepartmentModal()"><div class="dept-modal-panel" style="width:min(980px,100%)"><div class="dept-modal-head"><button class="dept-close" aria-label="Close" onclick="closeDepartmentModal()">×</button><div class="text-5xl mb-3" aria-hidden="true">🏫</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 class="text-3xl md:text-4xl font-black mt-2">Departments</h2><p class="text-white/80 mt-3 leading-7">Meet the Raider Nation faculty leading each academic department. Tap a name to email.</p></div><div class="dept-body" id="deptDirectoryBody"></div></div></div>
+<script id="department-modal-script">
+const DEPT_DOMAIN = 'mccreary.kyschools.us';
+function emailFor(name){
+  const parts = name.trim().split(/\s+/);
+  const first = parts[0].toLowerCase();
+  const last = parts[parts.length - 1].toLowerCase();
+  return `${first}.${last}@${DEPT_DOMAIN}`;
+}
+const departmentData = [
+  { title: 'Math', icon: '📐', groups: [ { staff: ['Carson McKinney','Logan Stephens','Trysten Adkins','Mitch Sexton','Linda Roberts','Bryson Loudermilk'] } ] },
+  { title: 'Social Studies', icon: '🌎', groups: [ { staff: ['Sammy Strunk','Kenneth Spradln','Amanda Monhollen','Johnathan Ball'] } ] },
+  { title: 'Science', icon: '🔬', groups: [ { staff: ['Cody Ridener','Garret Combs','Travis Burress','Greg Whitis'] } ] },
+  { title: 'Language Arts', icon: '📖', groups: [ { staff: ['Billy-Christopher Maupin','Dawn Kidd','Amanda Davis','Lucas Waters','Shayna Perry'] } ] },
+  { title: 'Career & Technical Education (CTE)', icon: '🛠️', groups: [
+      { name: 'IT', staff: ['Collin Crabtree'] },
+      { name: 'Engineering', staff: ['Travis Smith'] },
+      { name: 'Environmental Science', staff: ['Cameron Lee'] },
+      { name: 'Construction', staff: ['Tim Freels'] },
+      { name: 'Auto Mechanics', staff: ['Stephen Grundy'] },
+      { name: 'JROTC', staff: ['Travis Crabtree','Gary Galloway'] },
+      { name: 'Health Science', staff: ['Tiffeny Stephens'] },
+      { name: 'JAG', staff: ['Cole Burke'] },
+      { name: 'Teaching and Learning', staff: ['Melody Alvarez'] }
+    ] },
+  { title: 'Art and Humanities', icon: '🎨', groups: [
+      { name: 'Art', staff: ['Haylee McKeehan'] },
+      { name: 'Health and Physical Education', staff: ['Derrick Smith','Riley Richmond'] },
+      { name: 'Broadcasting and Journalism', staff: ['Teresa King'] },
+      { name: 'Band', staff: ['Michelle Simpson'] },
+      { name: 'Music', staff: ['Megan Byrge'] },
+      { name: 'Spanish', staff: ['Sol Branscum'] }
+    ] },
+  { title: 'Library', icon: '📚', groups: [ { staff: ['Tami Starrett'] } ] }
+];
+function renderStaffList(staff){
+  return staff.map(name => {
+    const email = emailFor(name);
+    return `<li class="flex items-start gap-2.5">
+      <span class="w-1.5 h-1.5 rounded-full bg-[#C49A2A] shrink-0 mt-1.5"></span>
+      <span class="flex flex-col">
+        <span class="text-zinc-800 font-semibold text-sm">${name}</span>
+        <a href="mailto:${email}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${email}</a>
+      </span>
+    </li>`;
+  }).join('');
+}
+function buildDepartmentsDirectory(){
+  return departmentData.map(dept => {
+    const groupsHtml = dept.groups.map(g => {
+      const heading = g.name ? `<p class="dept-subgroup-title">${g.name}</p>` : '';
+      return `<div class="dept-subgroup"><div class="${g.name ? '' : ''}">${heading}<ul class="dept-staff-list" style="gap:.65rem">${renderStaffList(g.staff)}</ul></div></div>`;
+    }).join('');
+    const wide = dept.groups.length > 1 ? ' dept-card-wide' : '';
+    return `<div class="dept-card${wide}">
+        <div class="dept-card-head">
+          <span class="dept-card-icon" aria-hidden="true">${dept.icon}</span>
+          <span class="dept-card-title">${dept.title}</span>
+        </div>
+        <div class="${dept.groups.length > 1 ? 'grid grid-cols-1 sm:grid-cols-2 gap-x-8' : ''}">${groupsHtml}</div>
+      </div>`;
+  }).join('');
+}
+function openDepartmentsModal(){
+  document.getElementById('deptDirectoryBody').innerHTML =
+    `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">${buildDepartmentsDirectory()}</div>`;
+  document.getElementById('departmentModal').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeDepartmentModal(){
+  document.getElementById('departmentModal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDepartmentModal(); });
+</script>
 </body>
 </html>
