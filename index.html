@@ -1089,6 +1089,14 @@
 
     document.querySelectorAll('.has-submenu > a').forEach(link => {
       link.addEventListener('click', (event) => {
+        // The Departments link is a real page link.
+        // Do NOT prevent its default navigation.
+        const href = (link.getAttribute('href') || '').trim();
+        if (href === 'departments.html' || href.endsWith('/departments.html')) {
+          closeAllDropdowns();
+          return;
+        }
+
         if (window.innerWidth >= 768) {
           event.preventDefault();
           event.stopPropagation();
