@@ -343,6 +343,112 @@
       .stop-logo { width: 5rem !important; height: 5rem !important; }
     }
 
+    /* ================================================================
+       UNIVERSITY-STYLE REDESIGN (inspired by ucumberlands.edu)
+       Deep navy utility chrome + maroon/gold school-brand accents,
+       pill CTAs, big overlay hero copy, stat strip, rounded card
+       sections, and a dark multi-column footer with a tagline band.
+       ================================================================ */
+    :root {
+      --uc-navy: #0d1b2e;
+      --uc-navy-2: #16294a;
+      --uc-ink: #101828;
+    }
+
+    /* Utility strip */
+    .utility-bar { background: var(--uc-navy); }
+    .utility-bar a { color: rgba(255,255,255,.72); transition: color .15s ease; }
+    .utility-bar a:hover { color: #fff; }
+    .utility-bar .util-cta {
+      background: var(--school-gold); color: var(--uc-navy) !important;
+      font-weight: 800; border-radius: 999px; padding: .35rem 1rem;
+    }
+    .utility-bar .util-cta:hover { background: #fff; }
+
+    /* Pill buttons, used throughout */
+    .btn-pill {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      border-radius: 999px; font-weight: 800; font-size: .8rem;
+      letter-spacing: .02em; padding: .85rem 1.75rem;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, color .18s ease;
+      white-space: nowrap;
+    }
+    .btn-pill:hover { transform: translateY(-2px); }
+    .btn-pill-gold { background: var(--school-gold); color: var(--uc-navy); box-shadow: 0 10px 25px rgba(196,154,42,.35); }
+    .btn-pill-gold:hover { background: #fff; }
+    .btn-pill-outline { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,.65); }
+    .btn-pill-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+    .btn-pill-navy { background: var(--uc-navy); color: #fff; }
+    .btn-pill-navy:hover { background: var(--uc-navy-2); }
+
+    /* Hero overlay copy */
+    .hero-copy { position: absolute; inset: 0; z-index: 3; display: flex; align-items: flex-end; }
+    .hero-copy .hero-inner { max-width: 1280px; margin: 0 auto; width: 100%; padding: 0 1.25rem 3rem; }
+    @media (min-width: 768px) { .hero-copy .hero-inner { padding: 0 2rem 4.5rem; } }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--school-gold); color: var(--uc-navy);
+      font-weight: 800; font-size: .68rem; letter-spacing: .14em;
+      text-transform: uppercase; padding: .4rem .9rem; border-radius: 999px;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      color: #fff; font-weight: 900; letter-spacing: -.03em;
+      font-size: clamp(2rem, 5.2vw, 3.75rem); line-height: 1.02;
+      text-shadow: 0 4px 24px rgba(0,0,0,.4); max-width: 42rem;
+    }
+    .hero-sub {
+      color: rgba(255,255,255,.92); font-size: clamp(.95rem, 1.4vw, 1.15rem);
+      max-width: 34rem; margin-top: 1rem; line-height: 1.6;
+      text-shadow: 0 2px 12px rgba(0,0,0,.35);
+    }
+    .hero-cta-row { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.75rem; }
+
+    /* Stat strip */
+    .stat-strip { background: var(--uc-navy); }
+    .stat-strip .stat-num { color: var(--school-gold); font-weight: 900; font-size: clamp(1.6rem, 3.2vw, 2.4rem); letter-spacing: -.02em; line-height: 1; }
+    .stat-strip .stat-label { color: rgba(255,255,255,.75); font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; margin-top: .4rem; }
+    .stat-strip .stat-item { border-left: 1px solid rgba(255,255,255,.14); }
+    .stat-strip .stat-item:first-child { border-left: none; }
+
+    /* Quick-link cards */
+    .qlink-card {
+      display: flex; flex-direction: column; align-items: center; gap: .85rem;
+      text-align: center; padding: 1.75rem 1rem; border-radius: 1.25rem;
+      background: #fff; border: 1px solid #eceef1;
+      box-shadow: 0 1px 2px rgba(16,24,40,.04);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .qlink-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(16,24,40,.10); border-color: transparent; }
+    .qlink-icon {
+      width: 3.25rem; height: 3.25rem; border-radius: 999px;
+      background: color-mix(in srgb, var(--school-red) 10%, #fff);
+      color: var(--school-red); display: grid; place-items: center;
+      transition: background .2s ease, color .2s ease, transform .2s ease;
+    }
+    .qlink-card:hover .qlink-icon { background: var(--school-red); color: #fff; transform: scale(1.06); }
+
+    /* CTA band before footer */
+    .next-step-band {
+      background: linear-gradient(120deg, var(--school-red) 0%, #6f1422 70%);
+      border-radius: 1.75rem;
+      position: relative; overflow: hidden;
+    }
+    .next-step-band::after {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(60% 90% at 85% 20%, rgba(196,154,42,.35), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Footer tagline band */
+    .footer-tagline { background: var(--uc-navy); }
+
+    /* Section labels used across the redesign */
+    .section-eyebrow {
+      display: inline-block; font-size: .72rem; font-weight: 800;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--school-red);
+      margin-bottom: .5rem;
+    }
   </style>
 
 <style id="club-popup-css">.club-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(9,9,11,.75);backdrop-filter:blur(6px);padding:20px;align-items:center;justify-content:center}.club-modal.show{display:flex}.club-modal-panel{width:min(850px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:clubIn .25s ease-out}@keyframes clubIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}.club-head{position:relative;background:linear-gradient(135deg,#8B1A2B,#641321);color:#fff;padding:35px}.club-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:#ffffff26;color:#fff;font-size:28px;cursor:pointer}.club-close:hover{background:#ffffff4d}.club-icon{font-size:48px}.club-school{color:#C49A2A;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.club-title{font-size:42px;font-weight:900;margin-top:5px}.club-intro{margin-top:12px;color:#ffffffd1;font-size:16px;line-height:1.7}.club-body{padding:32px}.club-label{color:#8B1A2B;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-bottom:15px}.club-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.club-benefit{display:flex;gap:14px;padding:16px;border:1px solid #e4e4e7;border-radius:16px;background:#fafafa}.club-bi{width:45px;height:45px;min-width:45px;border-radius:13px;background:#8B1A2B12;display:grid;place-items:center;font-size:22px}.club-bt{font-weight:900;font-size:14px}.club-bd{margin-top:4px;color:#71717a;font-size:12px;line-height:1.6}.club-cta{margin-top:25px;background:#8B1A2B;color:#fff;padding:22px;border-radius:18px}.club-ctat{font-weight:900;font-size:18px;margin-bottom:5px}.club-ctad{color:#ffffffcc;font-size:13px;line-height:1.6}@media(max-width:640px){.club-modal{padding:10px}.club-head{padding:28px 22px}.club-title{font-size:32px}.club-body{padding:22px}.club-benefits{grid-template-columns:1fr}}</style>
@@ -353,6 +459,23 @@
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
   <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Utility Bar -->
+  <div class="utility-bar text-white">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4 py-2 text-xs font-semibold">
+      <div class="hidden sm:flex items-center gap-5">
+        <a href="#" class="hover:underline">Visit MCHS</a>
+        <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="hover:underline">Videos</a>
+        <a href="https://gofan.co" target="_blank" class="hover:underline">Go Fan</a>
+        <a href="#" class="hover:underline">Directory</a>
+      </div>
+      <div class="flex items-center gap-3 ml-auto">
+        <a href="https://kyca.infinitecampus.org/campus/portal/mccreary.jsp" target="_blank" class="hover:underline">Parent Portal</a>
+        <a href="https://mail.google.com/" target="_blank" class="hidden sm:inline hover:underline">Webmail</a>
+        <a href="#" class="util-cta">Job Opportunities</a>
+      </div>
+    </div>
+  </div>
 
   <!-- Top Announcement Bar -->
   <div class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium">
@@ -389,8 +512,8 @@
              class="stop-logo w-16 h-16 md:w-20 md:h-20 object-contain" />
       </a>
 
-      <a href="#" class="bg-[#8B1A2B] text-white font-bold text-xs uppercase tracking-wider px-4 py-2 hover:opacity-90 transition-opacity">
-        Job Opportunities
+      <a href="#" class="btn-pill btn-pill-navy hidden sm:inline-flex">
+        Enroll Today
       </a>
       <a href="#" class="w-9 h-9 border border-zinc-300 flex items-center justify-center text-zinc-500 hover:text-[#8B1A2B] hover:border-[#8B1A2B] transition-colors">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
@@ -708,7 +831,7 @@
   </nav>
 
   <!-- Hero Slideshow -->
-  <div id="main-content" class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(220px, 45vw, 520px);">
+  <div id="main-content" class="relative w-full overflow-hidden bg-zinc-900" style="height: clamp(420px, 62vw, 640px);">
     <div id="slide-0" class="slide active absolute inset-0 w-full h-full">
     <img src="pinkFountain.jpg" alt="McCreary Central campus" class="w-full h-full object-cover"/>
 </div>
@@ -718,6 +841,19 @@
        <div id="slide-2" class="slide absolute inset-0 w-full h-full">
     <img src="lilRaider.jpg" alt="Lil Raider" class="w-full h-full object-cover"/>
 </div>
+
+    <!-- Overlay headline / CTAs -->
+    <div class="hero-copy">
+      <div class="hero-inner">
+        <span class="hero-eyebrow">Raider Nation · Stearns, KY</span>
+        <h2 class="hero-title">A Great Place to Learn.<br class="hidden md:block"/> A Great Place to Belong.</h2>
+        <p class="hero-sub">McCreary Central High School prepares every Raider for what's next — in the classroom, on the field, and out in the world.</p>
+        <div class="hero-cta-row">
+          <a href="#" class="btn-pill btn-pill-gold">Enroll Today</a>
+          <a href="#" class="btn-pill btn-pill-outline">Visit Our Campus</a>
+        </div>
+      </div>
+    </div>
 
     <button id="pause-btn" onclick="togglePause()" class="absolute top-3 left-3 z-10 w-7 h-7 bg-black/50 text-white flex items-center justify-center hover:bg-black/70 transition-colors">
       <svg id="pause-icon" xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
@@ -733,6 +869,28 @@
       <button onclick="goToSlide(0)" class="slide-dot h-2 w-6 rounded-full bg-white transition-all"></button>
       <button onclick="goToSlide(1)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
       <button onclick="goToSlide(2)" class="slide-dot h-2 w-2 rounded-full bg-white/50 transition-all"></button>
+    </div>
+  </div>
+
+  <!-- Stat Strip -->
+  <div class="stat-strip">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-2 md:grid-cols-4">
+      <div class="stat-item text-center py-7 px-3">
+        <div class="stat-num">600+</div>
+        <div class="stat-label">Raiders Enrolled</div>
+      </div>
+      <div class="stat-item text-center py-7 px-3">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Clubs &amp; Activities</div>
+      </div>
+      <div class="stat-item text-center py-7 px-3">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Varsity Sports</div>
+      </div>
+      <div class="stat-item text-center py-7 px-3">
+        <div class="stat-num">14:1</div>
+        <div class="stat-label">Student-Teacher Ratio</div>
+      </div>
     </div>
   </div>
 
