@@ -572,18 +572,18 @@
     <div class="max-w-7xl mx-auto px-4 md:px-8">
       <ul class="hidden md:flex items-center justify-center no-scrollbar" id="desktop-nav">
 
-        <!-- ACADEMICS -->
+        <!-- DEPARTMENTS -->
         <li class="nav-item relative">
-          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">ACADEMICS</button>
+          <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DEPARTMENTS</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
-            <a href="/page.html?p=counselors-corner" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Counselor's Corner</a>
-            <a href="#" onclick="openDepartmentsModal(); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Departments</a>
-            <a href="/page.html?p=raider-immigration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Raider Nation Immigration Guide</a>
-            <a href="/page.html?p=class-registration" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Class Registration Guide</a>
-            <a href="/page.html?p=how-to" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">How-To &amp; Tech Support</a>
-            <a href="https://sites.google.com/mccreary.kyschools.us/mccrearyraiderlibrary/home" target="_blank" rel="noopener noreferrer" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Library Resources</a>
-            <a href="https://www.parchment.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] border-b border-zinc-100 font-medium">Request Transcript (Parchment)</a>
-            <a href="https://www.ixl.com/" target="_blank" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">IXL Learning</a>
+            <div class="dropdown-heading">Academic Departments</div>
+            <a href="#" onclick="openDepartmentModalByKey('math'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Math</a>
+            <a href="#" onclick="openDepartmentModalByKey('social'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Social Studies</a>
+            <a href="#" onclick="openDepartmentModalByKey('science'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Science</a>
+            <a href="#" onclick="openDepartmentModalByKey('language'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Language Arts</a>
+            <a href="#" onclick="openDepartmentModalByKey('cte'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Career &amp; Technical Education</a>
+            <a href="#" onclick="openDepartmentModalByKey('humanities'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Art &amp; Humanities</a>
+            <a href="#" onclick="openDepartmentModalByKey('library'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Library</a>
           </div>
         </li>
 
@@ -736,18 +736,17 @@
     <!-- Mobile Drawer -->
     <div id="mobile-drawer" class="md:hidden bg-white" style="display:none">
       <div class="border-b border-zinc-100">
-        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-academics')">
+        <button class="mobile-section-btn w-full flex items-center justify-between px-5 py-3.5 text-sm font-bold uppercase tracking-wider text-zinc-800 hover:bg-zinc-50 transition-colors" aria-expanded="false" onclick="toggleAccordion('acc-departments')">
           ACADEMICS <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <div id="acc-academics" class="accordion-content bg-zinc-50 px-8">
-          <a href="/page.html?p=counselors-corner" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Counselor's Corner</a>
-          <a href="#" onclick="openDepartmentsModal(); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Departments</a>
-          <a href="/page.html?p=raider-immigration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Raider Nation Immigration Guide</a>
-          <a href="/page.html?p=class-registration" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Class Registration Guide</a>
-          <a href="/page.html?p=how-to" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">How-To &amp; Tech Support</a>
-          <a href="https://sites.google.com/mccreary.kyschools.us/mccrearyraiderlibrary/home" target="_blank" rel="noopener noreferrer" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Library Resources</a>
-          <a href="https://www.parchment.com/" target="_blank" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Request Transcript (Parchment)</a>
-          <a href="https://www.ixl.com/" target="_blank" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">IXL Learning</a>
+        <div id="acc-departments" class="accordion-content bg-zinc-50 px-8">
+          <a href="#" onclick="openDepartmentModalByKey('math'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Math</a>
+          <a href="#" onclick="openDepartmentModalByKey('social'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Social Studies</a>
+          <a href="#" onclick="openDepartmentModalByKey('science'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Science</a>
+          <a href="#" onclick="openDepartmentModalByKey('language'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Language Arts</a>
+          <a href="#" onclick="openDepartmentModalByKey('cte'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Career &amp; Technical Education</a>
+          <a href="#" onclick="openDepartmentModalByKey('humanities'); return false;" class="block py-3 text-sm text-zinc-600 border-b border-zinc-100 hover:text-[#8B1A2B]">Art &amp; Humanities</a>
+          <a href="#" onclick="openDepartmentModalByKey('library'); return false;" class="block py-3 text-sm text-zinc-600 hover:text-[#8B1A2B]">Library</a>
         </div>
       </div>
       <div class="border-b border-zinc-100">
@@ -1322,80 +1321,22 @@
 <div id="clubModal" class="club-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeClubModal()"><div class="club-modal-panel"><div class="club-head"><button class="club-close" aria-label="Close" onclick="closeClubModal()">×</button><div id="clubModalIcon" class="club-icon">🎭</div><div class="club-school">McCreary Central High School</div><h2 id="clubModalTitle" class="club-title">Club</h2><p id="clubModalIntro" class="club-intro"></p></div><div class="club-body"><div class="club-label">Benefits of Joining</div><div id="clubBenefits" class="club-benefits"></div><div class="club-cta"><div class="club-ctat">Get Involved</div><p id="clubCTA" class="club-ctad"></p></div></div></div></div>
 
 <script id="club-popup-js">const clubData={"drama": {"title": "Drama Club", "icon": "🎭", "intro": "Find your voice, discover your creativity, and become part of a team that brings stories to life on stage.", "cta": "Find your voice, discover your creativity, and become part of a team that brings stories to life on stage.", "benefits": [["🎤", "Build Confidence", "Become more comfortable speaking, performing, and expressing yourself."], ["🤝", "Learn Teamwork", "Collaborate with others and work toward a shared production goal."], ["💡", "Unleash Creativity", "Explore acting, storytelling, writing, costumes, sets, lighting, and sound."], ["🗣️", "Improve Communication", "Strengthen speaking, listening, presentation, and interpersonal skills."], ["⭐", "Develop Leadership", "Take responsibility, organize projects, solve problems, and help others."], ["🎬", "Production Experience", "Experience rehearsals, performances, and backstage production."], ["🧠", "Problem Solving", "Think creatively and adapt when unexpected challenges happen."], ["📄", "Build Your Resume", "Demonstrate communication, teamwork, leadership, creativity, and commitment."]]}, "band": {"title": "Band", "icon": "🎺", "intro": "Make music, build friendships, develop discipline, and become part of a team that represents Raider Nation with pride.", "cta": "Make music, build friendships, develop discipline, and become part of a team that represents Raider Nation with pride.", "benefits": [["🎵", "Develop Musical Skills", "Improve music reading, performance, practice, listening, and instrumental skills."], ["🤝", "Learn Teamwork", "Communicate, listen, cooperate, and contribute to a musical team."], ["💪", "Build Discipline", "Practice consistency, preparation, responsibility, patience, and dedication."], ["⭐", "Grow Confidence", "Perform for audiences and gain confidence through preparation and performance."], ["👑", "Develop Leadership", "Help others, take responsibility, and set an example."], ["🧠", "Strengthen Focus", "Build concentration, attention to detail, memory, and persistence."], ["👥", "Make Friendships", "Create lasting friendships and memories while working toward shared goals."], ["📄", "Build Your Resume", "Demonstrate commitment, teamwork, leadership, time management, and responsibility."]]}, "ffa": {"title": "FFA", "icon": "🌱", "intro": "Develop leadership, career skills, agricultural knowledge, and a strong connection to your community.", "cta": "Develop leadership, career skills, agricultural knowledge, and a strong connection to your community.", "benefits": [["🌾", "Explore Agriculture", "Learn about agriculture, food, natural resources, and related careers."], ["🏆", "Competitive Events", "Challenge yourself through career and leadership development events."], ["👑", "Leadership", "Develop responsibility, public speaking, organization, and decision-making."], ["🚜", "Hands-On Skills", "Gain practical experience through projects and agricultural activities."], ["🤝", "Teamwork", "Work with classmates toward shared goals."], ["❤️", "Community Service", "Participate in activities that support your school and community."], ["🎤", "Public Speaking", "Build confidence through presentations, meetings, and leadership activities."], ["📄", "Build Your Resume", "Show commitment, leadership, teamwork, service, and career preparation."]]}, "beta": {"title": "Beta Club", "icon": "🏅", "intro": "Recognize achievement while developing leadership, service, character, and responsibility.", "cta": "Recognize achievement while developing leadership, service, character, and responsibility.", "benefits": [["📚", "Academic Achievement", "Be part of an organization that values academic success and achievement."], ["❤️", "Community Service", "Participate in service projects that benefit your school and community."], ["👑", "Leadership", "Develop leadership through planning, teamwork, and responsibility."], ["🤝", "Teamwork", "Work with other students on service activities and club projects."], ["🌟", "Character Development", "Practice responsibility, integrity, helpfulness, and commitment."], ["🎯", "Goal Setting", "Set goals and follow through on projects and responsibilities."], ["🗣️", "Communication", "Build communication skills while working with peers and adults."], ["📄", "Build Your Resume", "Demonstrate achievement, service, leadership, and dedication."]]}, "hosa": {"title": "HOSA", "icon": "🩺", "intro": "Explore healthcare careers, develop leadership skills, serve your community, and challenge yourself through HOSA activities and competitive events.", "cta": "Explore healthcare careers, develop leadership skills, serve your community, and challenge yourself through HOSA activities and competitive events.", "benefits": [["🏥", "Explore Healthcare Careers", "Discover careers and pathways across the healthcare field."], ["🏆", "Competitive Events", "Prepare for events that challenge your knowledge and skills."], ["👑", "Leadership", "Build communication, organization, responsibility, and decision-making skills."], ["🤝", "Networking", "Meet students and others who share an interest in healthcare."], ["❤️", "Community Service", "Participate in service opportunities and help make a difference."], ["🎤", "Confidence", "Practice presentations, interviews, teamwork, and communication."], ["📚", "Career Skills", "Strengthen preparation, problem-solving, study habits, and professionalism."], ["📄", "Resume Building", "Show leadership, service, commitment, teamwork, and career interest."]]}, "tsa": {"title": "TSA", "icon": "⚙️", "intro": "Turn technology and creativity into real-world projects, competitions, leadership experiences, and career skills.", "cta": "Turn technology and creativity into real-world projects, competitions, leadership experiences, and career skills.", "benefits": [["💻", "Explore Technology", "Develop interests in technology, engineering, design, and STEM careers."], ["🏆", "Compete", "Challenge yourself through competitive events and project-based activities."], ["🛠️", "Build Real Projects", "Create projects requiring planning, creativity, and technical skills."], ["🧠", "Problem Solving", "Break down challenges and develop practical solutions."], ["👑", "Leadership", "Develop leadership, organization, communication, and responsibility."], ["🤝", "Teamwork", "Collaborate with teammates and combine different strengths."], ["🎨", "Creativity", "Use design and innovation to develop unique solutions."], ["📄", "Build Your Resume", "Showcase technical skills, teamwork, leadership, creativity, and initiative."]]}, "fca": {"title": "FCA", "icon": "🏃", "intro": "Build friendships, leadership, character, and a supportive school community through fellowship and activities.", "cta": "Build friendships, leadership, character, and a supportive school community through fellowship and activities.", "benefits": [["🤝", "Build Friendships", "Connect with other students and develop positive relationships."], ["👑", "Leadership", "Practice leadership through activities, service, and student involvement."], ["❤️", "Serve Others", "Participate in opportunities that encourage helping and supporting others."], ["🌟", "Build Character", "Develop responsibility, encouragement, respect, and positive habits."], ["🗣️", "Communication", "Practice speaking, listening, teamwork, and working with others."], ["🎯", "Set Goals", "Work toward personal and group goals while staying involved."], ["👥", "Belong to a Team", "Be part of a supportive group within the school community."], ["📄", "Build Your Resume", "Demonstrate leadership, service, teamwork, commitment, and involvement."]]}};function openClubModal(club){const d=clubData[club];if(!d)return;document.getElementById('clubModalIcon').textContent=d.icon;document.getElementById('clubModalTitle').textContent=d.title;document.getElementById('clubModalIntro').textContent=d.intro;document.getElementById('clubCTA').textContent=d.cta;document.getElementById('clubBenefits').innerHTML=d.benefits.map(b=>`<div class="club-benefit"><div class="club-bi">${b[0]}</div><div><div class="club-bt">${b[1]}</div><div class="club-bd">${b[2]}</div></div></div>`).join('');document.getElementById('clubModal').classList.add('show');document.body.style.overflow='hidden'}function closeClubModal(){document.getElementById('clubModal').classList.remove('show');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeClubModal()});</script>
-<div id="departmentModal" class="dept-modal" role="dialog" aria-modal="true" aria-label="Departments directory" onclick="if(event.target===this)closeDepartmentModal()"><div class="dept-modal-panel" style="width:min(980px,100%)"><div class="dept-modal-head"><button class="dept-close" aria-label="Close" onclick="closeDepartmentModal()">×</button><div class="text-5xl mb-3" aria-hidden="true">🏫</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 class="text-3xl md:text-4xl font-black mt-2">Departments</h2><p class="text-white/80 mt-3 leading-7">Meet the Raider Nation faculty leading each academic department. Tap a name to email.</p></div><div class="dept-body" id="deptDirectoryBody"></div></div></div>
+<div id="departmentModal" class="dept-modal" role="dialog" aria-modal="true" aria-label="Department information" onclick="if(event.target===this)closeDepartmentModal()"><div class="dept-modal-panel"><div class="dept-modal-head"><button class="dept-close" aria-label="Close" onclick="closeDepartmentModal()">×</button><div id="deptModalIcon" class="text-5xl mb-3">📐</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 id="deptModalTitle" class="text-3xl md:text-4xl font-black mt-2">Department</h2><p id="deptModalIntro" class="text-white/80 mt-3 leading-7"></p></div><div class="dept-body"><div class="dept-label">Faculty &amp; Staff</div><div id="deptModalStaff" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div></div></div></div>
 <script id="department-modal-script">
-const DEPT_DOMAIN = 'mccreary.kyschools.us';
-function emailFor(name){
-  const parts = name.trim().split(/\s+/);
-  const first = parts[0].toLowerCase();
-  const last = parts[parts.length - 1].toLowerCase();
-  return `${first}.${last}@${DEPT_DOMAIN}`;
-}
-const departmentData = [
-  { title: 'Math', icon: '📐', groups: [ { staff: ['Carson McKinney','Logan Stephens','Trysten Adkins','Mitch Sexton','Linda Roberts','Bryson Loudermilk'] } ] },
-  { title: 'Social Studies', icon: '🌎', groups: [ { staff: ['Sammy Strunk','Kenneth Spradln','Amanda Monhollen','Johnathan Ball'] } ] },
-  { title: 'Science', icon: '🔬', groups: [ { staff: ['Cody Ridener','Garret Combs','Travis Burress','Greg Whitis'] } ] },
-  { title: 'Language Arts', icon: '📖', groups: [ { staff: ['Billy-Christopher Maupin','Dawn Kidd','Amanda Davis','Lucas Waters','Shayna Perry'] } ] },
-  { title: 'Career & Technical Education (CTE)', icon: '🛠️', groups: [
-      { name: 'IT', staff: ['Collin Crabtree'] },
-      { name: 'Engineering', staff: ['Travis Smith'] },
-      { name: 'Environmental Science', staff: ['Cameron Lee'] },
-      { name: 'Construction', staff: ['Tim Freels'] },
-      { name: 'Auto Mechanics', staff: ['Stephen Grundy'] },
-      { name: 'JROTC', staff: ['Travis Crabtree','Gary Galloway'] },
-      { name: 'Health Science', staff: ['Tiffeny Stephens'] },
-      { name: 'JAG', staff: ['Cole Burke'] },
-      { name: 'Teaching and Learning', staff: ['Melody Alvarez'] }
-    ] },
-  { title: 'Art and Humanities', icon: '🎨', groups: [
-      { name: 'Art', staff: ['Haylee McKeehan'] },
-      { name: 'Health and Physical Education', staff: ['Derrick Smith','Riley Richmond'] },
-      { name: 'Broadcasting and Journalism', staff: ['Teresa King'] },
-      { name: 'Band', staff: ['Michelle Simpson'] },
-      { name: 'Music', staff: ['Megan Byrge'] },
-      { name: 'Spanish', staff: ['Sol Branscum'] }
-    ] },
-  { title: 'Library', icon: '📚', groups: [ { staff: ['Tami Starrett'] } ] }
-];
-function renderStaffList(staff){
-  return staff.map(name => {
-    const email = emailFor(name);
-    return `<li class="flex items-start gap-2.5">
-      <span class="w-1.5 h-1.5 rounded-full bg-[#C49A2A] shrink-0 mt-1.5"></span>
-      <span class="flex flex-col">
-        <span class="text-zinc-800 font-semibold text-sm">${name}</span>
-        <a href="mailto:${email}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${email}</a>
-      </span>
-    </li>`;
-  }).join('');
-}
-function buildDepartmentsDirectory(){
-  return departmentData.map(dept => {
-    const groupsHtml = dept.groups.map(g => {
-      const heading = g.name ? `<p class="dept-subgroup-title">${g.name}</p>` : '';
-      return `<div class="dept-subgroup"><div class="${g.name ? '' : ''}">${heading}<ul class="dept-staff-list" style="gap:.65rem">${renderStaffList(g.staff)}</ul></div></div>`;
-    }).join('');
-    const wide = dept.groups.length > 1 ? ' dept-card-wide' : '';
-    return `<div class="dept-card${wide}">
-        <div class="dept-card-head">
-          <span class="dept-card-icon" aria-hidden="true">${dept.icon}</span>
-          <span class="dept-card-title">${dept.title}</span>
-        </div>
-        <div class="${dept.groups.length > 1 ? 'grid grid-cols-1 sm:grid-cols-2 gap-x-8' : ''}">${groupsHtml}</div>
-      </div>`;
-  }).join('');
-}
-function openDepartmentsModal(){
-  document.getElementById('deptDirectoryBody').innerHTML =
-    `<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">${buildDepartmentsDirectory()}</div>`;
-  document.getElementById('departmentModal').classList.add('show');
-  document.body.style.overflow = 'hidden';
-}
-function closeDepartmentModal(){
-  document.getElementById('departmentModal').classList.remove('show');
-  document.body.style.overflow = '';
-}
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeDepartmentModal(); });
+const departmentInfo={
+ math:{title:'Math',icon:'📐',intro:'Helping students build mathematical reasoning, problem-solving skills, and confidence.',staff:['Carson McKinney','Logan Stephens','Trysten Adkins','Mitch Sexton','Linda Roberts','Bryson Loudermilk']},
+ social:{title:'Social Studies',icon:'🌎',intro:'Exploring history, civics, geography, economics, and the people and ideas that shape our world.',staff:['Sammy Strunk','Kenneth Spradln','Amanda Monhollen','Johnathan Ball']},
+ science:{title:'Science',icon:'🔬',intro:'Building curiosity and scientific thinking through investigation, discovery, and real-world applications.',staff:['Cody Ridener','Garret Combs','Travis Burress','Greg Whitis']},
+ language:{title:'Language Arts',icon:'📖',intro:'Developing communication, reading, writing, critical thinking, and literacy skills.',staff:['Billy-Christopher Maupin','Dawn Kidd','Amanda Davis','Lucas Waters','Shayna Perry']},
+ cte:{title:'Career & Technical Education',icon:'🛠️',intro:'Connecting students with hands-on learning, career preparation, technical skills, and real-world opportunities.',groups:[['IT',['Collin Crabtree']],['Engineering',['Travis Smith']],['Environmental Science',['Cameron Lee']],['Construction',['Tim Freels']],['Auto Mechanics',['Stephen Grundy']],['JROTC',['Travis Crabtree','Gary Galloway']],['Health Science',['Tiffeny Stephens']],['JAG',['Cole Burke']],['Teaching and Learning',['Melody Alvarez']]]},
+ humanities:{title:'Art & Humanities',icon:'🎨',intro:'Encouraging creativity, expression, physical wellness, communication, and appreciation of the arts and languages.',groups:[['Art',['Haylee McKeehan']],['Health and Physical Education',['Derrick Smith','Riley Richmond']],['Broadcasting and Journalism',['Teresa King']],['Band',['Michelle Simpson']],['Music',['Megan Byrge']],['Spanish',['Sol Branscum']]]},
+ library:{title:'Library',icon:'📚',intro:'Supporting student learning through access to books, research resources, technology, and information.',staff:['Tami Starrett']}
+};
+function deptEmail(name){const p=name.trim().split(/\s+/);return p[0].toLowerCase()+'.'+p[p.length-1].toLowerCase()+'@mccreary.kyschools.us'}
+function openDepartmentModalByKey(key){const d=departmentInfo[key];if(!d)return;document.getElementById('deptModalIcon').textContent=d.icon;document.getElementById('deptModalTitle').textContent=d.title;document.getElementById('deptModalIntro').textContent=d.intro;let groups=d.groups||[['',d.staff||[]]];document.getElementById('deptModalStaff').innerHTML=groups.map(g=>g[1].map(n=>`<div class="bg-zinc-50 border border-zinc-200 rounded-2xl p-4"><div class="font-extrabold text-zinc-800">${n}</div>${g[0]?`<div class="text-xs font-bold uppercase tracking-wider text-[#8B1A2B] mt-1">${g[0]}</div>`:''}<a href="mailto:${deptEmail(n)}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${deptEmail(n)}</a></div>`).join('')).join('');document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';closeAllDropdowns()}
+function openDepartmentsModal(){openDepartmentModalByKey('math')}
+function closeDepartmentModal(){document.getElementById('departmentModal').classList.remove('show');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDepartmentModal()});
 </script>
 </body>
 </html>
