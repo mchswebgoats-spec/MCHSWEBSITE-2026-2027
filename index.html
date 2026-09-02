@@ -503,22 +503,6 @@
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
-  <!-- Utility Bar -->
-  <div class="utility-bar text-white">
-    <div class="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4 py-2 text-xs font-semibold">
-      <div class="hidden sm:flex items-center gap-5">
-        <a href="#" class="hover:underline">Visit MCHS</a>
-        <a href="https://www.youtube.com/channel/UCNPz7IrsfYUeE6dGvWCnerQ" target="_blank" class="hover:underline">Videos</a>
-        <a href="#" class="hover:underline">Directory</a>
-      </div>
-      <div class="flex items-center gap-3 ml-auto">
-        <a href="https://mccrearyky.infinitecampus.org/campus/portal/parents/mccreary.jsp" target="_blank" class="hover:underline">Parent Portal</a>
-        <a href="https://mail.google.com/" target="_blank" class="hidden sm:inline hover:underline">Webmail</a>
-        <a href="#" class="util-cta">Job Opportunities</a>
-      </div>
-    </div>
-  </div>
-
   <!-- Top Announcement Bar -->
   <div class="bg-[#8B1A2B] text-white py-2 px-4 flex items-center justify-between gap-4 text-xs font-medium">
     <p class="truncate">
@@ -533,9 +517,11 @@
   <!-- Main Header -->
   <header class="px-4 md:px-8 py-5 flex flex-col md:flex-row justify-between items-center bg-white gap-4 border-0">
     <div class="flex items-center gap-5">
-      <div class="w-20 h-20 flex items-center justify-center shrink-0">
+      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;"
+         aria-label="McCreary Central High School home" title="Back to home"
+         class="w-20 h-20 flex items-center justify-center shrink-0 rounded-xl hover:scale-105 transition-transform focus-visible:ring-2 focus-visible:ring-[#C49A2A]">
         <img src="MCHSlogo.png" alt="McCreary Central High School logo" class="w-20 h-20 object-contain" />
-      </div>
+      </a>
       <div>
         <h1 class="text-xl md:text-2xl font-bold text-zinc-900">McCreary Central High School</h1>
         <p class="text-[#8B1A2B] text-sm italic font-medium">A Great Place to Learn</p>
