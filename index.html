@@ -1372,6 +1372,17 @@ const departmentInfo={
  library:{title:'Library',icon:'📚',intro:'Supporting student learning through access to books, research resources, technology, and information.',staff:['Tami Starrett']}
 };
 function deptEmail(name){const p=name.trim().split(/\s+/);return p[0].toLowerCase()+'.'+p[p.length-1].toLowerCase()+'@mccreary.kyschools.us'}
+
+function socialStaffPlaceholder(name){
+  const initials=name.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
+    <rect width="96" height="96" rx="14" fill="#f4f4f5"/>
+    <circle cx="48" cy="34" r="15" fill="#d4d4d8"/>
+    <path d="M20 78c4-18 16-27 28-27s24 9 28 27" fill="#a1a1aa"/>
+    <text x="48" y="91" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#52525b">${initials}</text>
+  </svg>`;
+  return 'data:image/svg+xml;base64,'+btoa(svg);
+}
 function mathStaffPlaceholder(name){
   const initials=name.split(/\\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
   const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
@@ -1382,7 +1393,7 @@ function mathStaffPlaceholder(name){
   </svg>`;
   return 'data:image/svg+xml;base64,'+btoa(svg);
 }
-function openDepartmentModalByKey(key){const d=departmentInfo[key];if(!d)return;document.getElementById('deptModalIcon').textContent=d.icon;document.getElementById('deptModalTitle').textContent=d.title;document.getElementById('deptModalIntro').textContent=d.intro;let groups=d.groups||[['',d.staff||[]]];document.getElementById('deptModalStaff').innerHTML=groups.map(g=>g[1].map(n=>`<div class="${key==='math'?'math-staff-card ':''}bg-zinc-50 border border-zinc-200 rounded-2xl p-4">${key==='math'?`<img class="math-staff-placeholder" src="${mathStaffPlaceholder(n)}" alt="${n} placeholder image">`:''}<div><div class="font-extrabold text-zinc-800">${n}</div>${g[0]?`<div class="text-xs font-bold uppercase tracking-wider text-[#8B1A2B] mt-1">${g[0]}</div>`:''}<a href="mailto:${deptEmail(n)}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${deptEmail(n)}</a></div></div>`).join('')).join('');document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';closeAllDropdowns()}
+function openDepartmentModalByKey(key){const d=departmentInfo[key];if(!d)return;document.getElementById('deptModalIcon').textContent=d.icon;document.getElementById('deptModalTitle').textContent=d.title;document.getElementById('deptModalIntro').textContent=d.intro;let groups=d.groups||[['',d.staff||[]]];document.getElementById('deptModalStaff').innerHTML=groups.map(g=>g[1].map(n=>`<div class="${key==='math'?'math-staff-card ':key==='social'?'social-staff-card ':''}bg-zinc-50 border border-zinc-200 rounded-2xl p-4">${key==='math'?`<img class="math-staff-placeholder" src="${mathStaffPlaceholder(n)}" alt="${n} placeholder image">`:key==='social'?`<img class="social-staff-placeholder" src="${socialStaffPlaceholder(n)}" alt="${n} placeholder image">`:''}<div><div class="font-extrabold text-zinc-800">${n}</div>${g[0]?`<div class="text-xs font-bold uppercase tracking-wider text-[#8B1A2B] mt-1">${g[0]}</div>`:''}<a href="mailto:${deptEmail(n)}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${deptEmail(n)}</a></div></div>`).join('')).join('');document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';closeAllDropdowns()}
 function openDepartmentsModal(){openDepartmentModalByKey('math')}
 function closeDepartmentModal(){document.getElementById('departmentModal').classList.remove('show');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDepartmentModal()});
