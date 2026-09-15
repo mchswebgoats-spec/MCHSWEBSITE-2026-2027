@@ -450,6 +450,27 @@
       margin-bottom: .5rem;
     }
 
+
+    /* Department dropdown placeholder images */
+    .dept-menu-link {
+      display: flex !important;
+      align-items: center;
+      gap: .75rem;
+      padding: .55rem .75rem !important;
+    }
+    .dept-menu-placeholder {
+      width: 3rem;
+      height: 2.35rem;
+      flex: 0 0 3rem;
+      border-radius: .55rem;
+      object-fit: cover;
+      border: 1px solid #e4e4e7;
+      background: #f4f4f5;
+    }
+    .dept-menu-label {
+      line-height: 1.25;
+    }
+
     /* ===== Departments directory section ===== */
     .dept-card {
       background: #fff;
@@ -518,15 +539,6 @@
 @media(max-width:640px){.sbdm-modal{padding:10px}.sbdm-head{padding:26px 22px}.sbdm-title{font-size:30px}.sbdm-body{padding:22px}.sbdm-grid{grid-template-columns:1fr}}
 </style>
 
-
-<style id="department-placeholder-styles">
-.dept-placeholder{width:100%;aspect-ratio:16/9;margin:0 0 1rem;border-radius:.85rem;border:2px dashed rgba(139,26,43,.28);background:linear-gradient(135deg,#f8fafc,#f4f4f5);overflow:hidden}
-.dept-placeholder-inner{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.25rem;color:var(--school-red);text-align:center;font-weight:900;letter-spacing:.02em}
-.dept-placeholder-icon{font-size:2rem;opacity:.65}
-.dept-placeholder-inner small{color:#71717a;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em}
-.dept-placeholder:hover{border-color:var(--school-gold);background:#fffaf5}
-</style>
-
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -591,13 +603,13 @@
           <button class="px-4 py-4 text-white font-bold text-[11px] tracking-widest uppercase hover:bg-white/10 transition-colors whitespace-nowrap focus-visible:ring-2 focus-visible:ring-[#C49A2A] focus-visible:ring-inset">DEPARTMENTS</button>
           <div class="dropdown-menu absolute top-full left-0 w-72 bg-white shadow-xl border-t-4 border-[#8B1A2B] py-1 z-50">
             <div class="dropdown-heading">Academic Departments</div>
-            <a href="#" onclick="openDepartmentModalByKey('math'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Math</a>
-            <a href="#" onclick="openDepartmentModalByKey('social'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Social Studies</a>
-            <a href="#" onclick="openDepartmentModalByKey('science'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Science</a>
-            <a href="#" onclick="openDepartmentModalByKey('language'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Language Arts</a>
-            <a href="#" onclick="openDepartmentModalByKey('cte'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Career &amp; Technical Education</a>
-            <a href="#" onclick="openDepartmentModalByKey('humanities'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Art &amp; Humanities</a>
-            <a href="#" onclick="openDepartmentModalByKey('library'); return false;" class="block px-4 py-2.5 text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium">Library</a>
+            <a href="#" onclick="openDepartmentModalByKey('math'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPk1BVEg8L3RleHQ+Cjwvc3ZnPg==" alt="" aria-hidden="true"><span class="dept-menu-label">Math</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('social'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPlNPQ0lBTDwvdGV4dD4KPC9zdmc+" alt="" aria-hidden="true"><span class="dept-menu-label">Social Studies</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('science'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPlNDSUVOQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="" aria-hidden="true"><span class="dept-menu-label">Science</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('language'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPkxBTkdVQUdFPC90ZXh0Pgo8L3N2Zz4=" alt="" aria-hidden="true"><span class="dept-menu-label">Language Arts</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('cte'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPkNURTwvdGV4dD4KPC9zdmc+" alt="" aria-hidden="true"><span class="dept-menu-label">Career &amp; Technical Education</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('humanities'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPkFSVCAmYW1wOyBIVU1BTklUSUVTPC90ZXh0Pgo8L3N2Zz4=" alt="" aria-hidden="true"><span class="dept-menu-label">Art &amp; Humanities</span></a>
+            <a href="#" onclick="openDepartmentModalByKey('library'); return false;" class="dept-menu-link block text-sm text-zinc-700 hover:bg-zinc-50 hover:text-[#8B1A2B] font-medium"><img class="dept-menu-placeholder" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjAiIGhlaWdodD0iOTQiIHZpZXdCb3g9IjAgMCAxMjAgOTQiPgo8cmVjdCB3aWR0aD0iMTIwIiBoZWlnaHQ9Ijk0IiByeD0iMTAiIGZpbGw9IiNmNGY0ZjUiLz4KPHJlY3QgeD0iOCIgeT0iOCIgd2lkdGg9IjEwNCIgaGVpZ2h0PSI3OCIgcng9IjgiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2Q0ZDRkOCIgc3Ryb2tlLXdpZHRoPSIyIi8+CjxjaXJjbGUgY3g9IjM1IiBjeT0iMzIiIHI9IjkiIGZpbGw9IiNkNGQ0ZDgiLz4KPHBhdGggZD0iTTE4IDcwbDIyLTIyIDE2IDE1IDEyLTEyIDM0IDE5SDE4eiIgZmlsbD0iI2Q0ZDRkOCIvPgo8dGV4dCB4PSI2MCIgeT0iODQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCxzYW5zLXNlcmlmIiBmb250LXNpemU9IjgiIGZvbnQtd2VpZ2h0PSI3MDAiIGZpbGw9IiM3MTcxN2EiPkxJQlJBUlk8L3RleHQ+Cjwvc3ZnPg==" alt="" aria-hidden="true"><span class="dept-menu-label">Library</span></a>
           </div>
         </li>
 
