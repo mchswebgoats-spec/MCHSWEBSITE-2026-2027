@@ -470,14 +470,6 @@
     .dept-menu-label {
       line-height: 1.25;
     }
-    .math-staff-placeholder {
-      width: 3rem; height: 3rem; flex: 0 0 3rem;
-      border-radius: .75rem; object-fit: cover;
-      border: 1px solid #e4e4e7; background: #f4f4f5;
-    }
-    .math-staff-card {
-      display: flex; align-items: center; gap: .85rem;
-    }
 
     /* ===== Departments directory section ===== */
     .dept-card {
@@ -521,24 +513,7 @@
     @media (min-width: 1024px) {
       .dept-card.dept-card-wide { grid-column: span 2; }
     }
-  
-.math-staff-placeholder {
-  width: 3rem; height: 3rem; flex: 0 0 3rem;
-  border-radius: .75rem; object-fit: cover;
-  border: 1px solid #e4e4e7; background: #f4f4f5;
-}
-.math-staff-card {
-  display: flex; align-items: center; gap: .85rem;
-}
-.science-staff-placeholder {
-  width: 3rem; height: 3rem; flex: 0 0 3rem;
-  border-radius: .75rem; object-fit: cover;
-  border: 1px solid #e4e4e7; background: #f4f4f5;
-}
-.science-staff-card {
-  display: flex; align-items: center; gap: .85rem;
-}
-</style>
+  </style>
 
 <style id="club-popup-css">.club-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(9,9,11,.75);backdrop-filter:blur(6px);padding:20px;align-items:center;justify-content:center}.club-modal.show{display:flex}.club-modal-panel{width:min(850px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;box-shadow:0 30px 90px rgba(0,0,0,.35);animation:clubIn .25s ease-out}@keyframes clubIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}.club-head{position:relative;background:linear-gradient(135deg,#8B1A2B,#641321);color:#fff;padding:35px}.club-close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:0;border-radius:50%;background:#ffffff26;color:#fff;font-size:28px;cursor:pointer}.club-close:hover{background:#ffffff4d}.club-icon{font-size:48px}.club-school{color:#C49A2A;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase}.club-title{font-size:42px;font-weight:900;margin-top:5px}.club-intro{margin-top:12px;color:#ffffffd1;font-size:16px;line-height:1.7}.club-body{padding:32px}.club-label{color:#8B1A2B;font-size:12px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-bottom:15px}.club-benefits{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.club-benefit{display:flex;gap:14px;padding:16px;border:1px solid #e4e4e7;border-radius:16px;background:#fafafa}.club-bi{width:45px;height:45px;min-width:45px;border-radius:13px;background:#8B1A2B12;display:grid;place-items:center;font-size:22px}.club-bt{font-weight:900;font-size:14px}.club-bd{margin-top:4px;color:#71717a;font-size:12px;line-height:1.6}.club-cta{margin-top:25px;background:#8B1A2B;color:#fff;padding:22px;border-radius:18px}.club-ctat{font-weight:900;font-size:18px;margin-bottom:5px}.club-ctad{color:#ffffffcc;font-size:13px;line-height:1.6}@media(max-width:640px){.club-modal{padding:10px}.club-head{padding:28px 22px}.club-title{font-size:32px}.club-body{padding:22px}.club-benefits{grid-template-columns:1fr}}</style>
 
@@ -564,6 +539,10 @@
 @media(max-width:640px){.sbdm-modal{padding:10px}.sbdm-head{padding:26px 22px}.sbdm-title{font-size:30px}.sbdm-body{padding:22px}.sbdm-grid{grid-template-columns:1fr}}
 </style>
 
+<style id="science-staff-placeholders">
+.science-staff-card{display:flex;align-items:center;gap:.85rem}
+.science-staff-placeholder{width:3rem;height:3rem;flex:0 0 3rem;border-radius:.75rem;object-fit:cover;border:1px solid #e4e4e7;background:#f4f4f5}
+</style>
 </head>
 <body class="bg-white text-zinc-900 min-h-screen flex flex-col">
   <a class="skip-link" href="#main-content">Skip to main content</a>
@@ -1389,40 +1368,9 @@ const departmentInfo={
  library:{title:'Library',icon:'📚',intro:'Supporting student learning through access to books, research resources, technology, and information.',staff:['Tami Starrett']}
 };
 function deptEmail(name){const p=name.trim().split(/\s+/);return p[0].toLowerCase()+'.'+p[p.length-1].toLowerCase()+'@mccreary.kyschools.us'}
+function scienceStaffPlaceholder(name){const initials=name.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96"><rect width="96" height="96" rx="14" fill="#f4f4f5"/><circle cx="48" cy="34" r="15" fill="#d4d4d8"/><path d="M20 78c4-18 16-27 28-27s24 9 28 27" fill="#a1a1aa"/><text x="48" y="91" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#52525b">${initials}</text></svg>`;return 'data:image/svg+xml;base64,'+btoa(svg)}
 
-function socialStaffPlaceholder(name){
-  const initials=name.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
-    <rect width="96" height="96" rx="14" fill="#f4f4f5"/>
-    <circle cx="48" cy="34" r="15" fill="#d4d4d8"/>
-    <path d="M20 78c4-18 16-27 28-27s24 9 28 27" fill="#a1a1aa"/>
-    <text x="48" y="91" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#52525b">${initials}</text>
-  </svg>`;
-  return 'data:image/svg+xml;base64,'+btoa(svg);
-}
-function mathStaffPlaceholder(name){
-  const initials=name.split(/\\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
-    <rect width="96" height="96" rx="14" fill="#f4f4f5"/>
-    <circle cx="48" cy="34" r="15" fill="#d4d4d8"/>
-    <path d="M20 78c4-18 16-27 28-27s24 9 28 27" fill="#a1a1aa"/>
-    <text x="48" y="91" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#52525b">${initials}</text>
-  </svg>`;
-  return 'data:image/svg+xml;base64,'+btoa(svg);
-}
-
-function scienceStaffPlaceholder(name){
-  const initials=name.split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
-  const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96">
-    <rect width="96" height="96" rx="14" fill="#f4f4f5"/>
-    <circle cx="48" cy="34" r="15" fill="#d4d4d8"/>
-    <path d="M20 78c4-18 16-27 28-27s24 9 28 27" fill="#a1a1aa"/>
-    <text x="48" y="91" text-anchor="middle" font-family="Arial" font-size="8" font-weight="700" fill="#52525b">${initials}</text>
-  </svg>`;
-  return 'data:image/svg+xml;base64,'+btoa(svg);
-}
-
-function openDepartmentModalByKey(key){const d=departmentInfo[key];if(!d)return;document.getElementById('deptModalIcon').textContent=d.icon;document.getElementById('deptModalTitle').textContent=d.title;document.getElementById('deptModalIntro').textContent=d.intro;let groups=d.groups||[['',d.staff||[]]];document.getElementById('deptModalStaff').innerHTML=groups.map(g=>g[1].map(n=>`<div class="${key==='math'?'math-staff-card ':key==='social'?'social-staff-card ':''}bg-zinc-50 border border-zinc-200 rounded-2xl p-4">${key==='math'?`<img class="math-staff-placeholder" src="${mathStaffPlaceholder(n)}" alt="${n} placeholder image">`:key==='social'?`<img class="social-staff-placeholder" src="${socialStaffPlaceholder(n)}" alt="${n} placeholder image">`:''}<div><div class="font-extrabold text-zinc-800">${n}</div>${g[0]?`<div class="text-xs font-bold uppercase tracking-wider text-[#8B1A2B] mt-1">${g[0]}</div>`:''}<a href="mailto:${deptEmail(n)}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${deptEmail(n)}</a></div></div>`).join('')).join('');document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';closeAllDropdowns()}
+function openDepartmentModalByKey(key){const d=departmentInfo[key];if(!d)return;document.getElementById('deptModalIcon').textContent=d.icon;document.getElementById('deptModalTitle').textContent=d.title;document.getElementById('deptModalIntro').textContent=d.intro;let groups=d.groups||[['',d.staff||[]]];document.getElementById('deptModalStaff').innerHTML=groups.map(g=>g[1].map(n=>`<div class="${key==='science'?'science-staff-card ':''}bg-zinc-50 border border-zinc-200 rounded-2xl p-4">${key==='science'?`<img class="science-staff-placeholder" src="${scienceStaffPlaceholder(n)}" alt="${n} placeholder image">`:''}<div><div class="font-extrabold text-zinc-800">${n}</div>${g[0]?`<div class="text-xs font-bold uppercase tracking-wider text-[#8B1A2B] mt-1">${g[0]}</div>`:''}<a href="mailto:${deptEmail(n)}" class="text-xs text-[#8B1A2B] hover:text-[#C49A2A] hover:underline break-all">${deptEmail(n)}</a></div></div>`).join('')).join('');document.getElementById('departmentModal').classList.add('show');document.body.style.overflow='hidden';closeAllDropdowns()}
 function openDepartmentsModal(){openDepartmentModalByKey('math')}
 function closeDepartmentModal(){document.getElementById('departmentModal').classList.remove('show');document.body.style.overflow=''}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDepartmentModal()});
