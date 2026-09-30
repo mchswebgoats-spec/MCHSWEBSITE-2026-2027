@@ -6,86 +6,7 @@
   <meta name="theme-color" content="#8B1A2B" />
   <meta name="description" content="McCreary Central High School - Raider Nation resources, news, events, academics, students, and community information." />
   <title>McCreary Central High School | Raider Nation</title>
-  <script src="https://cdn.tailwindcss.com">
-    function openSportsPlaceholder(title) {
-      const w = window.open('', '_blank', 'noopener,noreferrer,width=700,height=500');
-      if (!w) return;
-      w.document.write(`<!doctype html><html><head><title>${title}</title><style>body{font-family:Arial,sans-serif;margin:0;background:#f7f7f7;color:#27272a}.wrap{max-width:640px;margin:80px auto;padding:40px;background:#fff;border-top:6px solid #8B1A2B;box-shadow:0 10px 30px rgba(0,0,0,.08)}h1{margin-top:0;color:#8B1A2B}p{font-size:18px;line-height:1.6}</style></head><body><div class="wrap"><h1>${title}</h1><p>Sports information coming soon.</p></div>
-<div id="counselorCornerModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
-  <div class="w-full max-w-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
-    <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200">
-      <div>
-        <div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div>
-        <h2 class="text-3xl font-black mt-2">Counselor Corner</h2>
-      </div>
-      <button type="button" onclick="closeCounselorCorner()" aria-label="Close" class="text-2xl text-zinc-500 hover:text-zinc-900">×</button>
-    </div>
-    <div class="p-8">
-      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-7">
-        <div class="text-4xl mb-3">🎓</div>
-        <h3 class="text-xl font-black text-zinc-900 mb-3">Student Support &amp; Planning</h3>
-        <p class="text-sm text-zinc-600 leading-6 mb-6">Welcome to Counselor Corner. This page is a central place for students and families to find counseling resources, academic planning information, college and career guidance, and other student support resources.</p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Academic Planning</div><div class="text-sm text-zinc-600 mt-1">Course planning, graduation planning, and academic support.</div></div>
-          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">College &amp; Career</div><div class="text-sm text-zinc-600 mt-1">Resources for college, careers, applications, and future planning.</div></div>
-          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Student Support</div><div class="text-sm text-zinc-600 mt-1">Information and resources to help students navigate high school.</div></div>
-          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Helpful Resources</div><div class="text-sm text-zinc-600 mt-1">This section can be expanded with counselor forms, announcements, and links.</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-function openCounselorCorner(){
-  const modal=document.getElementById('counselorCornerModal');
-  modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-}
-function closeCounselorCorner(){
-  const modal=document.getElementById('counselorCornerModal');
-  modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-document.getElementById('counselorCornerModal').addEventListener('click',function(e){if(e.target===this)closeCounselorCorner()});
-</script>
-
-<div id="sportsPlaceholderModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
-  <div class="w-full max-w-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
-    <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200">
-      <div>
-        <div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div>
-        <h2 id="sportsPlaceholderTitle" class="text-3xl font-black mt-2">Sports</h2>
-      </div>
-      <button type="button" onclick="closeSportsPlaceholder()" aria-label="Close" class="text-2xl text-zinc-500 hover:text-zinc-900">×</button>
-    </div>
-    <div class="p-8">
-      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-8 text-center">
-        <div class="text-4xl mb-3">🏆</div>
-        <div class="text-xl font-black text-zinc-900 mb-2">Sports Information Coming Soon</div>
-        <p class="text-sm text-zinc-600">This page is ready for schedules, teams, announcements, rosters, and other athletic information.</p>
-      </div>
-    </div>
-  </div>
-</div>
-<script>
-function openSportsPlaceholder(name){
-  const modal=document.getElementById('sportsPlaceholderModal');
-  document.getElementById('sportsPlaceholderTitle').textContent=name;
-  modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-}
-function closeSportsPlaceholder(){
-  const modal=document.getElementById('sportsPlaceholderModal');
-  modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-document.getElementById('sportsPlaceholderModal').addEventListener('click',function(e){if(e.target===this)closeSportsPlaceholder()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSportsPlaceholder()});
-</script>
-</body></html>`);
-      w.document.close();
-    }
-</script>
+  <script src="https://cdn.tailwindcss.com"></script>
 
   <script>
     tailwind.config = {
@@ -1448,7 +1369,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSportsP
   </script>
 
 
-<div id="fallSportsModal" class="fall-sports-modal" role="dialog" aria-modal="true" aria-labelledby="fallSportsModalTitle" onclick="if(event.target===this)closeFallSports()"><div class="fall-sports-panel"><div class="fall-sports-head"><button class="fall-sports-close" aria-label="Close" onclick="closeFallSports()">×</button><div class="text-4xl mb-2">🏈</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 id="fallSportsModalTitle" class="text-3xl font-black mt-2">Fall Sports</h2></div><div class="fall-sports-body"><div class="fall-sports-placeholder"><div class="fall-sports-placeholder-title">Fall Sports Information Coming Soon</div><div class="fall-sports-placeholder-text">This section is ready for fall sports schedules, teams, announcements, and other athletic information.</div></div></div></div></div>
+<div id="fallSportsModal" class="fall-sports-modal" role="dialog" aria-modal="true" aria-labelledby="fallSportsModalTitle" onclick="if(event.target===this)closeFallSports()"><div class="fall-sports-panel"><div class="fall-sports-head"><button class="fall-sports-close" aria-label="Close" onclick="closeFallSports()">×</button><div class="text-4xl mb-2">🏈</div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 id="fallSportsModalTitle" class="text-3xl font-black mt-2">Fall Sports</h2></div><div class="fall-sports-body"><div class="fall-sports-placeholder"><div class="fall-sports-placeholder-title">Fall McCreary Central Athletics</div><div class="fall-sports-placeholder-text">This section is ready for fall sports schedules, teams, announcements, and other athletic information.</div></div></div></div></div>
 <script id="fall-sports-modal-js">function openFallSports(e){if(e)e.preventDefault();document.getElementById('fallSportsModal').classList.add('show');document.body.style.overflow='hidden'}function closeFallSports(){document.getElementById('fallSportsModal').classList.remove('show');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFallSports()});</script>
 <div id="clubModal" class="club-modal" role="dialog" aria-modal="true" onclick="if(event.target===this)closeClubModal()"><div class="club-modal-panel"><div class="club-head"><button class="club-close" aria-label="Close" onclick="closeClubModal()">×</button><div id="clubModalIcon" class="club-icon">🎭</div><div class="club-school">McCreary Central High School</div><h2 id="clubModalTitle" class="club-title">Club</h2><p id="clubModalIntro" class="club-intro"></p></div><div class="club-body"><div class="club-label">Benefits of Joining</div><div id="clubBenefits" class="club-benefits"></div><div class="club-cta"><div class="club-ctat">Get Involved</div><p id="clubCTA" class="club-ctad"></p></div></div></div></div>
 
@@ -1569,38 +1490,54 @@ document.addEventListener('keydown', function(e){
 </script>
 
 
-<div id="sportsPlaceholderModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
-  <div class="w-full max-w-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
-    <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200">
-      <div>
-        <div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div>
-        <h2 id="sportsPlaceholderTitle" class="text-3xl font-black mt-2">Sports</h2>
-      </div>
-      <button type="button" onclick="closeSportsPlaceholder()" aria-label="Close" class="text-2xl text-zinc-500 hover:text-zinc-900">×</button>
+
+<div id="counselorCornerModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
+  <div class="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
+    <div class="flex items-start justify-between gap-4 p-6 md:p-8 border-b border-zinc-200 bg-zinc-50">
+      <div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 class="text-3xl md:text-4xl font-black mt-2">Counselor Corner</h2><p class="text-zinc-600 mt-2">Guidance and resources for every Raider.</p></div>
+      <button type="button" onclick="closeCounselorCorner()" aria-label="Close Counselor Corner" class="text-3xl text-zinc-500">×</button>
     </div>
-    <div class="p-8">
-      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-8 text-center">
-        <div class="text-4xl mb-3">🏆</div>
-        <div class="text-xl font-black text-zinc-900 mb-2">Sports Information Coming Soon</div>
-        <p class="text-sm text-zinc-600">This page is ready for schedules, teams, announcements, rosters, and other athletic information.</p>
+    <div class="p-6 md:p-8">
+      <div class="bg-[#8B1A2B] text-white p-6 mb-6"><div class="text-4xl mb-3">🎓</div><h3 class="text-2xl font-black">Here to Help You Plan What Comes Next</h3><p class="mt-3 text-white/85 leading-7">The Counselor Corner is a central place for students and families to find information about academics, graduation, college and career planning, scholarships, scheduling, and student support.</p></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <button type="button" onclick="openCounselorSection('Academic Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Academic Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Course selection, graduation planning, academic goals, and support resources.</p></button>
+        <button type="button" onclick="openCounselorSection('College Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">College Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">College research, applications, admissions information, and planning for life after high school.</p></button>
+        <button type="button" onclick="openCounselorSection('Career Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Career Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Explore careers, pathways, training opportunities, and goals for the future.</p></button>
+        <button type="button" onclick="openCounselorSection('Scholarships & Financial Aid')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Scholarships &amp; Financial Aid <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">A space for scholarship announcements, financial-aid resources, and application reminders.</p></button>
+        <button type="button" onclick="openCounselorSection('Scheduling & Graduation')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Scheduling &amp; Graduation <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Information about schedules, credits, graduation requirements, and important deadlines.</p></button>
+        <button type="button" onclick="openCounselorSection('Student Support')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Student Support <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">General guidance resources and information to help students succeed in high school.</p></button>
+        <button type="button" onclick="openCounselorSection('Mental Health & Wellness')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Mental Health &amp; Wellness <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">A supportive place to learn about healthy coping, stress management, emotional wellness, and how to connect with a trusted adult or school support person.</p></button>
       </div>
+      <div class="mt-6 border border-[#8B1A2B]/20 rounded-lg p-6 bg-zinc-50"><div class="flex items-start gap-4"><div class="text-3xl">🧠</div><div><h3 class="font-black text-lg">Mental Health &amp; Wellness Resources</h3><p class="text-sm text-zinc-600 mt-2 leading-6">Students do not have to handle difficult feelings or stressful situations alone. The counseling office can be a starting point for talking with a trusted adult, finding school-based support, and learning strategies for managing school stress and everyday challenges.</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4"><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Talk to Someone</h4><p class="text-xs text-zinc-600 mt-1">Reach out to a counselor, teacher, parent or guardian, or another trusted adult.</p></div><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Manage Stress</h4><p class="text-xs text-zinc-600 mt-1">Take healthy breaks, stay connected, organize schoolwork, and ask for help when things feel overwhelming.</p></div><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Get Support</h4><p class="text-xs text-zinc-600 mt-1">The school counseling office can help connect students and families with appropriate support and resources.</p></div></div><p class="text-xs text-zinc-500 mt-4">This page provides general information and is not a substitute for professional mental-health care or emergency services.</p></div></div></div>
+      <div class="mt-6 border border-dashed border-zinc-300 rounded-lg p-5 bg-zinc-50"><h3 class="font-black text-lg">Counselor Announcements</h3><p class="text-sm text-zinc-600 mt-2">This area can be updated with counselor announcements, deadlines, forms, events, and helpful links.</p></div>
     </div>
   </div>
 </div>
+<script>function openCounselorCorner(){const m=document.getElementById('counselorCornerModal');m.classList.remove('hidden');m.classList.add('flex');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}function closeCounselorCorner(){const m=document.getElementById('counselorCornerModal');m.classList.add('hidden');m.classList.remove('flex');m.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCounselorCorner()});</script>
+
+<div id="counselorSectionModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
+  <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
+    <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200 bg-zinc-50">
+      <div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 id="counselorSectionTitle" class="text-2xl md:text-3xl font-black mt-2"></h2></div>
+      <button type="button" onclick="closeCounselorSection()" aria-label="Close" class="text-3xl text-zinc-500">×</button>
+    </div>
+    <div class="p-6"><p id="counselorSectionText" class="text-zinc-700 leading-7"></p><div class="mt-5 rounded-lg bg-zinc-50 border border-zinc-200 p-5"><h3 class="font-black">Helpful Information</h3><p class="text-sm text-zinc-600 mt-2">This is a general Counselor Corner page. Specific announcements, forms, deadlines, and links can be added here by the school counseling office.</p></div></div>
+  </div>
+</div>
+
 <script>
-function openSportsPlaceholder(name){
-  const modal=document.getElementById('sportsPlaceholderModal');
-  document.getElementById('sportsPlaceholderTitle').textContent=name;
-  modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false');
-  document.body.style.overflow='hidden';
-}
-function closeSportsPlaceholder(){
-  const modal=document.getElementById('sportsPlaceholderModal');
-  modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true');
-  document.body.style.overflow='';
-}
-document.getElementById('sportsPlaceholderModal').addEventListener('click',function(e){if(e.target===this)closeSportsPlaceholder()});
-document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSportsPlaceholder()});
+const counselorSectionDescriptions={
+'Academic Planning':'Information about course selection, academic goals, graduation planning, and resources that can help students stay on track.',
+'College Planning':'General information for researching colleges, preparing applications, understanding admissions, and planning for life after high school.',
+'Career Planning':'Resources for exploring careers, career pathways, training programs, work-based learning, and future goals.',
+'Scholarships & Financial Aid':'A place for scholarship opportunities, financial-aid information, application reminders, and planning resources.',
+'Scheduling & Graduation':'General information about course schedules, credits, graduation requirements, important dates, and planning ahead.',
+'Student Support':'General school counseling information and resources designed to help students with academic, school, and planning needs.',
+'Mental Health & Wellness':'General wellness information about managing school stress, talking with trusted adults, staying connected, and finding appropriate school support. Students should reach out to a trusted adult or school counselor when they need help.'
+};
+function openCounselorSection(title){const m=document.getElementById('counselorSectionModal');document.getElementById('counselorSectionTitle').textContent=title;document.getElementById('counselorSectionText').textContent=counselorSectionDescriptions[title]||'Counselor Corner information and resources.';m.classList.remove('hidden');m.classList.add('flex');m.setAttribute('aria-hidden','false');}
+function closeCounselorSection(){const m=document.getElementById('counselorSectionModal');m.classList.add('hidden');m.classList.remove('flex');m.setAttribute('aria-hidden','true');}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCounselorSection()});
 </script>
 </body>
 </html>
