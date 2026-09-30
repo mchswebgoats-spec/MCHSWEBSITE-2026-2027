@@ -11,6 +11,44 @@
       const w = window.open('', '_blank', 'noopener,noreferrer,width=700,height=500');
       if (!w) return;
       w.document.write(`<!doctype html><html><head><title>${title}</title><style>body{font-family:Arial,sans-serif;margin:0;background:#f7f7f7;color:#27272a}.wrap{max-width:640px;margin:80px auto;padding:40px;background:#fff;border-top:6px solid #8B1A2B;box-shadow:0 10px 30px rgba(0,0,0,.08)}h1{margin-top:0;color:#8B1A2B}p{font-size:18px;line-height:1.6}</style></head><body><div class="wrap"><h1>${title}</h1><p>Sports information coming soon.</p></div>
+<div id="counselorCornerModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
+  <div class="w-full max-w-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
+    <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200">
+      <div>
+        <div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div>
+        <h2 class="text-3xl font-black mt-2">Counselor Corner</h2>
+      </div>
+      <button type="button" onclick="closeCounselorCorner()" aria-label="Close" class="text-2xl text-zinc-500 hover:text-zinc-900">×</button>
+    </div>
+    <div class="p-8">
+      <div class="rounded-xl border border-zinc-200 bg-zinc-50 p-7">
+        <div class="text-4xl mb-3">🎓</div>
+        <h3 class="text-xl font-black text-zinc-900 mb-3">Student Support &amp; Planning</h3>
+        <p class="text-sm text-zinc-600 leading-6 mb-6">Welcome to Counselor Corner. This page is a central place for students and families to find counseling resources, academic planning information, college and career guidance, and other student support resources.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Academic Planning</div><div class="text-sm text-zinc-600 mt-1">Course planning, graduation planning, and academic support.</div></div>
+          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">College &amp; Career</div><div class="text-sm text-zinc-600 mt-1">Resources for college, careers, applications, and future planning.</div></div>
+          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Student Support</div><div class="text-sm text-zinc-600 mt-1">Information and resources to help students navigate high school.</div></div>
+          <div class="bg-white border border-zinc-200 rounded-lg p-4"><div class="font-bold text-zinc-900">Helpful Resources</div><div class="text-sm text-zinc-600 mt-1">This section can be expanded with counselor forms, announcements, and links.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+function openCounselorCorner(){
+  const modal=document.getElementById('counselorCornerModal');
+  modal.classList.remove('hidden'); modal.classList.add('flex'); modal.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+}
+function closeCounselorCorner(){
+  const modal=document.getElementById('counselorCornerModal');
+  modal.classList.add('hidden'); modal.classList.remove('flex'); modal.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+}
+document.getElementById('counselorCornerModal').addEventListener('click',function(e){if(e.target===this)closeCounselorCorner()});
+</script>
+
 <div id="sportsPlaceholderModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
   <div class="w-full max-w-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
     <div class="flex items-start justify-between gap-4 p-6 border-b border-zinc-200">
@@ -1021,9 +1059,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSportsP
   <div class="bg-white border-b border-zinc-200 shadow-sm">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 divide-x divide-zinc-100">
-        <a href="#" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Athletics</span>
+        <a href="#" onclick="openCounselorCorner(); return false;" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M12 3a7 7 0 0 0-7 7v4a3 3 0 0 0 3 3h1v-6H6"/><path d="M12 3a7 7 0 0 1 7 7v4a3 3 0 0 1-3 3h-1v-6h3"/><path d="M9 20h6"/><path d="M12 17v3"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Counselor Corner</span>
         </a>
         <a href="https://sites.google.com/mccreary.kyschools.us/mccrearyraiderlibrary/home" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 6h8M8 10h8"/></svg>
