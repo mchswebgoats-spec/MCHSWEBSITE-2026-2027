@@ -987,9 +987,9 @@
   <div class="bg-white border-b border-zinc-200 shadow-sm">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-7 divide-x divide-zinc-100">
-        <a href="#" onclick="openCounselorCorner(); return false;" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
-          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M12 3a7 7 0 0 0-7 7v4a3 3 0 0 0 3 3h1v-6H6"/><path d="M12 3a7 7 0 0 1 7 7v4a3 3 0 0 1-3 3h-1v-6h3"/><path d="M9 20h6"/><path d="M12 17v3"/></svg>
-          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">Counselor Corner</span>
+        <a href="#" onclick="openNTIModal(); return false;" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors" aria-haspopup="dialog" aria-controls="ntiModal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors" aria-hidden="true"><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v17H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 4.5v17"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>
+          <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-600 group-hover:text-[#8B1A2B] text-center leading-tight">NTI</span>
         </a>
         <a href="https://sites.google.com/mccreary.kyschools.us/mccrearyraiderlibrary/home" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center gap-3 py-7 px-3 hover:bg-zinc-50 group transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="#71717a" stroke-width="1.5" viewBox="0 0 24 24" class="group-hover:stroke-[#8B1A2B] transition-colors"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/><path d="M8 6h8M8 10h8"/></svg>
@@ -1506,29 +1506,62 @@ document.addEventListener('keydown', function(e){
 
 
 
-<div id="counselorCornerModal" class="fixed inset-0 z-[110] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
-  <div class="w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
-    <div class="flex items-start justify-between gap-4 p-6 md:p-8 border-b border-zinc-200 bg-zinc-50">
-      <div><div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div><h2 class="text-3xl md:text-4xl font-black mt-2">Counselor Corner</h2><p class="text-zinc-600 mt-2">Guidance and resources for every Raider.</p></div>
-      <button type="button" onclick="closeCounselorCorner()" aria-label="Close Counselor Corner" class="text-3xl text-zinc-500">×</button>
+<!-- Non-Traditional Instruction information popup -->
+<div id="ntiModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/70 p-4" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="ntiModalTitle" onclick="if(event.target===this)closeNTIModal()">
+  <div class="w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
+    <div class="flex items-start justify-between gap-4 p-6 md:p-8 bg-zinc-50 border-b border-zinc-200">
+      <div>
+        <div class="text-xs font-black uppercase tracking-widest text-[#C49A2A]">McCreary Central High School</div>
+        <h2 id="ntiModalTitle" class="text-3xl md:text-4xl font-black mt-2">Non-Traditional Instruction (NTI)</h2>
+        <p class="text-zinc-600 mt-2">2026–2027 School Year</p>
+      </div>
+      <button type="button" onclick="closeNTIModal()" aria-label="Close NTI information" class="shrink-0 rounded-full w-10 h-10 text-3xl leading-none text-zinc-500 hover:bg-zinc-200 hover:text-zinc-900">×</button>
     </div>
     <div class="p-6 md:p-8">
-      <div class="bg-[#8B1A2B] text-white p-6 mb-6"><div class="text-4xl mb-3">🎓</div><h3 class="text-2xl font-black">Here to Help You Plan What Comes Next</h3><p class="mt-3 text-white/85 leading-7">The Counselor Corner is a central place for students and families to find information about academics, graduation, college and career planning, scholarships, scheduling, and student support.</p></div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <button type="button" onclick="openCounselorSection('Academic Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Academic Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Course selection, graduation planning, academic goals, and support resources.</p></button>
-        <button type="button" onclick="openCounselorSection('College Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">College Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">College research, applications, admissions information, and planning for life after high school.</p></button>
-        <button type="button" onclick="openCounselorSection('Career Planning')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Career Planning <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Explore careers, pathways, training opportunities, and goals for the future.</p></button>
-        <button type="button" onclick="openCounselorSection('Scholarships & Financial Aid')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Scholarships &amp; Financial Aid <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">A space for scholarship announcements, financial-aid resources, and application reminders.</p></button>
-        <button type="button" onclick="openCounselorSection('Scheduling & Graduation')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Scheduling &amp; Graduation <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">Information about schedules, credits, graduation requirements, and important deadlines.</p></button>
-        <button type="button" onclick="openCounselorSection('Student Support')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Student Support <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">General guidance resources and information to help students succeed in high school.</p></button>
-        <button type="button" onclick="openCounselorSection('Mental Health & Wellness')" class="text-left border border-zinc-200 rounded-lg p-5 hover:border-[#8B1A2B] hover:shadow-md transition-all group"><h3 class="font-black text-lg group-hover:text-[#8B1A2B]">Mental Health &amp; Wellness <span class="float-right">→</span></h3><p class="text-sm text-zinc-600 mt-2">A supportive place to learn about healthy coping, stress management, emotional wellness, and how to connect with a trusted adult or school support person.</p></button>
+      <div class="rounded-xl bg-[#8B1A2B] text-white p-6 mb-6">
+        <div class="text-xs font-bold uppercase tracking-widest text-[#F0D88F]">Important information</div>
+        <p class="mt-3 leading-7">As we approach cooler weather seasons, it is time to share our 2026–2027 Non-Traditional Instruction (NTI) plan. Our district calendar requires 170 instructional days for students, as mandated at the state level. Kentucky allows districts to use NTI days to support continued instruction instead of traditional snow days.</p>
       </div>
-      <div class="mt-6 border border-[#8B1A2B]/20 rounded-lg p-6 bg-zinc-50"><div class="flex items-start gap-4"><div class="text-3xl">🧠</div><div><h3 class="font-black text-lg">Mental Health &amp; Wellness Resources</h3><p class="text-sm text-zinc-600 mt-2 leading-6">Students do not have to handle difficult feelings or stressful situations alone. The counseling office can be a starting point for talking with a trusted adult, finding school-based support, and learning strategies for managing school stress and everyday challenges.</p><div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4"><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Talk to Someone</h4><p class="text-xs text-zinc-600 mt-1">Reach out to a counselor, teacher, parent or guardian, or another trusted adult.</p></div><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Manage Stress</h4><p class="text-xs text-zinc-600 mt-1">Take healthy breaks, stay connected, organize schoolwork, and ask for help when things feel overwhelming.</p></div><div class="bg-white border border-zinc-200 rounded-lg p-4"><h4 class="font-bold">Get Support</h4><p class="text-xs text-zinc-600 mt-1">The school counseling office can help connect students and families with appropriate support and resources.</p></div></div><p class="text-xs text-zinc-500 mt-4">This page provides general information and is not a substitute for professional mental-health care or emergency services.</p></div></div></div>
-      <div class="mt-6 border border-dashed border-zinc-300 rounded-lg p-5 bg-zinc-50"><h3 class="font-black text-lg">Counselor Announcements</h3><p class="text-sm text-zinc-600 mt-2">This area can be updated with counselor announcements, deadlines, forms, events, and helpful links.</p></div>
+      <h3 class="text-xl font-black mb-4">If an NTI day is used</h3>
+      <ol class="space-y-4">
+        <li class="flex gap-3"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B1A2B] text-white font-bold">1</span><p class="text-zinc-700 leading-6">Use the link below to access NTI assignments.</p></li>
+        <li class="flex gap-3"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B1A2B] text-white font-bold">2</span><p class="text-zinc-700 leading-6">Assignments may be completed on regular paper or in Google Classroom, if the teacher allows.</p></li>
+        <li class="flex gap-3"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B1A2B] text-white font-bold">3</span><p class="text-zinc-700 leading-6">All MCHS students must complete NTI assignments for each course in which they are enrolled. This does not include Dual Credit, Virtual, or All Day CADRE students, who should continue using their assigned online learning platforms.</p></li>
+        <li class="flex gap-3"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B1A2B] text-white font-bold">4</span><p class="text-zinc-700 leading-6">Students who need help on an NTI day should contact their teacher through ParentSquare or Google Classroom.</p></li>
+        <li class="flex gap-3"><span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#8B1A2B] text-white font-bold">5</span><p class="text-zinc-700 leading-6">After school returns to its normal schedule, students may arrange to meet with the teacher during Innovation Islands time if they need additional support.</p></li>
+      </ol>
+      <div class="mt-6 rounded-xl border border-amber-300 bg-amber-50 p-5">
+        <h3 class="font-black text-amber-950">Assignment deadline and grades</h3>
+        <p class="mt-2 text-sm leading-6 text-amber-950">Missing NTI work will be entered as 0% in the gradebook. NTI assignments must be submitted no later than one week after returning to regular in-person instruction following NTI day(s).</p>
+      </div>
+      <a href="https://docs.google.com/spreadsheets/d/18rOjDLptIqKLU2UF1xomOV1ZwzK2hBu02Jw2koJdR70/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="mt-6 flex items-center justify-between gap-4 rounded-xl bg-[#C49A2A] px-5 py-4 font-black text-[#0d1b2e] hover:bg-[#d6ad43] transition-colors">
+        <span><span class="block text-xs uppercase tracking-widest">NTI Assignments</span><span class="block mt-1">Open the 2026–2027 assignment spreadsheet</span></span>
+        <span class="text-2xl" aria-hidden="true">↗</span>
+      </a>
     </div>
   </div>
 </div>
-<script>function openCounselorCorner(){const m=document.getElementById('counselorCornerModal');m.classList.remove('hidden');m.classList.add('flex');m.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'}function closeCounselorCorner(){const m=document.getElementById('counselorCornerModal');m.classList.add('hidden');m.classList.remove('flex');m.setAttribute('aria-hidden','true');document.body.style.overflow=''}document.addEventListener('keydown',e=>{if(e.key==='Escape')closeCounselorCorner()});</script>
+<script>
+function openNTIModal() {
+  const modal = document.getElementById('ntiModal');
+  modal.classList.remove('hidden');
+  modal.classList.add('flex');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  modal.querySelector('button[aria-label="Close NTI information"]').focus();
+}
+function closeNTIModal() {
+  const modal = document.getElementById('ntiModal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  modal.classList.remove('flex');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(event) {
+  if (event.key === 'Escape') closeNTIModal();
+});
+</script>
 
 <div id="counselorSectionModal" class="fixed inset-0 z-[120] hidden items-center justify-center bg-black/60 p-4" aria-hidden="true">
   <div class="w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white shadow-2xl border-t-4 border-[#8B1A2B]">
